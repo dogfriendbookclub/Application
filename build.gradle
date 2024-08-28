@@ -1,0 +1,37 @@
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.14'
+    id 'org.beryx.jlink' version '2.26.0'
+}
+
+application {
+    group = 'edu.metrostate'
+    version = '1.0'
+    mainClass = "edu.metrostate.Main"
+    mainModule = "Application"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+javafx {
+    version = "22.0.2"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+jlink {
+    addOptions('--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages')
+    launcher {
+        name = 'JavaFXDemo'
+    }
+}
