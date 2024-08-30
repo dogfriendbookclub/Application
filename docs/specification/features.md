@@ -137,7 +137,7 @@ when typing and entering something in search bar, we should get results that can
 - cast
 - crew
   - crews can be filtered down to the role(maybe)
-
+ 
 
 
 # EXTRA
