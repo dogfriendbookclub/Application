@@ -4,7 +4,7 @@
 
 this is the home page of our application where users will be able to see a selection of TV shows in a categorized rows based on genres. 
 
-![Wireframe 1](./wireframe1.png)
+![Wireframe 1](./HomePage.png)
 
 ## Screen Name 2
 
