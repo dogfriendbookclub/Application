@@ -1,15 +1,7 @@
 # Features
 
 WHAT CAN A USER DO:
-Like, rate, and review tv shows, down to the, episode.
-This is the bare minimum of the program
-
-This program should extremely simple. 
-THe best part about letterbox, is that you dont have to use any of the advanced features at all
-At the end of the day its all about loggign and reviewing TVSHOWS
-
-This program allows users to log and review TVSHOWS they have watched
-    it goes down to the season
+Like, rate, and review tv shows, down to the episode.
 
 ## Core features
 
@@ -45,7 +37,7 @@ A User will also be able to track the total number of episodes they have watched
 they will also be able to see how many episodes they have watched and are watching in the current year
 
 The user can also see a timeline of that shows what they watched each year, separated by years and then into months.
-selecting a year will bring up the months of that year. selecting on a month will bring up a calender that dates an 
+selecting a year will bring up the months of that year. selecting on a month will bring up a calendar that dates an 
 episode has been watched, if there is a date, where nothing was watched it will not be brought up.
 
 > we could also log the "number of shows watched" using this exact system
@@ -59,8 +51,8 @@ a user can  create their own lists. The list will require:
 - a name 
     >if a name is not given, the list would default to something like  "usernames" list 1, "usernames" list 2, etc.
 - The user has the option to create a description for the list
-- the user also has the option to create an description for each entry in the list
-    >this allows the more hardcore tv enthusiants to really spill their thoughts and give a deep analysis
+- the user also has the option to create a description for each entry in the list
+    >this allows the more hardcore tv enthusiasts to really spill their thoughts and give a deep analysis
 
 ### Interacting with other users
 
@@ -120,10 +112,9 @@ The features of the episode object would be a near exact copy of the TV show obj
 
 
 ## Home screen
-> The most popular object is calcualted using posts the have gotten x amount of likes in
-> x amount of time. However we  could use the emoticons to factor what we consider popular
+> what dictates popularity is *x* amount of interactions in a *y* amount of hours
 
-### Popular episodes/tvshows tab
+### Popular episodes/tv shows tab
 This tab will include episodes or (Tv-shows) that are trending (have the most interactions within an arbitrary amount of time)
 > If it's possible, lets try and find a way for it to contain episodes trending WORLDWIDE
 
@@ -135,7 +126,7 @@ Would contain lists that are popular, as in has the most interactions (likes)
 
 
 ## Search capabilities PRIORITY
-a user should be able to Search for a cast member / crew member and find what other productions they have been apart of.
+a user should be able to Search for a cast member / crew member and find what other productions they have been a part of.
 It will say exactly what they did on that show and the years they did that role
 
 when typing and entering something in search bar, we should get results that can be split up into 6 categories
@@ -150,7 +141,7 @@ when typing and entering something in search bar, we should get results that can
 
 
 # EXTRA
-Based off of user data, we could recommend shows to the users. we can even create/recommend lists for them aswell (with playful names)
+Based off of user data, we could recommend shows to the users. we can even create/recommend lists for them as well (with playful names)
 something to how spotify's recommendations work.
 > however the hell that works
 
