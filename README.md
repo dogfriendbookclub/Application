@@ -1,8 +1,9 @@
-# PROJECT
+# Rotten Potatoes
+_Boil 'em, mash 'em, stick 'em in stew!_
 
 ## Description
 
-This application allows users to search for and create reviews for TV shows.
+An application that allows users to read and create reviews for TV shows.
 
 Users will be able to search for TV shows and see seasons and episodes of those shows.
 When searching for a show users will be able to see information about the show, such as a 
