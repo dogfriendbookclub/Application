@@ -24,3 +24,14 @@ years it was aired. However, there will be three key differences within the show
 
 The shared functionality is that each of these embedded pages will allow the user to review another user's review/rating, add a review/rating, click the 
 heart to mark the show as a favorite.
+
+
+
+
+
+
+
+## Search Results Page
+
+This is the search screen of our application. The initial results will be a mix of top results from all categories. The search bar will be in the top left corner. Below it will be the search termed entered, if the typed value is misspelled an alternative will be offered beneath. To the right is a filter that will allow users to specify their results. In the top right corner, the user can login or create an account
+![Wireframe 6](./Search-Screen-v1.png)
