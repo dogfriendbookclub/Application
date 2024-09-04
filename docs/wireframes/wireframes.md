@@ -14,7 +14,7 @@ This collection of three wireframes represent the same screen. When a specific s
 years it was aired. However, there will be three key differences within the show's embedded format.
 
 3.0 Provides the user with overall information for the show such as the creator(s), main cast, and an overall synopsis
-![Wireframe 3](./Show-Specific Wireframe ft Overall Show Summary_v3.0.png)
+![Wireframe 2](./Show-SpecificWireframeftOverallShowSummary_v3.0.png)
 
 3.1 Provides the user with seasons-specific information
 ![Wireframe 4](./Show-Specific Wireframe ft Overall Show Summary_v3.1.png)
