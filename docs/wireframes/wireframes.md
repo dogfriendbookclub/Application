@@ -8,8 +8,19 @@ There are also Register and Login links at the top of the page for users who wan
 
 ![Wireframe 1](./HomePage.png)
 
-## Screen Name 2
+## Show-Specific Pages
 
-Describe this screen and how it will be used.
+This collection of three wireframes represent the same screen. When a specific show is selected, the show's "home page" will displace the show's name and the
+years it was aired. However, there will be three key differences within the show's embedded format.
 
-![Wireframe 2](./wireframe2.jpg)
+3.0 Provides the user with overall information for the show such as the creator(s), main cast, and an overall synopsis
+![Wireframe 3](./Show-Specific Wireframe ft Overall Show Summary_v3.0.png)
+
+3.1 Provides the user with seasons-specific information
+![Wireframe 4](./Show-Specific Wireframe ft Overall Show Summary_v3.1.png)
+
+3.2 Provides the user with episode specific information, such as the director(s), main cast, the writer(s) and a synopsis of that specific episode
+![Wireframe 5](./Show-Specific Wireframe ft Overall Show Summary_v3.2.png)
+
+The shared functionality is that each of these embedded pages will allow the user to review another user's review/rating, add a review/rating, click the 
+heart to mark the show as a favorite.
