@@ -1,5 +1,5 @@
 # Rotten Potatoes
-_Boil 'em, mash 'em, stick 'em in stew!_
+_All user reviews! Boil 'em, mash 'em, stick 'em in stew!_
 
 ## Description
 
