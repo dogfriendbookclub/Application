@@ -1,5 +1,5 @@
 # Rotten Potatoes
-_Boil 'em, mash 'em, stick 'em in stew!_
+_All user reviews! Boil 'em, mash 'em, stick 'em in stew!_
 
 ## Description
 
@@ -15,6 +15,6 @@ Users can like reviews created by other users.
 
 - Bryn Slavin <z.bryn.slavin@gmail.com>
 - Paul Trevizo <paultrevizo@yahoo.com>
-- Nicholas [lastNAme] <ml2643yh@go.minnestate.edu>
+- Nicholas Yang <ml2643yh@go.minnestate.edu>
 - Caleb Centy <calebcenty18@gmail.com>
 - Chang Vang <changvang32@gmail.com>
