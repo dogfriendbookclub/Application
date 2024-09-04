@@ -34,4 +34,4 @@ heart to mark the show as a favorite.
 ## Search Results Page
 
 This is the search screen of our application. The initial results will be a mix of top results from all categories. The search bar will be in the top left corner. Below it will be the search termed entered, if the typed value is misspelled an alternative will be offered beneath. To the right is a filter that will allow users to specify their results. In the top right corner, the user can login or create an account
-![Wireframe 6](./Search-screen-v1.png)
+![Wireframe 6](./Search_screen_v1.pngg)
