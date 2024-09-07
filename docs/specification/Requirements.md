@@ -1,13 +1,11 @@
 # Non-functional Requirements
 
 ## Data Integrity
-// insert blurb here
+Our database will use constraints to maintain accurate relationships between data. We will implement access controls to limit data modification to authorized personnel only, and encrypt sensitive information to protect against unauthorized access. These measures collectively ensure that the data remains accurate, reliable, and secure.
 ## Transparency
-Transparency is part of the ethos of Rotten Potatoes. We exclusively publish and aggregate user
-submitted reviews and will make the method of how reviews are calculated available for users to 
-see.
+To ensure transparency, our application will provide clear, accessible information about how user reviews are aggregated and displayed. We will implement a transparent review calculation methodology, which will be documented and made available to all users. Additionally, we will include a feature where users can view the source of their own reviews and track the changes made to the review data. We will also maintain an open channel for user inquiries regarding review processes and calculation methods.
 ## Quality
-// insert blurb here
+// insert blurb here (Not Completed)
 ***
 # Use Cases
 
@@ -54,7 +52,7 @@ User (Searcher)
 3. The system displays an error message prompting the user to correct the query and try again.
 4. The user revises the search query as suggested and resubmits the search.
 
-## Use case name: Submit Review
+## Use case 2: Submit Review
 
 ### Actors
 1. **User (Reviewer)**: The individual who writes and submits a review for a TV show.
@@ -102,7 +100,7 @@ User (Reviewer)
 5. The system validates and processes the corrected review as per the basic flow.
 
 
-## Use case name: Mark Favorites / Favorites List
+## Use case 3: Mark Favorites / Favorites List
 
 ### Actors
 1. **User (Favorites Manager)**: The individual who marks TV shows as favorites and manages their favorites list.
@@ -149,7 +147,7 @@ User (Favorites Manager)
 
 
 
-## Use case name: Add Reactions to Reviews
+## Use case 4: Add Reactions to Reviews
 
 ### Actors
 1. **User (Reactor)**: The individual who reacts to reviews with likes, dislikes, or other reaction types.
@@ -194,7 +192,7 @@ User (Reactor)
 3. The system displays a message informing the user that they need to be logged in.
 4. The user can either sign-up or cancel the review reaction.
 
-## Use case name: User Login / Authentication
+## Use case 5: User Login / Authentication
 
 ### Actors
 1. **User (Login)**: The individual who wants to access their account by logging into the application.
