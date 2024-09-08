@@ -1,7 +1,7 @@
 # Application Specification
 
 ## Problem Statement
-(who?)Internet users (what?)have a lack of choice of television show reviews providers that are transparent and reliable. (why?) This is mainly due to the amount of money television studios spend to advertise within these limited number of sites. (impact?)This problem allows studios to create unreliable reviews of their shows. (hypothesis?) Rotten Potatoes will enable authenticated users to share their reviews online reviews in a simple and reliable way. (plan?)This will include the user of user profiles where users can view their reviews and their favorite shows in one convenient place while also contributing in the Rotten Potatoes community.
+(who?)Internet users (what?)have a lack of choice of television show reviews providers that are transparent and reliable. (why?) This is mainly due to the amount of money television studios spend to advertise within these limited number of sites. (impact?)This problem allows studios to create unreliable reviews of their shows. (hypothesis?) Rotten Potatoes will enable authenticated users to share their reviews online reviews in a simple, transparent, and reliable way. (plan?)This will include the user of user profiles where users can view their reviews and their favorite shows in one convenient place while also contributing in the Rotten Potatoes community.
 
 ## Functional Requirements
 
