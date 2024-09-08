@@ -246,7 +246,7 @@ User (Login)
 3. The system displays a message informing the user that their account is locked and provides instructions for unlocking it (e.g., contacting support or waiting for a cooldown period).
 4. The user can follow the instructions to unlock their account or contact support for further assistance.
 
-## Use case: User Profile Management
+## Use case 6: User Profile Management
 
 ### Actors
 1. **User (Profile Manager)**: The individual who accesses and manages their profile, including their favorite TV shows and liked reviews.
