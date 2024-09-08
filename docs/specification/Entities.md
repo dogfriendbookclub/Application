@@ -20,4 +20,8 @@ The purpose of this class is to keep a list of user reviews for a show and store
 
 This class will have all the information from the database stored onto a show object. Each object will have information containing actors, directors, years aired and a synopsis of the show. 
 
-## 
+## Screen entities 
+
+These will be the display for all of the shows. We have three separate screens that inlcude Home screen, Search Results screen and Show specific screens. The Home screen is used as the main page users will see when accessing the application, it will display shows and categories of shows based on gneres. The search result screen will be shown when a user inputs a search for a specific title. The show specific is the main page a user will see when they want to view information about a specific show. 
+
+##
