@@ -15,6 +15,6 @@ Users can like reviews created by other users.
 
 - Bryn Slavin <z.bryn.slavin@gmail.com>
 - Paul Trevizo <paultrevizo@yahoo.com>
-- Nicholas Yang <ml2643yh@go.minnestate.edu>
+- Nicholas Yang <ml2643yh@go.minnestate.edu> Username: Nicholas2501
 - Caleb Centy <calebcenty18@gmail.com>
 - Chang Vang <changvang32@gmail.com>
