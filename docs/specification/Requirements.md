@@ -291,5 +291,5 @@ User (Profile Manager)
 3. The system detects that there are no items in the selected section.
 4. The system displays a message indicating that there are no favorites or bookmarks and offers options to explore TV shows or reviews to add to these lists.
 
-# Use Case Diagram
+## Use Case Diagram
 ![Use Case Diagram](./Use_Case_Diagram_FINAL.png)
