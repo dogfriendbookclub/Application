@@ -17,4 +17,4 @@ Users can like reviews created by other users.
 - Paul Trevizo <paultrevizo@yahoo.com>
 - Nicholas Yang <ml2643yh@go.minnestate.edu> Username: Nicholas2501
 - Caleb Centy <calebcenty18@gmail.com>
-- Chang Vang <changvang32@gmail.com>
+- Chang Vang <changvang32@gmail.com> Username: Project-Escape
