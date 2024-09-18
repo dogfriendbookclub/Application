@@ -5,3 +5,7 @@
 - Chang - Edited features list
 - Nicholas - Created the Homepage wireframe
 - Caleb - Added features list and Search Results wireframe
+
+# Milestone 2
+
+-Nicholas - Created the entities.md file, identified what entities we could possibly have and added descriptions on what each entity does. 
