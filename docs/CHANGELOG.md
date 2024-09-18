@@ -5,8 +5,7 @@
 - Bryn - Created README file and updated CHANGELOG
 - Chang - Edited features list
 - Nicholas - Created the Homepage wireframe
-- Caleb - Added features list and Search Results wireframe
-- 
+- Caleb - Added features list and Search Results wireframe 
 
 # Milestone 2
 
@@ -16,3 +15,4 @@
 - Chang - Wrote feature use cases for Requirements.md
 - Nicholas - Created and wrote Entities.md content
 - Caleb - Edited and added to Entities.md content
+
