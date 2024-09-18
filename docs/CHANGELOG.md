@@ -8,4 +8,4 @@
 
 # Milestone 2
 
--Nicholas - Created the entities.md file, identified what entities we could possibly have and added descriptions on what each entity does. 
+- Nicholas - Created the entities.md file, identified what entities we could possibly have and added descriptions on what each entity does. 
