@@ -16,3 +16,12 @@
 - Nicholas - Created and wrote Entities.md content
 - Caleb - Edited and added to Entities.md content
 
+# Milestone 3
+
+
+- Paul - 
+- Bryn - 
+- Chang - 
+- Nicholas - 
+- Caleb - 
+- 
