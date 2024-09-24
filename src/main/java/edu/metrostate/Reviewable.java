@@ -6,7 +6,4 @@ public interface Reviewable {
     double getStars();
     int getShowId();
     void recalculateStars(Reviewable reviewable);
-
-    @Override
-    void toString();
 }
