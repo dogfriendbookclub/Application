@@ -25,11 +25,11 @@ The Review Class keeps and stores a list of reviews for a show and stores the in
 This class stores the information from the database onto a show object. Each object contains the attributes actors, directors, years aired and a synopsis of the show. The class displays its information onto the screen when a user selects a specific show.
 
 
-## Screen entities 
+## Screen entities
 
- Our application has three separate screens; Home screen, Search Results screen, Show Specific screen. The Home screen displays shows and genres. The Home screen is the main page users see when accessing the application.The Search Result screen shows search results for a given term. When a user selects a show, the Show Specific screen displays information about a particular show.
+Our application has three separate screens; Home screen, Search Results screen, Show Specific screen. The Home screen displays shows and genres. The Home screen is the main page users see when accessing the application.The Search Result screen shows search results for a given term. When a user selects a show, the Show Specific screen displays information about a particular show.
 
 
 ## MySQL datatable
 
-The SQL data table contains immutable information of each show. The MySQL data table will fill in the attributes of all the classes. 
+The SQL data table contains immutable information of each show. The MySQL data table will fill in the attributes of all the classes
