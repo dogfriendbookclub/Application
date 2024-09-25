@@ -8,13 +8,13 @@ public class Review implements Likable{
     private String reviewText;
     private double reviewStars;
     private int reviewId;
-
-    //get showID and turn it into getID or not
+    private boolean  heart = false;
 
     //constructor
-    public Review(String text, double stars){
+    public Review(String text, double stars, boolean heart){
             this.reviewText = text;
             this.reviewStars = stars;
+            this.heart = heart;
     }
 
     //methods
@@ -34,7 +34,7 @@ public class Review implements Likable{
         return reviewId;
     }
 
-    /*
+    /* turned this into a constructor
     public void createReview(String text, double newStars){
         this.reviewText = text;
         this.reviewStars = newStars;
@@ -42,8 +42,7 @@ public class Review implements Likable{
      */
 
     public void editReviewText(String newText){
-        this.reviewText = newText;
-
+            this.reviewText = newText;
     }
 
     public void editReviewStars(double newStars){
@@ -52,12 +51,12 @@ public class Review implements Likable{
 
     @Override
     public void addLike() {
-        System.out.println("add like");
+        this.heart = true;
     }
 
     @Override
     public void removeLike() {
-        System.out.println("remove like");
+        this.heart = false;
     }
 }//end Class
 
