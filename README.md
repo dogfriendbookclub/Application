@@ -13,8 +13,8 @@ Users can like reviews created by other users.
 
 ## Group Members
 
-- Bryn Slavin <z.bryn.slavin@gmail.com>
-- Paul Trevizo <paultrevizo@yahoo.com>
-- Nicholas Yang <ml2643yh@go.minnestate.edu>
-- Caleb Centy <calebcenty18@gmail.com>
-- Chang Vang <changvang32@gmail.com>
+- Bryn Slavin <z.bryn.slavin@gmail.com> Username: dogfriendbookclub
+- Paul Trevizo <paultrevizo@yahoo.com> Username: PaulTrevizo
+- Nicholas Yang <ml2643yh@go.minnestate.edu> Username: Nicholas2501
+- Caleb Centy <calebcenty18@gmail.com> Username: caLeb-centy
+- Chang Vang <changvang32@gmail.com> Username: Project-Escape
