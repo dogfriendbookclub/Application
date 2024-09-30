@@ -10,10 +10,10 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomePageController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomePageController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="173.0" layoutX="33.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="533.0" AnchorPane.bottomAnchor="298.0" AnchorPane.leftAnchor="33.5" AnchorPane.rightAnchor="33.5" AnchorPane.topAnchor="54.0" />
-      <Button layoutX="9.0" layoutY="9.0" mnemonicParsing="false" prefHeight="12.0" prefWidth="64.0" text="Home Page">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="173.0" layoutX="33.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="533.0" AnchorPane.bottomAnchor="298.0" AnchorPane.leftAnchor="33.5" AnchorPane.rightAnchor="33.5" AnchorPane.topAnchor="54.0" />
+      <Button fx:id="homeButton" layoutX="9.0" layoutY="9.0" mnemonicParsing="false" onAction="#loadHomePage" prefHeight="12.0" prefWidth="64.0" text="Home Page">
          <font>
             <Font size="10.0" />
          </font>
@@ -28,7 +28,7 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="113.0" layoutX="13.0" layoutY="255.0" stroke="BLACK" strokeType="INSIDE" width="575.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="113.0" layoutX="13.0" layoutY="255.0" stroke="BLACK" strokeType="INSIDE" width="575.0" />
       <HBox layoutX="66.0" layoutY="263.0" prefHeight="100.0" prefWidth="435.0" spacing="25.0">
          <children>
             <ImageView fitHeight="100.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
@@ -68,5 +68,6 @@
             </ImageView>
          </children>
       </HBox>
+      <Button fx:id="showOverviewButton" layoutX="84.0" layoutY="128.0" mnemonicParsing="false" onAction="#loadShowOverview" text="load show overview" />
    </children>
 </AnchorPane>

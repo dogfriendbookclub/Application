@@ -11,25 +11,19 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
  
 public class App extends Application {
-    @Override
-    public void start(Stage primaryStage) {
-       
-  
-        Parent root;
-        try{
-            root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-            Scene scene = new Scene(root);
-  
-    
-  
-            primaryStage.setTitle("Hello World!");
-            primaryStage.setScene(scene);
-            primaryStage.show();
 
-        } catch (IOException e){
-        }
-        
-        
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+       
+
+        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Scene scene = new Scene(root);
+
+
+
+        primaryStage.setTitle("Rotten Potatoes!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
  
  public static void main(String[] args) {
