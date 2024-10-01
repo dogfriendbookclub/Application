@@ -127,7 +127,7 @@
       </Label>
       <MenuButton layoutX="473.0" layoutY="283.0" mnemonicParsing="false" text="Episode Selector">
         <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem fx:id="episodeSelector" mnemonicParsing="false" onAction="#loadEpisodePage" text="Episode 1" />
           <MenuItem mnemonicParsing="false" text="Action 2" />
         </items>
          <font>
@@ -136,7 +136,7 @@
       </MenuButton>
       <MenuButton layoutX="362.0" layoutY="283.0" mnemonicParsing="false" text="Season Selector">
          <items>
-            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem fx:id="seasonSelector" mnemonicParsing="false" onAction="#loadSeasonPage" text="Season 1" />
             <MenuItem mnemonicParsing="false" text="Action 2" />
          </items>
          <font>

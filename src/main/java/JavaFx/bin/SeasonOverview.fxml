@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ShowOverviewController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SeasonOverviewController">
    <children>
       <TextField fx:id="searchBar" layoutX="84.0" layoutY="6.0" prefHeight="26.0" prefWidth="392.0" promptText="Search">
          <font>
@@ -80,7 +80,7 @@
          </children>
       </HBox>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="312.0" layoutX="14.0" layoutY="271.0" stroke="BLACK" strokeType="INSIDE" width="573.0" />
-      <Label layoutX="26.0" layoutY="282.0" prefHeight="19.0" prefWidth="150.0" text="Show Overview Screen">
+      <Label layoutX="26.0" layoutY="282.0" prefHeight="19.0" prefWidth="162.0" text="Season Overview Screen">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -143,24 +143,13 @@
             <Font name="Arial Bold" size="10.0" />
          </font>
       </MenuButton>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="133.0" layoutX="177.0" layoutY="322.0" stroke="BLACK" strokeType="INSIDE" width="250.0" />
-      <Label layoutX="183.0" layoutY="305.0" prefHeight="19.0" prefWidth="46.0" text="Synopsis">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="133.0" layoutX="177.0" layoutY="344.0" stroke="BLACK" strokeType="INSIDE" width="250.0" />
+      <Label layoutX="181.0" layoutY="304.0" prefHeight="19.0" prefWidth="70.0" text="Feature Review">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="182.0" layoutY="327.0" prefHeight="123.0" prefWidth="241.0" text="Synopsis text...">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="103.0" layoutX="178.0" layoutY="475.0" stroke="BLACK" strokeType="INSIDE" width="250.0" />
-      <Label layoutX="181.0" layoutY="459.0" prefHeight="19.0" prefWidth="70.0" text="Feature Review">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="181.0" layoutY="480.0" prefHeight="94.0" prefWidth="242.0" text="Feature Review...">
+      <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="182.0" layoutY="350.0" prefHeight="94.0" prefWidth="239.0" text="Feature Review...">
          <font>
             <Font size="10.0" />
          </font>
@@ -175,7 +164,7 @@
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label layoutX="500.0" layoutY="321.0" prefHeight="18.0" prefWidth="78.0" text="Your Show Rating">
+      <Label layoutX="493.0" layoutY="321.0" prefHeight="18.0" prefWidth="85.0" text="Your Season Rating">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
@@ -189,7 +178,7 @@
             <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
-      <HBox layoutX="252.0" layoutY="457.0" prefHeight="16.0" prefWidth="87.0">
+      <HBox layoutX="178.0" layoutY="323.0" prefHeight="16.0" prefWidth="87.0">
          <children>
             <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
             <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
@@ -198,7 +187,7 @@
             <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
-      <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="345.0" layoutY="461.0" prefHeight="14.0" prefWidth="89.0" text="Username - date of review">
+      <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="278.0" layoutY="326.0" prefHeight="14.0" prefWidth="114.0" text="Username - date of review">
          <font>
             <Font size="10.0" />
          </font>

@@ -16,7 +16,7 @@
             <Font size="10.0" />
          </font>
       </Button>
-      <TextField fx:id="searchBar" layoutX="84.0" layoutY="6.0" prefHeight="26.0" prefWidth="392.0" promptText="Search">
+      <TextField fx:id="searchBar" layoutX="84.0" layoutY="6.0" onAction="#loadSearchPage" prefHeight="26.0" prefWidth="392.0" promptText="Search">
          <font>
             <Font size="12.0" />
          </font>
