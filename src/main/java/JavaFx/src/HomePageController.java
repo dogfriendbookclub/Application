@@ -51,4 +51,10 @@ public class HomePageController {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
         rootPane.getChildren().setAll(pane);
     }
+
+    @FXML
+    void loadSearchPage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("SearchPage.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
 }
