@@ -4,7 +4,7 @@ package edu.metrostate;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Episode {
+public class Episode implements Reviewable, Likable {
     private String synopsis;
     @JsonProperty("name")
     private String episodeName;
@@ -27,7 +27,8 @@ public class Episode {
     @JsonProperty("vote_count")
     private int episodeStars;
 
-    public Episode(String synopsis, String episodeName, int episodeNum, int runtime, int showId, int seasonId, int episodeId, int episodeStars) {
+    public Episode(String synopsis, String episodeName, int episodeNum, int runtime,
+                   int showId, int seasonId, int episodeId, int episodeStars)  {
         this.synopsis = synopsis;
         this.episodeName = episodeName;
         this.episodeNum = episodeNum;
