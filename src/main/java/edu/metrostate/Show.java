@@ -1,6 +1,5 @@
 package edu.metrostate;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -8,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class Show {
+public class Show implements Reviewable, Likable {
     /*Variables, every JsonProperty is the name of the variable in the database API
     They are needed so that Jackson can map the information to the correct variables in our project */
     @JsonProperty("created_by")
@@ -38,7 +37,8 @@ public class Show {
     @JsonProperty("seasons")
     private List<Season> seasons;
 
-    public Show(List<Creator> creator, List<Genre> genre, String premise, String yearStart, String stillRunning, int voteCount, String title, int showID, List<Season> season) {
+    public Show(List<Creator> creator, List<Genre> genre, String premise, String yearStart, String stillRunning,
+                int voteCount, String title, int showID, List<Season> season) {
         this.creator = creator;
         this.genre = genre;
         this.premise = premise;

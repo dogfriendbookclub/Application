@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Season {
+public class Season implements Reviewable, Likable {
     @JsonAlias("season_number")
     private int seasonNumber;
 
@@ -34,7 +34,8 @@ public class Season {
     }
 
     // Parameterized constructor
-    public Season(int seasonNumber, String airdate, int showId, int seasonId, int seasonStars, List<Episode> episodes, int episodeCount) {
+    public Season(int seasonNumber, String airdate, int showId, int seasonId, int seasonStars,
+                  List<Episode> episodes, int episodeCount)  {
         this.seasonNumber = seasonNumber;
         this.airdate = airdate;
         this.showId = showId;
