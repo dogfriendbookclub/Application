@@ -2,7 +2,7 @@ package edu.metrostate;
 
 
 
-public class Review implements Likable{
+public class Review implements Likable {
     //variables
     private MediaType type;
     private String reviewText;
