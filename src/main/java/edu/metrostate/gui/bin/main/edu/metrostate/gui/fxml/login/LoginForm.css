@@ -1,0 +1,8 @@
+.loginTitle {
+  -fx-font: 24px "Serif";
+  -fx-padding: 10;
+}
+
+.formLabel {
+  -fx-font: 12px "Serif";
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:id="vBox"
+      fx:controller="edu.metrostate.gui.image.ImageController">
+    <stylesheets>
+        <URL value="@Image.css"/>
+    </stylesheets>
+    <HBox styleClass="buttonRow" alignment="CENTER_RIGHT">
+        <Button fx:id="uploadButton" text="Upload Image"/>
+    </HBox>
+
+    <StackPane styleClass="imageContainer" fx:id="imageContainer" VBox.vgrow="ALWAYS">
+        <VBox.margin>
+            <Insets>
+                <right>12</right>
+                <left>12</left>
+            </Insets>
+        </VBox.margin>
+        <ImageView fx:id="imageView"/>
+    </StackPane>
+
+</VBox>

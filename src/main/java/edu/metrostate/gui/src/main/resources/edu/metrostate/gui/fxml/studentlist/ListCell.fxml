@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.Button?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<?import java.net.URL?>
+<GridPane styleClass="cell" fx:id="gridPane" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@ListCell.css" />
+    </stylesheets>
+    <columnConstraints>
+        <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+        <ColumnConstraints hgrow="ALWAYS" minWidth="100" prefWidth="100" maxWidth="Infinity" />
+        <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="60.0" minWidth="60.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <Label fx:id="label1" text="Label" GridPane.columnIndex="0" />
+        <Label fx:id="label2" text="Label" GridPane.columnIndex="1" />
+        <Button fx:id="button" GridPane.columnIndex="2" styleClass="iconButton">
+            <graphic>
+                <FontIcon iconLiteral="mdi2d-delete-forever" iconSize="24" />
+            </graphic>
+        </Button>
+    </children>
+</GridPane>
+
