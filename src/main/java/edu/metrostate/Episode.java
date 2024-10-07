@@ -58,8 +58,18 @@ public class Episode implements Reviewable, Likable {
         return runtime;
     }
 
+    @Override
+    public double getStars() {
+        return 0;
+    }
+
     public int getShowId() {
         return showId;
+    }
+
+    @Override
+    public void recalculateStars(Reviewable reviewable) {
+
     }
 
     public int getSeasonId() {
@@ -72,5 +82,15 @@ public class Episode implements Reviewable, Likable {
 
     public int getEpisodeStars() {
         return episodeStars;
+    }
+
+    @Override
+    public void addLike() {
+
+    }
+
+    @Override
+    public void removeLike() {
+
     }
 }

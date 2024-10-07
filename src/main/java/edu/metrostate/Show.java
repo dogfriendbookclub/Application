@@ -88,4 +88,29 @@ public class Show implements Reviewable, Likable {
     public List<Season> getSeasons() {
         return seasons;
     }
+
+    @Override
+    public void addLike() {
+
+    }
+
+    @Override
+    public void removeLike() {
+
+    }
+
+    @Override
+    public double getStars() {
+        return 0;
+    }
+
+    @Override
+    public int getShowId() {
+        return 0;
+    }
+
+    @Override
+    public void recalculateStars(Reviewable reviewable) {
+
+    }
 }
