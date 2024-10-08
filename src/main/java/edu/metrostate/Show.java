@@ -84,7 +84,8 @@ public class Show implements Reviewable, Likable {
         return title;
     }
 
-    public int getShowID() {
+    @Override
+    public int getShowId() {
         return showID;
     }
 
@@ -98,15 +99,14 @@ public class Show implements Reviewable, Likable {
     }
 
     @Override
-    public int getShowId() {
-        return 0;
-    }
-
-    @Override
     public void recalculateStars(Review review) {
         // specific implementation requires more information at this time.
         // something like:
         /* this.stars = (review.getStars() + (this.stars * numOfReviews) / (numOfReviews +1)
          *  numOfReviews++ */
+    }
+
+    public void setStars(double stars) {
+        this.stars = stars;
     }
 }

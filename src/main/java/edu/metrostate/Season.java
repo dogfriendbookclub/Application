@@ -58,6 +58,7 @@ public class Season implements Reviewable, Likable {
         return stars;
     }
 
+    @Override
     public int getShowId() {
         return showId;
     }
@@ -80,5 +81,9 @@ public class Season implements Reviewable, Likable {
 
     public int getEpisodeCount() {
         return episodeCount;
+    }
+
+    public void setStars(double stars) {
+        this.stars = stars;
     }
 }
