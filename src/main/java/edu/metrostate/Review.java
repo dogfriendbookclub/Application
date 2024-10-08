@@ -6,15 +6,16 @@ public class Review implements Likable {
     //variables
     private MediaType type;
     private String reviewText;
-    private double reviewStars;
+    private double stars;
     private int reviewId;
     private boolean  heart = false;
 
     //constructor
-    public Review(String text, double stars, boolean heart){
+    public Review(String text, double stars, boolean heart, MediaType type){
             this.reviewText = text;
-            this.reviewStars = stars;
+            this.stars = stars;
             this.heart = heart;
+            this.type = type;
     }
 
     //methods
@@ -26,37 +27,21 @@ public class Review implements Likable {
         return reviewText;
     }
 
-    public double getReviewStars() {
-        return reviewStars;
-    }
-
     public int getReviewId() {
         return reviewId;
     }
-
-    /* turned this into a constructor
-    public void createReview(String text, double newStars){
-        this.reviewText = text;
-        this.reviewStars = newStars;
-    }
-     */
 
     public void editReviewText(String newText){
             this.reviewText = newText;
     }
 
     public void editReviewStars(double newStars){
-        this.reviewStars = newStars;
+        this.stars = newStars;
     }
 
-    @Override
-    public void addLike() {
-        this.heart = true;
+    public double getStars() {
+        return stars;
     }
 
-    @Override
-    public void removeLike() {
-        this.heart = false;
-    }
 }//end Class
 
