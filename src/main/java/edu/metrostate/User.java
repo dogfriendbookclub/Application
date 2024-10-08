@@ -49,4 +49,12 @@ public class User {
     public List<Reviewable> getSaved() {
         return saved;
     }
+
+    public void addLike(Likable likable) {
+        likes.add(likable);
+    }
+
+    public void removeLike(Likable likable) {
+        likes.remove(likable);
+    }
 }
