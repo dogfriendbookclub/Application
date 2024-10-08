@@ -7,7 +7,7 @@ public class User {
     String userHandle;
     private String password;
     int userId;
-    List<Reviewable> reviews;
+    List<Review> reviews;
     List<Likable> likes;
     List<Review> bookmarks;
     List<Reviewable> saved;
@@ -34,7 +34,7 @@ public class User {
         return userId;
     }
 
-    public List<Reviewable> getReviews() {
+    public List<Review> getReviews() {
         return reviews;
     }
 

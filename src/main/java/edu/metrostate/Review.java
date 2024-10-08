@@ -8,13 +8,11 @@ public class Review implements Likable {
     private String reviewText;
     private double stars;
     private int reviewId;
-    private boolean  heart = false;
 
     //constructor
-    public Review(String text, double stars, boolean heart, MediaType type){
+    public Review(String text, double stars, MediaType type){
             this.reviewText = text;
             this.stars = stars;
-            this.heart = heart;
             this.type = type;
     }
 

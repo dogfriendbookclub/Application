@@ -19,9 +19,11 @@
 # Milestone 3
 
 
-- Paul - 
-- Bryn - 
-- Chang - 
-- Nicholas - 
-- Caleb - 
+- Paul -  Implemented Reviewable and Likable interfaces and MediaType ENUM. Created the sequence diagram of the 
+"User Submits Reviews" use case
+- Bryn - Implemented User class, made edits to other classes so they implemented Likable and Reviewable interfaces, 
+updated the UML diagram and updated CHANGELOG.md
+- Chang - Created JavaFX views and controllers
+- Nicholas - Created API client, implemented Show, Season and Episode Classes
+- Caleb - Implemented Review class
 - 

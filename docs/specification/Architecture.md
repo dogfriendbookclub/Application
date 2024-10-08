@@ -3,7 +3,7 @@
 ## UML Diagram:
 
 
-![Rotten Potatoes UML Diagram](rottenPotatoesUML_v2.png "uml_diagram")
+![Rotten Potatoes UML Diagram](rottenPotatoesUML_v3.png "uml_diagram")
 
 
 
