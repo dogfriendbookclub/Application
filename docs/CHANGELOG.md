@@ -23,7 +23,7 @@
 "User Submits Reviews" use case
 - Bryn - Implemented User class, made edits to other classes so they implemented Likable and Reviewable interfaces, 
 updated the UML diagram and updated CHANGELOG.md
-- Chang - Created JavaFX views and controllers
+- Chang - Created JavaFX views and controllers for HomePage, ShowPage, SeasonPage, EpisodePage, and SearchResultPage.
 - Nicholas - Created API client, implemented Show, Season and Episode Classes
 - Caleb - Implemented Review class
 - 
