@@ -25,5 +25,5 @@
 updated the UML diagram and updated CHANGELOG.md
 - Chang - Created JavaFX views and controllers for HomePage, ShowPage, SeasonPage, EpisodePage, and SearchResultPage.
 - Nicholas - Created API client, implemented Show, Season and Episode Classes
-- Caleb - Implemented Review class
+- Caleb - Implemented Review class, helped paul with sequence diagram, and reorganized javafx files.
 - 
