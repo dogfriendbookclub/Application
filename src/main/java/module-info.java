@@ -4,8 +4,10 @@ module Application {
     requires javafx.graphics;
     requires org.apache.httpcomponents.client5.httpclient5;
     requires com.fasterxml.jackson.databind;
+    requires com.fasterxml.jackson.annotation;
+    requires java.sql;
 
-    opens javafx.src to javafx.fxml;  // Ensure this is opened
+    opens javafx.src to javafx.fxml;
     opens edu.metrostate to javafx.fxml;
     exports edu.metrostate;
     exports javafx.src;

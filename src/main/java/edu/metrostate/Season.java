@@ -21,7 +21,7 @@ public class Season implements Reviewable, Likable {
     private int seasonId;
 
     @JsonProperty("vote_average")
-    private int seasonStars;
+    private double stars;
 
     @JsonProperty("episodes")
     private List<Episode> episodes = new ArrayList<>(); // Initialize with an empty list
@@ -34,13 +34,13 @@ public class Season implements Reviewable, Likable {
     }
 
     // Parameterized constructor
-    public Season(int seasonNumber, String airdate, int showId, int seasonId, int seasonStars,
+    public Season(int seasonNumber, String airdate, int showId, int seasonId, double stars,
                   List<Episode> episodes, int episodeCount)  {
         this.seasonNumber = seasonNumber;
         this.airdate = airdate;
         this.showId = showId;
         this.seasonId = seasonId;
-        this.seasonStars = seasonStars;
+        this.stars = stars;
         this.episodes = episodes != null ? episodes : new ArrayList<>(); // Ensure episodes is not null
         this.episodeCount = episodeCount;
     }
@@ -55,24 +55,24 @@ public class Season implements Reviewable, Likable {
 
     @Override
     public double getStars() {
-        return 0;
+        return stars;
     }
 
+    @Override
     public int getShowId() {
         return showId;
     }
 
     @Override
-    public void recalculateStars(Reviewable reviewable) {
-
+    public void recalculateStars(Review review) {
+        // specific implementation requires more informatiion at this time.
+        // something like:
+        /* this.stars = (review.getStars() + (this.stars * numOfReviews) / (numOfReviews +1)
+         *  numOfReviews++ */
     }
 
     public int getSeasonId() {
         return seasonId;
-    }
-
-    public int getSeasonStars() {
-        return seasonStars;
     }
 
     public List<Episode> getEpisodes() {
@@ -83,13 +83,7 @@ public class Season implements Reviewable, Likable {
         return episodeCount;
     }
 
-    @Override
-    public void addLike() {
-
-    }
-
-    @Override
-    public void removeLike() {
-
+    public void setStars(double stars) {
+        this.stars = stars;
     }
 }
