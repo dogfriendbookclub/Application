@@ -8,7 +8,7 @@
 - Caleb - Added features list and Search Results wireframe 
 
 # Milestone 2
-
+ 
 
 - Paul - Created use case diagram for Requirements.md
 - Bryn - Created UML diagram for Architecture.md and updated CHANGELOG.md
