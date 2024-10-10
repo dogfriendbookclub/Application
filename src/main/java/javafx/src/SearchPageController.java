@@ -1,6 +1,7 @@
-package JavaFx.src;
+package javafx.src;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,8 +23,8 @@ public class SearchPageController {
 
     @FXML
     void loadHomePage(ActionEvent event) throws IOException {
-
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/homepage/HomePage.fxml"));
+        AnchorPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
     }
 

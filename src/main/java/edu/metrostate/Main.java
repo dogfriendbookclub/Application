@@ -10,22 +10,28 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
+import java.util.Objects;
+
 public class Main extends Application {
-
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws Exception{
 
-        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/homepage/HomePage.fxml"));
+        Parent root = loader.load();
         Scene scene = new Scene(root);
-
-
 
         primaryStage.setTitle("Rotten Potatoes!");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
 
-        /* stage.setTitle("Welcome to Rotton Potatoes");
+    public static void main(String[] args) {
+        launch(args);
+    }
 
+
+
+    /*stage.setTitle("Welcome to Rotton Potatoes");
         StackPane root = new StackPane();
 
         Button button = new Button();
@@ -60,11 +66,10 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         } */
-    }
 
-}
     // public static void main(String[] args){
     //     launch(args);
     // }
 
+}  //end class
 

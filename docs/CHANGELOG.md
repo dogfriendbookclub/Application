@@ -8,8 +8,8 @@
 - Caleb - Added features list and Search Results wireframe 
 
 # Milestone 2
-
-
+ 
+ 
 - Paul - Created use case diagram for Requirements.md
 - Bryn - Created UML diagram for Architecture.md and updated CHANGELOG.md
 - Chang - Wrote feature use cases for Requirements.md
@@ -25,5 +25,5 @@
 updated the UML diagram and updated CHANGELOG.md
 - Chang - Created JavaFX views and controllers for HomePage, ShowPage, SeasonPage, EpisodePage, and SearchResultPage.
 - Nicholas - Created API client, implemented Show, Season and Episode Classes
-- Caleb - Implemented Review class
+- Caleb - Implemented Review class, helped paul with sequence diagram, and reorganized javafx files.
 - 

@@ -1,6 +1,4 @@
-package JavaFx.src;
-
-import java.io.IOException;
+package javafx.src;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +8,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class HomePageController {
+import java.io.IOException;
+
+public class ContentController {
+
     @FXML
     private ImageView image1;
 
@@ -40,19 +41,29 @@ public class HomePageController {
 
     @FXML
     void loadShowOverview(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("ShowOverview.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/showoverview/ShowOverview.fxml"));
+
+
+        AnchorPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
     }
 
     @FXML
     void loadHomePage(ActionEvent event) throws IOException{
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/homepage/HomePage.fxml"));
+
+        AnchorPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
     }
 
     @FXML
     void loadSearchPage(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("SearchPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
+
+
+        AnchorPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
     }
 }

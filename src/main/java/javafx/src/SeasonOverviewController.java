@@ -1,6 +1,7 @@
-package JavaFx.src;
+package javafx.src;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,20 +33,25 @@ public class SeasonOverviewController {
 
     @FXML
     void loadHomePage(ActionEvent event) throws IOException {
-
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/homepage/HomePage.fxml"));
+        AnchorPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
     }
 
     @FXML
     void loadSeasonPage(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("SeasonOverview.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/seasonoverview/SeasonOverview.fxml"));
+        AnchorPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
     }
 
     @FXML
     void loadEpisodePage(ActionEvent event) throws IOException{
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("EpisodeOverview.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/episodeoverview/EpisodeOverview.fxml"));
+
+        AnchorPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
     }
 }

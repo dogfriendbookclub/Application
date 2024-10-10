@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.src.EpisodeOverviewController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.src.ShowOverviewController">
    <children>
       <TextField fx:id="searchBar" layoutX="84.0" layoutY="6.0" prefHeight="26.0" prefWidth="392.0" promptText="Search">
          <font>
@@ -80,7 +80,7 @@
          </children>
       </HBox>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="312.0" layoutX="14.0" layoutY="271.0" stroke="BLACK" strokeType="INSIDE" width="573.0" />
-      <Label layoutX="26.0" layoutY="282.0" prefHeight="19.0" prefWidth="168.0" text="Episode Overview Screen">
+      <Label layoutX="26.0" layoutY="282.0" prefHeight="19.0" prefWidth="150.0" text="Show Overview Screen">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -100,17 +100,17 @@
             <Font name="Arial Italic" size="10.0" />
          </font>
       </Label>
-      <Label layoutX="31.0" layoutY="404.0" prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
+      <Label layoutX="31.0" layoutY="407.0" prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
          <font>
             <Font name="Arial Italic" size="10.0" />
          </font>
       </Label>
-      <Label layoutX="31.0" layoutY="426.0" prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
+      <Label layoutX="31.0" layoutY="430.0" prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
          <font>
             <Font name="Arial Italic" size="10.0" />
          </font>
       </Label>
-      <Label layoutX="31.0" layoutY="447.0" prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
+      <Label layoutX="31.0" layoutY="452.0" prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
          <font>
             <Font name="Arial Italic" size="10.0" />
          </font>
@@ -125,14 +125,9 @@
             <Font name="Arial Italic" size="10.0" />
          </font>
       </Label>
-      <Label layoutX="32.0" layoutY="476.0" prefHeight="19.0" prefWidth="96.0" text="Executive Producer(s)">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
       <MenuButton layoutX="473.0" layoutY="283.0" mnemonicParsing="false" text="Episode Selector">
         <items>
-          <MenuItem fx:id="episodeSelector" mnemonicParsing="false" onAction="#loadEpisodePage" text="Action 1" />
+          <MenuItem fx:id="episodeSelector" mnemonicParsing="false" onAction="#loadEpisodePage" text="Episode 1" />
           <MenuItem mnemonicParsing="false" text="Action 2" />
         </items>
          <font>
@@ -149,7 +144,7 @@
          </font>
       </MenuButton>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="133.0" layoutX="177.0" layoutY="322.0" stroke="BLACK" strokeType="INSIDE" width="250.0" />
-      <Label layoutX="183.0" layoutY="305.0" prefHeight="19.0" prefWidth="46.0" text="Episode Synopsis">
+      <Label layoutX="183.0" layoutY="305.0" prefHeight="19.0" prefWidth="46.0" text="Synopsis">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
@@ -180,7 +175,7 @@
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label layoutX="489.0" layoutY="321.0" prefHeight="18.0" prefWidth="89.0" text="Your Episode Rating">
+      <Label layoutX="500.0" layoutY="321.0" prefHeight="18.0" prefWidth="78.0" text="Your Show Rating">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
@@ -206,26 +201,6 @@
       <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="345.0" layoutY="461.0" prefHeight="14.0" prefWidth="89.0" text="Username - date of review">
          <font>
             <Font size="10.0" />
-         </font>
-      </Label>
-      <Label layoutX="31.0" layoutY="495.0" prefHeight="19.0" prefWidth="137.0" text="Ex. Producer Name">
-         <font>
-            <Font name="Arial Italic" size="10.0" />
-         </font>
-      </Label>
-      <Label layoutX="32.0" layoutY="514.0" prefHeight="19.0" prefWidth="137.0" text="Ex. Producer Name">
-         <font>
-            <Font name="Arial Italic" size="10.0" />
-         </font>
-      </Label>
-      <Label layoutX="32.0" layoutY="541.0" prefHeight="19.0" prefWidth="39.0" text="Writer(s)">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Label>
-      <Label layoutX="32.0" layoutY="559.0" prefHeight="19.0" prefWidth="64.0" text="Writer Name">
-         <font>
-            <Font name="Arial Italic" size="10.0" />
          </font>
       </Label>
    </children>
