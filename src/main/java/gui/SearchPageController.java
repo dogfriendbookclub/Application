@@ -1,7 +1,6 @@
-package javafx.src;
+package gui;
 
 import java.io.IOException;
-import java.util.Objects;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -1,4 +1,4 @@
-package javafx.src;
+package gui;
 
 public class LoginController {
 }

@@ -1,4 +1,6 @@
-package javafx.src;
+package gui;
+
+import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,10 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.IOException;
-
-public class ContentController {
-
+public class HomePageController {
     @FXML
     private ImageView image1;
 

@@ -7,8 +7,9 @@ module Application {
     requires com.fasterxml.jackson.annotation;
     requires java.sql;
 
-    opens javafx.src to javafx.fxml;
+    opens gui to javafx.fxml;
     opens edu.metrostate to javafx.fxml;
     exports edu.metrostate;
-    exports javafx.src;
+   // exports gui.src;
+    exports gui;
 }
