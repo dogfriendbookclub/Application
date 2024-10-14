@@ -37,8 +37,10 @@ public class Show implements Reviewable, Likable {
     @JsonProperty("seasons")
     private List<Season> seasons;
 
+    private double stars;
+
     public Show(List<Creator> creator, List<Genre> genre, String premise, String yearStart, String stillRunning,
-                int voteCount, String title, int showID, List<Season> season) {
+                int voteCount, String title, int showID, List<Season> season, double stars) {
         this.creator = creator;
         this.genre = genre;
         this.premise = premise;
@@ -48,6 +50,7 @@ public class Show implements Reviewable, Likable {
         this.title = title;
         this.showID = showID;
         this.seasons = seasons;
+        this.stars = stars;
     }
     public Show(){
 
@@ -81,7 +84,8 @@ public class Show implements Reviewable, Likable {
         return title;
     }
 
-    public int getShowID() {
+    @Override
+    public int getShowId() {
         return showID;
     }
 
@@ -90,27 +94,19 @@ public class Show implements Reviewable, Likable {
     }
 
     @Override
-    public void addLike() {
-
-    }
-
-    @Override
-    public void removeLike() {
-
-    }
-
-    @Override
     public double getStars() {
-        return 0;
+        return stars;
     }
 
     @Override
-    public int getShowId() {
-        return 0;
+    public void recalculateStars(Review review) {
+        // specific implementation requires more information at this time.
+        // something like:
+        /* this.stars = (review.getStars() + (this.stars * numOfReviews) / (numOfReviews +1)
+         *  numOfReviews++ */
     }
 
-    @Override
-    public void recalculateStars(Reviewable reviewable) {
-
+    public void setStars(double stars) {
+        this.stars = stars;
     }
 }
