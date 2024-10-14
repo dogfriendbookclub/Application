@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.src.SeasonOverviewController">
+   <children>
+      <TextField fx:id="searchBar" layoutX="84.0" layoutY="6.0" prefHeight="26.0" prefWidth="392.0" promptText="Search">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </TextField>
+      <Button fx:id="homeButton" layoutX="9.0" layoutY="9.0" mnemonicParsing="false" onAction="#loadHomePage" prefHeight="12.0" prefWidth="64.0" text="Home Page">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Label layoutX="490.0" layoutY="13.0" text="Create Account | Login">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="195.0" layoutX="14.0" layoutY="53.0" stroke="BLACK" strokeType="INSIDE" width="573.0" />
+      <Label layoutX="196.0" layoutY="101.0" prefHeight="17.0" prefWidth="210.0" text="Rotating images of specific show" />
+      <Label layoutX="25.0" layoutY="178.0" prefHeight="19.0" prefWidth="126.0" text="Specific Show Title">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="158.0" layoutY="179.0" prefHeight="17.0" prefWidth="70.0" text="(years aired)" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="42.0" layoutX="25.0" layoutY="197.0" stroke="BLACK" strokeType="INSIDE" width="162.0" />
+      <Label layoutX="30.0" layoutY="200.0" prefHeight="19.0" prefWidth="64.0" text="Average rating">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Label>
+      <HBox layoutX="95.0" layoutY="200.0" prefHeight="16.0" prefWidth="87.0">
+         <children>
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+         </children></HBox>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="42.0" layoutX="194.0" layoutY="197.0" stroke="BLACK" strokeType="INSIDE" width="385.0" />
+      <Label layoutX="199.0" layoutY="199.0" prefHeight="19.0" prefWidth="96.0" text="Highest Rated Season">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Label>
+      <HBox layoutX="296.0" layoutY="200.0" prefHeight="16.0" prefWidth="87.0">
+         <children>
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </HBox>
+      <Label layoutX="389.0" layoutY="199.0" prefHeight="19.0" prefWidth="98.0" text="Highest Rated Episode">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Label>
+      <HBox layoutX="486.0" layoutY="200.0" prefHeight="17.0" prefWidth="87.0">
+         <children>
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </HBox>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="312.0" layoutX="14.0" layoutY="271.0" stroke="BLACK" strokeType="INSIDE" width="573.0" />
+      <Label layoutX="26.0" layoutY="282.0" prefHeight="19.0" prefWidth="162.0" text="Season Overview Screen">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="304.0" prefHeight="19.0" prefWidth="46.0" text="Creator(s)">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="368.0" prefHeight="19.0" prefWidth="46.0" text="Main Cast">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="385.0" prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
+         <font>
+            <Font name="Arial Italic" size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="407.0" prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
+         <font>
+            <Font name="Arial Italic" size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="430.0" prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
+         <font>
+            <Font name="Arial Italic" size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="452.0" prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
+         <font>
+            <Font name="Arial Italic" size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="321.0" prefHeight="19.0" prefWidth="64.0" text="Creator Name">
+         <font>
+            <Font name="Arial Italic" size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="338.0" prefHeight="19.0" prefWidth="64.0" text="Creator Name">
+         <font>
+            <Font name="Arial Italic" size="10.0" />
+         </font>
+      </Label>
+      <MenuButton layoutX="473.0" layoutY="283.0" mnemonicParsing="false" text="Episode Selector">
+        <items>
+          <MenuItem fx:id="episodeSelector" mnemonicParsing="false" onAction="#loadEpisodePage" text="Episode 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+         <font>
+            <Font name="Arial Bold" size="10.0" />
+         </font>
+      </MenuButton>
+      <MenuButton layoutX="362.0" layoutY="283.0" mnemonicParsing="false" text="Season Selector">
+         <items>
+            <MenuItem fx:id="seasonSelector" mnemonicParsing="false" onAction="#loadSeasonPage" text="Season 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+         <font>
+            <Font name="Arial Bold" size="10.0" />
+         </font>
+      </MenuButton>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="133.0" layoutX="177.0" layoutY="344.0" stroke="BLACK" strokeType="INSIDE" width="250.0" />
+      <Label layoutX="181.0" layoutY="304.0" prefHeight="19.0" prefWidth="70.0" text="Feature Review">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="182.0" layoutY="350.0" prefHeight="94.0" prefWidth="239.0" text="Feature Review...">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <TextField fx:id="searchBar1" alignment="TOP_LEFT" layoutX="436.0" layoutY="384.0" prefHeight="195.0" prefWidth="143.0" promptText="Maximum 500 characters">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </TextField>
+      <Label layoutX="523.0" layoutY="369.0" prefHeight="18.0" prefWidth="56.0" text="Your Review">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="493.0" layoutY="321.0" prefHeight="18.0" prefWidth="85.0" text="Your Season Rating">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Label>
+      <HBox layoutX="487.0" layoutY="339.0" prefHeight="16.0" prefWidth="87.0">
+         <children>
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </HBox>
+      <HBox layoutX="178.0" layoutY="323.0" prefHeight="16.0" prefWidth="87.0">
+         <children>
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </HBox>
+      <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="278.0" layoutY="326.0" prefHeight="14.0" prefWidth="114.0" text="Username - date of review">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
