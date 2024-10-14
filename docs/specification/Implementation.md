@@ -3,7 +3,7 @@
 ## Milesstone 4 (10/15/2024)
 
 ### Login Use case
-***insert details
+***insert details of the function including instructions
 
 ## Search function
-***insert details
+***insert details of the function including instructions
