@@ -1,4 +1,4 @@
-package gui;
+package gui.seasonoverview;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class ShowOverviewController {
+public class SeasonOverviewController {
 
     @FXML
     private Button homeButton;
@@ -22,17 +22,18 @@ public class ShowOverviewController {
     private TextField searchBar;
 
     @FXML
-    private MenuItem seasonSelector;
+    private TextField searchBar1;
 
     @FXML
+    private MenuItem seasonSelector;
+
+    @FXML 
     private MenuItem episodeSelector;
 
-     @FXML
+    @FXML
     void loadHomePage(ActionEvent event) throws IOException {
-
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/homepage/HomePage.fxml"));
-
-         AnchorPane pane = loader.load();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/homepage/HomePage.fxml"));
+        AnchorPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
     }
 
@@ -40,14 +41,13 @@ public class ShowOverviewController {
     void loadSeasonPage(ActionEvent event) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/seasonoverview/SeasonOverview.fxml"));
-
-
         AnchorPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
     }
 
     @FXML
     void loadEpisodePage(ActionEvent event) throws IOException{
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/episodeoverview/EpisodeOverview.fxml"));
 
         AnchorPane pane = loader.load();

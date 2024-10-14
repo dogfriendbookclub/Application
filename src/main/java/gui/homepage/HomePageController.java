@@ -1,4 +1,6 @@
-package gui;
+package gui.homepage;
+
+import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,10 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.IOException;
-
-public class ContentController {
-
+public class HomePageController {
     @FXML
     private ImageView image1;
 
@@ -60,7 +59,6 @@ public class ContentController {
 
     @FXML
     void loadSearchPage(ActionEvent event) throws IOException {
-        //System.out.println("search bar function");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
 
 

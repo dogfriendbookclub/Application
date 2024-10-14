@@ -1,4 +1,4 @@
-package gui;
+package gui.searchpage;
 
 import java.io.IOException;
 
