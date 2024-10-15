@@ -18,8 +18,6 @@ module Application {
     opens gui.episodeoverview to javafx.fxml;
     opens gui.homepage to javafx.fxml;
     exports gui.homepage;
-    exports gui.login;
-    opens gui.login to javafx.fxml;
     exports gui.searchpage;
     opens gui.searchpage to javafx.fxml;
     exports gui.seasonoverview;

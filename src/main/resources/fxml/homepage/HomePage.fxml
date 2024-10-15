@@ -8,27 +8,40 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.layout.GridPane?>
-
-<?import javafx.scene.layout.ColumnConstraints?>
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.homepage.HomePageController">
-   <columnConstraints>
-      <ColumnConstraints prefWidth="96"/> <!-- First column -->
-      <ColumnConstraints prefWidth="200"/> <!-- Second column -->
-   </columnConstraints>
-
-
-
-
-
-</GridPane>
-
-
 <!--
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.65"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.homepage.HomePageController">
+
+
+
+   <top>
+
+
+   </top>
+
+
+   <center>
+
+   </center>
+
+
+   <bottom>
+
+   </bottom>
+</BorderPane>
+-->
+
+
+
+
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.homepage.HomePageController">
    <children>
 
-
+<!--
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="173.0" layoutX="33.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="533.0" AnchorPane.bottomAnchor="298.0" AnchorPane.leftAnchor="33.5" AnchorPane.rightAnchor="33.5" AnchorPane.topAnchor="54.0" />
       <Button fx:id="homeButton" layoutX="9.0" layoutY="9.0" mnemonicParsing="false" onAction="#loadHomePage" prefHeight="12.0" prefWidth="64.0" text="Home Page">
          <font>
@@ -45,7 +58,7 @@
             <Font size="10.0" />
          </font>
       </Label>
-
+-->
 
 
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="173.0" layoutX="33.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="533.0" AnchorPane.bottomAnchor="298.0" AnchorPane.leftAnchor="33.5" AnchorPane.rightAnchor="33.5" AnchorPane.topAnchor="54.0" />
@@ -120,5 +133,5 @@
 
    </children>
 </AnchorPane>
--->
+
 

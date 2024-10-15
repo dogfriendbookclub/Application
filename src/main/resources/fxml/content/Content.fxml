@@ -45,6 +45,9 @@
     <center>
 
         <HBox>
+            <!-- this is where homescreen, pverview screens and searchPage screen will go, along with any other screens -->
+            <!-- we would put the functions in here maybe? -->
+
             <AnchorPane fx:id="rootPane"/>
             <fx:include source = "../homepage/HomePage.fxml" />
         </HBox>
