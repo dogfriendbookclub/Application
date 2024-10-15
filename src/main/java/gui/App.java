@@ -18,7 +18,7 @@ public class App extends Application {
 
 
 
-        primaryStage.setTitle("Rotten Potatoes!");
+        primaryStage.setTitle("app");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

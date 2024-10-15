@@ -15,10 +15,12 @@ public class APIclient {
     private final CloseableHttpClient httpClient;
     private final ObjectMapper objectMapper;
 
+    //constructor
     public APIclient() {
         this.httpClient = HttpClients.createDefault();
         this.objectMapper = new ObjectMapper();
     }
+
 
     public Show fetchShowData(int showId) throws IOException {
         String url = BASE_URL + showId + "?api_key=" + API_KEY + "&append_to_response=seasons,episodes";
@@ -34,4 +36,7 @@ public class APIclient {
             return objectMapper.readValue(jsonResponse, Show.class);
         }
     }
-}
+
+}//end APIclient class
+
+

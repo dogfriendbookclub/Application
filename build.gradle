@@ -7,7 +7,7 @@ plugins {
 application {
     group = 'edu.metrostate'
     version = '1.0'
-    mainClass = "edu.metrostate.Main"
+    mainClass = "edu.metrostate.Main" //change when we got to app
     mainModule = "Application"
 }
 
