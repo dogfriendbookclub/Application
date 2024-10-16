@@ -4,16 +4,10 @@ plugins {
     id 'org.beryx.jlink' version '2.26.0'
 }
 
-application {
-    group = 'edu.metrostate'
-    version = '1.0'
-    mainClass = "edu.metrostate.Main"
-    mainModule = "Application"
-}
-
 repositories {
     mavenCentral()
 }
+
 
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
@@ -28,18 +22,17 @@ dependencies {
     implementation 'org.openjfx:javafx-graphics:22.0.2'
 }
 
-test {
-    useJUnitPlatform()
+application {
+    mainClass = "edu.metrostate.Main"
+    applicationDefaultJvmArgs = [
+            '--module-path', 'C:/Program Files/Java/javafx-sdk-23/lib',
+            '--add-modules', 'javafx.controls,javafx.fxml,javafx.graphics'
+    ]
 }
 
 javafx {
     version = "22.0.2"
-    modules = [ 'javafx.controls', 'javafx.fxml' , 'javafx.graphics' ]
-}
-
-application {
-    mainClass = "edu.metrostate.Main"
-    mainModule = "Application"
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.graphics' ]
 }
 
 jlink {
