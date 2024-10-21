@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.apache.hc.client5.http.impl.routing.SystemDefaultRoutePlanner;
 
 public class HomePageController {
     @FXML
@@ -60,10 +61,11 @@ public class HomePageController {
         rootPane.getChildren().setAll(pane);
     }
 
+
     @FXML
     void loadSearchPage(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
 
         AnchorPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
