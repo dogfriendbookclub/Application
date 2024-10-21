@@ -17,6 +17,7 @@ public class APIclient {
     private static final String API_KEY = "1ad22b3bd7a42e3bd60bee3f9610940f";
     private static final String BASE_URL = "https://api.themoviedb.org/3/tv/";
     private static final String IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
+    private static final String SEARCH_URL = "https://api.themoviedb.org/3/search/tv";
 
     private final CloseableHttpClient httpClient;
     private final ObjectMapper objectMapper;
@@ -99,8 +100,10 @@ public class APIclient {
         }
     }
 
-    // returns a list of search results from user input text in search bar
+
     public List<ShowPreview> fetchSearchResults(String searchQuery) throws IOException {
+        final int NUMRESULTS = 5;
+
         String url = SEARCH_URL + "?query=" + searchQuery + "&language=en-US&api_key=" + API_KEY;
         HttpGet request = new HttpGet(url);
         try (CloseableHttpResponse response = httpClient.execute(request)) {
@@ -120,7 +123,9 @@ public class APIclient {
             // Loop through the results and extract showID and posterPath
             for (JsonNode node : resultsNode) {
                 // display no more than 5 search results
-                if(searchResults.size() >= 5){
+
+                if(searchResults.size() >= NUMRESULTS){
+
                     break;
                 }
                 int showID = node.path("id").asInt();
@@ -134,6 +139,9 @@ public class APIclient {
             return searchResults; // Return the list of ShowPreview
 
         }
+
+    }
+
 
 
 
