@@ -9,7 +9,9 @@ import edu.metrostate.ShowPreview;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -66,7 +68,7 @@ public class HomePageController {
             // Maximum number of images per row
             int maxImagesPerRow = 5;
 
-            // Temporary HBox to hold images
+            // Temporary HBox to hold images and titles
             HBox currentHBox = new HBox(10); // 10 is the spacing between images
             currentHBox.setAlignment(javafx.geometry.Pos.CENTER);
 
@@ -85,8 +87,8 @@ public class HomePageController {
 
                 // Create an ImageView for each poster
                 ImageView imageView = new ImageView();
-                imageView.setFitWidth(100); // Set the desired width for the images
-                imageView.setFitHeight(150); // Set the desired height for the images
+                imageView.setFitWidth(96); // Set the desired width for the images
+                imageView.setFitHeight(122); // Set the desired height for the images
                 imageView.setPreserveRatio(true);
 
                 // Load the image
@@ -99,8 +101,33 @@ public class HomePageController {
                     continue; // Skip this image if there's a loading error
                 }
 
-                // Add the ImageView to the current HBox
-                currentHBox.getChildren().add(imageView);
+                // Create a Label for the show title
+                Label titleLabel = new Label(showPreview.getTitle());
+                titleLabel.setWrapText(true); // Enable wrapping for longer titles
+
+                // Create a VBox to hold the ImageView and the Label
+                VBox showVBox = new VBox(imageView, titleLabel);
+                showVBox.setAlignment(javafx.geometry.Pos.CENTER); // Center align items in VBox
+
+
+                // Make the VBox clickable
+                showVBox.setOnMouseClicked(event -> {
+                    // Action to be taken when clicked
+                    System.out.println("Clicked on: " + showPreview.getShowId());
+                    try {
+                        loadShowOverview(null);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    // You can access other properties of showPreview here, such as showPreview.getShowId()
+                });
+
+                // Change cursor on hover
+                showVBox.setOnMouseEntered(event -> showVBox.setCursor(Cursor.HAND));
+                showVBox.setOnMouseExited(event -> showVBox.setCursor(Cursor.DEFAULT));
+
+                // Add the VBox to the current HBox
+                currentHBox.getChildren().add(showVBox);
 
                 // If the row is filled or it's the last image, add the current HBox to the VBox
                 if ((i + 1) % maxImagesPerRow == 0 || i == showPreviews.size() - 1) {
@@ -114,6 +141,7 @@ public class HomePageController {
             e.printStackTrace();
         }
     }
+
 
 
 
