@@ -120,7 +120,7 @@ public class APIclient {
             // Loop through the results and extract showID and posterPath
             for (JsonNode node : resultsNode) {
                 // display no more than 5 search results
-                if(searchResults.size() >= 5){
+                if (searchResults.size() >= 5) {
                     break;
                 }
                 int showID = node.path("id").asInt();
@@ -136,6 +136,6 @@ public class APIclient {
         }
 
 
-
+    }
 
 }

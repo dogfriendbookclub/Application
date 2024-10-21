@@ -168,18 +168,22 @@ public class HomePageController {
     @FXML
     void loadSearchPage(ActionEvent event) throws IOException {
 
-        String searchValue;
-        searchValue = searchBar.getText();
+        List<ShowPreview> searchValue = apIclient.fetchSearchResults(searchBar.getText());
 
-        
+        // Check if the list is null or empty
+        if (searchValue == null || searchValue.isEmpty()) {
+            System.out.println("No shows were fetched. The list is null or empty.");
+            return; // Exit early if there's no data to process
+        }
 
+        else {
 
+            System.out.println("TV_SHOW: " + searchValue.get(0));
 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
 
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
-
-        AnchorPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
+            AnchorPane pane = loader.load();
+            rootPane.getChildren().setAll(pane);
+        }
     }
 }
