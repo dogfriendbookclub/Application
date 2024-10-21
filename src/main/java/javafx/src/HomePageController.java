@@ -19,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.geometry.Pos;
 
 public class HomePageController {
     private APIclient apIclient = new APIclient();
@@ -135,11 +136,15 @@ public class HomePageController {
                     currentHBox = new HBox(10); // Create a new HBox for the next row
                     currentHBox.setAlignment(javafx.geometry.Pos.CENTER);
                 }
+
             }
+
         } catch (IOException e) {
             System.out.println("An IOException occurred during API call.");
             e.printStackTrace();
         }
+
+
     }
 
 
@@ -167,23 +172,20 @@ public class HomePageController {
 
     @FXML
     void loadSearchPage(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
 
-        List<ShowPreview> searchValue = apIclient.fetchSearchResults(searchBar.getText());
-
-        // Check if the list is null or empty
-        if (searchValue == null || searchValue.isEmpty()) {
-            System.out.println("No shows were fetched. The list is null or empty.");
-            return; // Exit early if there's no data to process
+        // returns a list of results (to the console atm) for the search query with the text from the search bar
+        try {
+            List<ShowPreview> testResults = apIclient.fetchSearchResults(searchBar.getText());
+            for ( ShowPreview result : testResults) {
+                System.out.println(result.toString());
+            }
+        } catch (Exception e) {
+            System.out.println("Search API Test Error");
+            e.printStackTrace();
         }
 
-        else {
-
-            System.out.println("TV_SHOW: " + searchValue.get(0));
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
-
-            AnchorPane pane = loader.load();
-            rootPane.getChildren().setAll(pane);
-        }
+        AnchorPane pane = loader.load();
+        rootPane.getChildren().setAll(pane);
     }
 }

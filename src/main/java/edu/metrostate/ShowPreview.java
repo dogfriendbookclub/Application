@@ -36,4 +36,9 @@ public class ShowPreview {
         return posterPath;
     }
 
+    @Override
+    public String toString() {
+        return "Show ID: " + showID + "\nTitle: " + Title + "\nPoster Path: " + posterPath;
+    }
+
 }
