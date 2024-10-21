@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.geometry.Pos;
 
 public class HomePageController {
     private APIclient apIclient = new APIclient();
@@ -108,11 +109,15 @@ public class HomePageController {
                     currentHBox = new HBox(10); // Create a new HBox for the next row
                     currentHBox.setAlignment(javafx.geometry.Pos.CENTER);
                 }
+
             }
+
         } catch (IOException e) {
             System.out.println("An IOException occurred during API call.");
             e.printStackTrace();
         }
+
+
     }
 
 
@@ -141,6 +146,16 @@ public class HomePageController {
     void loadSearchPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
 
+        // returns a list of results (to the console atm) for the search query with the text from the search bar
+        try {
+            List<ShowPreview> testResults = apIclient.fetchSearchResults(searchBar.getText());
+            for ( ShowPreview result : testResults) {
+                System.out.println(result.toString());
+            }
+        } catch (Exception e) {
+            System.out.println("Search API Test Error");
+            e.printStackTrace();
+        }
 
         AnchorPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
