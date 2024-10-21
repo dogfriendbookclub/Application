@@ -99,6 +99,42 @@ public class APIclient {
         }
     }
 
+    // returns a list of search results from user input text in search bar
+    public List<ShowPreview> fetchSearchResults(String searchQuery) throws IOException {
+        String url = SEARCH_URL + "?query=" + searchQuery + "&language=en-US&api_key=" + API_KEY;
+        HttpGet request = new HttpGet(url);
+        try (CloseableHttpResponse response = httpClient.execute(request)) {
+            if (response.getCode() != 200) {
+                throw new IOException("Unexpected response code: " + response.getCode());
+            }
+
+            String jsonResponse = new String(response.getEntity().getContent().readAllBytes());
+            JsonNode rootNode = objectMapper.readTree(jsonResponse);
+
+            // Extract the "results" array from the JSON response
+            JsonNode resultsNode = rootNode.path("results");
+
+            // Create a list to store ShowPreview objects
+            List<ShowPreview> searchResults = new ArrayList<>();
+
+            // Loop through the results and extract showID and posterPath
+            for (JsonNode node : resultsNode) {
+                // display no more than 5 search results
+                if(searchResults.size() >= 5){
+                    break;
+                }
+                int showID = node.path("id").asInt();
+                String title = node.path("name").asText();
+                String posterPath = node.path("poster_path").asText();
+
+                // Add the ShowPreview to the list
+                searchResults.add(new ShowPreview(showID, title, posterPath));
+            }
+
+            return searchResults; // Return the list of ShowPreview
+
+        }
+
 
 
 
