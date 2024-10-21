@@ -7,8 +7,9 @@ module Application {
     requires com.fasterxml.jackson.annotation;
     requires java.sql;
 
-    opens javafx.src to javafx.fxml;
+    // Open the edu.metrostate package for FXML reflection
     opens edu.metrostate to javafx.fxml;
+
+    // Export the edu.metrostate package for access by other modules
     exports edu.metrostate;
-    exports javafx.src;
 }
