@@ -167,8 +167,17 @@ public class HomePageController {
 
     @FXML
     void loadSearchPage(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
 
+        String searchValue;
+        searchValue = searchBar.getText();
+
+        
+
+
+
+
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
 
         AnchorPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
