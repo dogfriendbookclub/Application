@@ -39,7 +39,7 @@ Users can like reviews created by other users.
 
 --------
 New way to run
-1. Crete Gradle Run Configuration
+1. Create Gradle Run Configuration
 2. Put in ":run: for the command
 3. Make sure Application is selected
 
