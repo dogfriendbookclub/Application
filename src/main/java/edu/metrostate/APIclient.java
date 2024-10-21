@@ -100,8 +100,10 @@ public class APIclient {
         }
     }
 
+
     public List<ShowPreview> fetchSearchResults(String searchQuery) throws IOException {
         final int NUMRESULTS = 5;
+
         String url = SEARCH_URL + "?query=" + searchQuery + "&language=en-US&api_key=" + API_KEY;
         HttpGet request = new HttpGet(url);
         try (CloseableHttpResponse response = httpClient.execute(request)) {
@@ -121,7 +123,9 @@ public class APIclient {
             // Loop through the results and extract showID and posterPath
             for (JsonNode node : resultsNode) {
                 // display no more than 5 search results
+
                 if(searchResults.size() >= NUMRESULTS){
+
                     break;
                 }
                 int showID = node.path("id").asInt();
@@ -135,7 +139,9 @@ public class APIclient {
             return searchResults; // Return the list of ShowPreview
 
         }
+
     }
+
 
 
 

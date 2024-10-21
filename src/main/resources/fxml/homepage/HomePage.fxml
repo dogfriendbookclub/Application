@@ -43,7 +43,7 @@
             <Font name="Arial Bold" size="10.0" />
          </font>
       </Label>
-      <VBox fx:id="vboxContainer" layoutX="33.0" layoutY="54.0" spacing="10.0" alignment="CENTER">
+      <VBox fx:id="vboxContainer" layoutX="59.0" layoutY="245.0" spacing="30.0" alignment="CENTER">
 
 
       </VBox>
