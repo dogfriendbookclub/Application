@@ -81,14 +81,16 @@ public class SearchPageController implements Initializable{
     public void initialize() {
 
         searchBar.setOnKeyPressed( e -> {
-            try {
-                List<ShowPreview> testResults = apIclient.fetchSearchResults(searchBar.getText());
-                for (ShowPreview result : testResults) {
-                    System.out.println(result.toString());
+            if (e.getCode() == javafx.scene.input.KeyCode.ENTER) {
+                try {
+                    List<ShowPreview> testResults = apIclient.fetchSearchResults(searchBar.getText());
+                    for (ShowPreview result : testResults) {
+                        System.out.println(result.toString());
+                    }
+                } catch (Exception err) {
+                    System.out.println("Search API Test Error");
+                    err.printStackTrace();
                 }
-            } catch (Exception err) {
-                System.out.println("Search API Test Error");
-                err.printStackTrace();
             }
         } );
 
