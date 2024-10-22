@@ -1,15 +1,15 @@
 # Implementation of Use Cases
 
-## Milestone 4 (10/15/2024)
+## Phase 1
 ### Enable login function
->insert details of the function including instructions
+- Insert details of the function including instructions
 ### Enable search function
+- Once on the home page, the user will have the option to click on various suggestions provided by the system.
+They are able to click on any of the images and be routed to that show's information screen.
+At the time of this deliverable, the show screen is not yet populated, but the console will provide the user with the show ID sent through the API.
+Additionally, the user can enter a show's title in the fixed search bar located at the top of the page to obtain the same result.
 
->Once on the home page, the user will have the option to click on various suggestions provided by the system.
->They are able to click on any of the images and be routed to that show's information screen.
->At the time of this deliverable, the show screen is not yet populated, but the console will provide the user with the show ID sent through the API.
->Additionally, the user can enter a show's title in the fixed search bar located at the top of the page to obtain the same result.
-> FOR TESTING: Feel free to click on any of the images in the home page or type the name of a show that is familiar to you.
+- FOR TESTING: Feel free to click on any of the images in the home page or type the name of a show that is familiar to you.
 
 
 ## Milestone 5 (10/29/2024)
