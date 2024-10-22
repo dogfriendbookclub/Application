@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -147,10 +148,6 @@ public class HomePageController {
 
     }
 
-
-
-
-
     @FXML
     void loadShowOverview(ActionEvent event) throws IOException {
 
@@ -170,9 +167,9 @@ public class HomePageController {
         rootPane.getChildren().setAll(pane);
     }
 
+    DataSingleton data = DataSingleton.getInstance(); // Used to store searchString
     @FXML
     void loadSearchPage(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
 
         // returns a list of results (to the console atm) for the search query with the text from the search bar
         try {
@@ -185,7 +182,15 @@ public class HomePageController {
             e.printStackTrace();
         }
 
+        data.setSearchString(searchBar.getText()); // Storing data from current page
+
+// Code to load in a new SearchPage, does not transfer data.
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
+
         AnchorPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
+
+//        Stage stage = (Stage) searchBar.getScene().getWindow();
+//        Parent root = FXMLLoader.load((getClass().getResource("/fxml/searchpage/SearchPage.fxml")));
     }
 }
