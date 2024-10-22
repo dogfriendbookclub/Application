@@ -12,14 +12,14 @@ Additionally, the user can enter a show's title in the fixed search bar located 
 - FOR TESTING: Feel free to click on any of the images in the home page or type the name of a show that is familiar to you.
 
 
-## Milestone 5 (10/29/2024)
+## Phase 2 (Milestone 5 10/29/2024)
 ### Users can view and manage their user profiles
->insert details of the function including instructions
+- insert details of the function including instructions
 ### User submits review
->insert details of the function including instructions
+- insert details of the function including instructions
 
-## Milestone 6 (11/12/2024)
+## Phase 3 (Milestone 6 11/12/2024)
 ### Add reactions to reviews posted by others
->insert details of the function including instructions
+- insert details of the function including instructions
 ### User marks favorite profile
->insert details of the function including instructions
+- insert details of the function including instructions
