@@ -26,4 +26,12 @@ updated the UML diagram and updated CHANGELOG.md
 - Chang - Created JavaFX views and controllers for HomePage, ShowPage, SeasonPage, EpisodePage, and SearchResultPage.
 - Nicholas - Created API client, implemented Show, Season and Episode Classes
 - Caleb - Implemented Review class, helped paul with sequence diagram, and reorganized javafx files.
-- 
+
+# Milestone 4
+- Paul - Created and will maintain the Implementation.md document. Will also be monitoring and updating the
+UML diagram with any changes that arise. The final task is ensuring that the change log is up-to-date.
+- Bryn - Created the Search API call and added this to the views where the search bar appears. This was important as
+the search bar is fixed on all pages
+- Chang - Tasked with creating the Search Page UI and helped troubleshoot the search API call
+- Nicholas - Set up the API Client as well as the homepage call and the display of items in this screen
+- Caleb - Set up the login functionality for users
