@@ -24,4 +24,8 @@ module Application {
     opens gui.seasonoverview to javafx.fxml;
     exports gui.showoverview;
     opens gui.showoverview to javafx.fxml;
+
+
+    exports gui.login;
+    opens gui.login to javafx.fxml;
 }

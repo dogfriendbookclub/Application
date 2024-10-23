@@ -5,9 +5,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,6 +17,7 @@ import java.util.ResourceBundle;
 
 public class ContentController implements Initializable {
 
+    public Button logoutButton;
     @FXML
     private ImageView image1;
 
@@ -37,27 +40,29 @@ public class ContentController implements Initializable {
     private Button homeButton;
 
     @FXML
-    private AnchorPane rootPane;
+    private BorderPane rootPane;
+
+    @FXML
+    private BorderPane homePage;
+
+    @FXML
+    private BorderPane searchPage;
 
     @FXML
     private Button showOverviewButton;
+    private ContentListener listener;
 
     @FXML
     void loadShowOverview(ActionEvent event) throws IOException {
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/showoverview/ShowOverview.fxml"));
-
-
-        AnchorPane pane = loader.load();
+        BorderPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
     }
 
     @FXML
     void loadHomePage(ActionEvent event) throws IOException{
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/homepage/HomePage.fxml"));
-
-        AnchorPane pane = loader.load();
+        BorderPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
     }
 
@@ -65,10 +70,13 @@ public class ContentController implements Initializable {
     void loadSearchPage(ActionEvent event) throws IOException {
         //System.out.println("search bar function");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
-
-
-        AnchorPane pane = loader.load();
+        BorderPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
+    }
+
+    public interface ContentListener {
+        void onLogout();
+        void onHomeButton();
     }
 
     /**
@@ -82,6 +90,40 @@ public class ContentController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        logoutButton.setOnAction(actionEvent -> {
+            if (listener != null) {
+                listener.onLogout();
+            }
+        });
 
+
+        homeButton.setOnAction(actionEvent -> {
+            if (listener != null) {
+                homeButtonCheck();
+            }
+        });
+
+        searchBar.setOnAction(actionEvent -> {
+            if (listener != null) {
+                searchBarCheck();
+            }
+        });
+
+        searchPage.setVisible(false);
+    }
+
+
+    private void  homeButtonCheck(){
+        searchPage.setVisible(false);
+        homePage.setVisible(true);
+    }
+
+    private void  searchBarCheck(){
+        homePage.setVisible(false);
+        searchPage.setVisible(true);
+    }
+
+    public void setContentListener(ContentListener listener) {
+        this.listener = listener;
     }
 }
