@@ -11,8 +11,10 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.src.EpisodeOverviewController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.episodeoverview.EpisodeOverviewController">
    <children>
+
+      <!--
       <TextField fx:id="searchBar" layoutX="84.0" layoutY="6.0" prefHeight="26.0" prefWidth="392.0" promptText="Search">
          <font>
             <Font size="12.0" />
@@ -28,6 +30,7 @@
             <Font size="10.0" />
          </font>
       </Label>
+      -->
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="195.0" layoutX="14.0" layoutY="53.0" stroke="BLACK" strokeType="INSIDE" width="573.0" />
       <Label layoutX="196.0" layoutY="101.0" prefHeight="17.0" prefWidth="210.0" text="Rotating images of specific show" />
       <Label layoutX="25.0" layoutY="178.0" prefHeight="19.0" prefWidth="126.0" text="Specific Show Title">
