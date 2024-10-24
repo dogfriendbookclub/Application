@@ -45,7 +45,7 @@
       <VBox prefHeight="39.0" prefWidth="580.0" BorderPane.alignment="TOP_LEFT">
          <children>
 
-                  
+
                               <Label alignment="TOP_LEFT" prefHeight="16.0" prefWidth="102.0" text="Results for &quot;value&quot;" />
             <Label alignment="TOP_LEFT" prefHeight="16.0" prefWidth="135.0" text="Did you mean &quot;______&quot;" textFill="#8d8c8c">
                <font>

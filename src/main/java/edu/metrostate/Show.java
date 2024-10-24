@@ -37,10 +37,13 @@ public class Show implements Reviewable, Likable {
     @JsonProperty("seasons")
     private List<Season> seasons;
 
+    @JsonProperty("poster_path")
+    private String posterPath;
+
     private double stars;
 
     public Show(List<Creator> creator, List<Genre> genre, String premise, String yearStart, String stillRunning,
-                int voteCount, String title, int showID, List<Season> season, double stars) {
+                int voteCount, String title, int showID, List<Season> season, double stars, String posterPath) {
         this.creator = creator;
         this.genre = genre;
         this.premise = premise;
@@ -51,6 +54,7 @@ public class Show implements Reviewable, Likable {
         this.showID = showID;
         this.seasons = seasons;
         this.stars = stars;
+        this.posterPath = posterPath;
     }
     public Show(){
 
@@ -104,6 +108,10 @@ public class Show implements Reviewable, Likable {
         // something like:
         /* this.stars = (review.getStars() + (this.stars * numOfReviews) / (numOfReviews +1)
          *  numOfReviews++ */
+    }
+
+    public String getPosterPath() {
+        return posterPath;
     }
 
     public void setStars(double stars) {
