@@ -39,14 +39,6 @@ public class EpisodeOverviewController implements Initializable {
     private MenuItem episodeSelector;
 
     @FXML
-    void loadHomePage(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/homepage/HomePage.fxml"));
-
-        AnchorPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
-    }
-
-    @FXML
     void loadSeasonPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/seasonoverview/SeasonOverview.fxml"));
 

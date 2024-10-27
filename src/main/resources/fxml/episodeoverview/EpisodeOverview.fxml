@@ -13,287 +13,191 @@
 
 
 <BorderPane prefHeight="558.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.episodeoverview.EpisodeOverviewController">
-   <top>
-      <VBox alignment="CENTER" prefHeight="208.0" prefWidth="600.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" prefHeight="150.0" prefWidth="210.0" text="Rotating images of specific show" />
-            <HBox alignment="BOTTOM_LEFT" prefHeight="30.0" prefWidth="271.0">
-               <children>
-                  <Label prefHeight="19.0" prefWidth="126.0" text="Specific Show Title">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label prefHeight="17.0" prefWidth="70.0" text="(years aired)" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="58.0" prefWidth="558.0" spacing="10.0">
-               <children>
-                  <VBox prefHeight="84.0" prefWidth="334.0">
-                     <children>
-                        <HBox prefHeight="43.0" prefWidth="234.0" style="-fx-border-color: black;">
-                           <children>
-                              <Label prefHeight="19.0" prefWidth="64.0" text="Average rating">
-                                 <font>
-                                    <Font name="System Bold" size="10.0" />
-                                 </font>
-                              </Label>
-                              <HBox prefHeight="16.0" prefWidth="87.0">
-                                 <children>
-                                    <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                                    <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                                    <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                                    <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                                    <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                                 </children>
-                              </HBox>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-                  <HBox fillHeight="false" prefHeight="68.0" prefWidth="377.0" style="-fx-border-color: black;">
-                     <children>
-                        <Label prefHeight="19.0" prefWidth="96.0" text="Highest Rated Season">
-                           <font>
-                              <Font name="System Bold" size="10.0" />
-                           </font>
-                        </Label>
-                        <HBox fillHeight="false" prefHeight="29.0" prefWidth="90.0">
-                           <children>
-                              <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                              <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                              <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                              <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                              <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                           </children>
-                        </HBox>
-                        <Label prefHeight="19.0" prefWidth="98.0" text="Highest Rated Episode">
-                           <font>
-                              <Font name="System Bold" size="10.0" />
-                           </font>
-                        </Label>
-                        <HBox fillHeight="false" prefHeight="17.0" prefWidth="87.0">
-                           <children>
-                              <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                              <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                              <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                              <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                              <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                           </children>
-                        </HBox>
-                     </children>
-                  </HBox>
-               </children>
-            </HBox>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </VBox>
-   </top>
    <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-   </padding>
-   <center>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
-         <children>
-            <VBox alignment="CENTER_LEFT" prefHeight="340.0" prefWidth="157.0">
-               <children>
-                  <Label prefHeight="19.0" prefWidth="150.0" text="Episode Overview Screen">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label prefHeight="19.0" prefWidth="59.0" text="Creator(s)">
-                           <font>
-                              <Font name="System Bold" size="10.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="19.0" prefWidth="64.0" text="Creator Name">
-                           <font>
-                              <Font name="Arial Italic" size="10.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="19.0" prefWidth="64.0" text="Creator Name">
-                           <font>
-                              <Font name="Arial Italic" size="10.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label prefHeight="19.0" prefWidth="59.0" text="Main Cast">
-                           <font>
-                              <Font name="System Bold" size="10.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
-                           <font>
-                              <Font name="Arial Italic" size="10.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
-                           <font>
-                              <Font name="Arial Italic" size="10.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
-                           <font>
-                              <Font name="Arial Italic" size="10.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
-                           <font>
-                              <Font name="Arial Italic" size="10.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label prefHeight="19.0" prefWidth="96.0" text="Executive Producer(s)">
-                           <font>
-                              <Font name="System Bold" size="10.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="19.0" prefWidth="137.0" text="Ex. Producer Name">
-                           <font>
-                              <Font name="Arial Italic" size="10.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="19.0" prefWidth="137.0" text="Ex. Producer Name">
-                           <font>
-                              <Font name="Arial Italic" size="10.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label prefHeight="19.0" prefWidth="39.0" text="Writer(s)">
-                           <font>
-                              <Font name="System Bold" size="10.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="19.0" prefWidth="64.0" text="Writer Name">
-                           <font>
-                              <Font name="Arial Italic" size="10.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
-            <VBox prefHeight="340.0" prefWidth="275.0">
-               <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="19.0" prefWidth="46.0" text="Episode Synopsis">
-                     <font>
-                        <Font name="System Bold" size="10.0" />
-                     </font>
-                  </Label>
-                  <HBox prefHeight="130.0" prefWidth="322.0" style="-fx-border-color: black;">
-                     <children>
-                        <Label alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="123.0" prefWidth="241.0" text="Synopsis text...">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="BOTTOM_CENTER" prefHeight="73.0" prefWidth="322.0">
-                     <children>
-                        <Label alignment="BOTTOM_CENTER" prefHeight="19.0" prefWidth="93.0" text="Feature Review">
-                           <font>
-                              <Font name="System Bold" size="10.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="BOTTOM_CENTER" fillHeight="false" prefHeight="73.0" prefWidth="144.0">
-                           <children>
-                              <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                              <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                              <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                              <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                              <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                           </children>
-                        </HBox>
-                        <Label alignment="CENTER" contentDisplay="TOP" prefHeight="15.0" prefWidth="162.0" text="Username - date of review">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
-                     <children>
-                        <Label alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="94.0" prefWidth="242.0" text="Feature Review...">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <VBox prefHeight="340.0" prefWidth="141.0">
-               <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <MenuButton mnemonicParsing="false" text="Season Selector">
-                           <items>
-                              <MenuItem fx:id="seasonSelector1" mnemonicParsing="false" onAction="#loadSeasonPage" text="Season 1" />
-                              <MenuItem mnemonicParsing="false" text="Action 2" />
-                           </items>
-                           <font>
-                              <Font name="Arial Bold" size="10.0" />
-                           </font>
-                        </MenuButton>
-                        <MenuButton mnemonicParsing="false" text="Episode Selector">
-                           <items>
-                              <MenuItem fx:id="episodeSelector1" mnemonicParsing="false" onAction="#loadEpisodePage" text="Episode 1" />
-                              <MenuItem mnemonicParsing="false" text="Action 2" />
-                           </items>
-                           <font>
-                              <Font name="Arial Bold" size="10.0" />
-                           </font>
-                        </MenuButton>
-                     </children>
-                  </HBox>
-                  <Label prefHeight="17.0" prefWidth="100.0" text="Your Episode Rating">
-                     <font>
-                        <Font name="System Bold" size="10.0" />
-                     </font>
-                  </Label>
-                  <HBox prefHeight="16.0" prefWidth="87.0">
-                     <children>
-                        <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                        <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                        <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                        <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                        <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
-                     </children>
-                  </HBox>
-                  <Label prefHeight="17.0" prefWidth="71.0" text="Your Review">
-                     <font>
-                        <Font name="System Bold" size="10.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="searchBar11" alignment="TOP_LEFT" prefHeight="194.0" prefWidth="152.0" promptText="Maximum 500 characters">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </VBox>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-         <BorderPane.margin>
-            <Insets top="10.0" />
-         </BorderPane.margin>
-      </HBox>
-   </center>
+         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+      </padding>
+      <center>
+         <HBox alignment="CENTER" prefHeight="438.0" prefWidth="580.0" spacing="10.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
+            <children>
+               <VBox alignment="CENTER_LEFT" prefHeight="340.0" prefWidth="157.0">
+                  <children>
+                     <Label prefHeight="19.0" prefWidth="150.0" text="Episode Overview Screen">
+                        <font>
+                           <Font name="System Bold" size="15.0" />
+                        </font>
+                     </Label>
+                     <VBox prefHeight="200.0" prefWidth="100.0">
+                        <children>
+                           <Label prefHeight="19.0" prefWidth="59.0" text="Creator(s)">
+                              <font>
+                                 <Font name="System Bold" size="10.0" />
+                              </font>
+                           </Label>
+                           <Label prefHeight="19.0" prefWidth="64.0" text="Creator Name">
+                              <font>
+                                 <Font name="Arial Italic" size="10.0" />
+                              </font>
+                           </Label>
+                           <Label prefHeight="19.0" prefWidth="64.0" text="Creator Name">
+                              <font>
+                                 <Font name="Arial Italic" size="10.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </VBox>
+                     <VBox prefHeight="200.0" prefWidth="100.0">
+                        <children>
+                           <Label prefHeight="19.0" prefWidth="59.0" text="Main Cast">
+                              <font>
+                                 <Font name="System Bold" size="10.0" />
+                              </font>
+                           </Label>
+                           <Label prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
+                              <font>
+                                 <Font name="Arial Italic" size="10.0" />
+                              </font>
+                           </Label>
+                           <Label prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
+                              <font>
+                                 <Font name="Arial Italic" size="10.0" />
+                              </font>
+                           </Label>
+                           <Label prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
+                              <font>
+                                 <Font name="Arial Italic" size="10.0" />
+                              </font>
+                           </Label>
+                           <Label prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
+                              <font>
+                                 <Font name="Arial Italic" size="10.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </VBox>
+                     <VBox prefHeight="200.0" prefWidth="100.0">
+                        <children>
+                           <Label prefHeight="19.0" prefWidth="96.0" text="Executive Producer(s)">
+                              <font>
+                                 <Font name="System Bold" size="10.0" />
+                              </font>
+                           </Label>
+                           <Label prefHeight="19.0" prefWidth="137.0" text="Ex. Producer Name">
+                              <font>
+                                 <Font name="Arial Italic" size="10.0" />
+                              </font>
+                           </Label>
+                           <Label prefHeight="19.0" prefWidth="137.0" text="Ex. Producer Name">
+                              <font>
+                                 <Font name="Arial Italic" size="10.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </VBox>
+                     <VBox prefHeight="200.0" prefWidth="100.0">
+                        <children>
+                           <Label prefHeight="19.0" prefWidth="39.0" text="Writer(s)">
+                              <font>
+                                 <Font name="System Bold" size="10.0" />
+                              </font>
+                           </Label>
+                           <Label prefHeight="19.0" prefWidth="64.0" text="Writer Name">
+                              <font>
+                                 <Font name="Arial Italic" size="10.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </VBox>
+                  </children>
+               </VBox>
+               <VBox prefHeight="340.0" prefWidth="275.0">
+                  <children>
+                     <Label alignment="CENTER_RIGHT" prefHeight="19.0" prefWidth="46.0" text="Episode Synopsis">
+                        <font>
+                           <Font name="System Bold" size="10.0" />
+                        </font>
+                     </Label>
+                     <HBox prefHeight="130.0" prefWidth="322.0" style="-fx-border-color: black;">
+                        <children>
+                           <Label alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="123.0" prefWidth="241.0" text="Synopsis text...">
+                              <font>
+                                 <Font size="10.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </HBox>
+                     <HBox alignment="BOTTOM_CENTER" prefHeight="73.0" prefWidth="322.0">
+                        <children>
+                           <Label alignment="BOTTOM_CENTER" prefHeight="19.0" prefWidth="93.0" text="Feature Review">
+                              <font>
+                                 <Font name="System Bold" size="10.0" />
+                              </font>
+                           </Label>
+                           <HBox alignment="BOTTOM_CENTER" fillHeight="false" prefHeight="73.0" prefWidth="144.0">
+                              <children>
+                                 <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+                                 <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+                                 <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+                                 <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+                                 <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+                              </children>
+                           </HBox>
+                           <Label alignment="CENTER" contentDisplay="TOP" prefHeight="15.0" prefWidth="162.0" text="Username - date of review">
+                              <font>
+                                 <Font size="10.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
+                        <children>
+                           <Label alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="94.0" prefWidth="242.0" text="Feature Review...">
+                              <font>
+                                 <Font size="10.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+               <VBox prefHeight="340.0" prefWidth="141.0">
+                  <children>
+                     <Label prefHeight="17.0" prefWidth="100.0" text="Your Episode Rating">
+                        <font>
+                           <Font name="System Bold" size="10.0" />
+                        </font>
+                     </Label>
+                     <HBox prefHeight="16.0" prefWidth="87.0">
+                        <children>
+                           <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+                           <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+                           <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+                           <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+                           <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
+                        </children>
+                     </HBox>
+                     <Label prefHeight="17.0" prefWidth="71.0" text="Your Review">
+                        <font>
+                           <Font name="System Bold" size="10.0" />
+                        </font>
+                     </Label>
+                     <TextField fx:id="searchBar11" alignment="TOP_LEFT" prefHeight="194.0" prefWidth="152.0" promptText="Maximum 500 characters">
+                        <font>
+                           <Font size="10.0" />
+                        </font>
+                     </TextField>
+                  </children>
+               </VBox>
+            </children>
+            <padding>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <BorderPane.margin>
+               <Insets top="10.0" />
+            </BorderPane.margin>
+         </HBox>
+      </center>
+
+
+
+
 </BorderPane>

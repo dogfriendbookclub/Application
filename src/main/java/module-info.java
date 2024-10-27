@@ -28,6 +28,4 @@ module Application {
 
     exports gui.login;
     opens gui.login to javafx.fxml;
-    exports gui.showscreentest;
-    opens gui.showscreentest to javafx.fxml;
 }

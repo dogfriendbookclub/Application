@@ -17,21 +17,7 @@ public class SearchPageController implements Initializable {
 
     @FXML
     private ListView listResults;
-    @FXML
-    private Button homeButton;
 
-    @FXML
-    private AnchorPane rootPane;
-
-    @FXML
-    private TextField searchBar;
-
-    @FXML
-    void loadHomePage(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/homepage/HomePage.fxml"));
-        AnchorPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
-    }
 
     /**
      * Called to initialize a controller after its root element has been
