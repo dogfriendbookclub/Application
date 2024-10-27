@@ -1,5 +1,7 @@
 package gui.content;
 
+import edu.metrostate.APIclient;
+import edu.metrostate.ShowPreview;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,9 +15,11 @@ import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ContentController implements Initializable {
+    private APIclient apIclient = new APIclient();
 
     public Button logoutButton;
     @FXML
@@ -49,7 +53,11 @@ public class ContentController implements Initializable {
     private BorderPane searchPage;
 
     @FXML
+    private BorderPane showPage;
+
+    @FXML
     private Button showOverviewButton;
+
     private ContentListener listener;
 
     @FXML
@@ -59,24 +67,16 @@ public class ContentController implements Initializable {
         rootPane.getChildren().setAll(pane);
     }
 
-    @FXML
-    void loadHomePage(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/homepage/HomePage.fxml"));
-        BorderPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
+    public void loadHomePage(ActionEvent actionEvent) {
+        homePage.setVisible(true);
+        searchPage.setVisible(false);
+        showPage.setVisible(false);
+
     }
 
-    @FXML
-    void loadSearchPage(ActionEvent event) throws IOException {
-        //System.out.println("search bar function");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
-        BorderPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
-    }
 
     public interface ContentListener {
         void onLogout();
-        void onHomeButton();
     }
 
     /**
@@ -90,40 +90,49 @@ public class ContentController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("contentcontroller is am being initialized");
+
         logoutButton.setOnAction(actionEvent -> {
             if (listener != null) {
                 listener.onLogout();
             }
         });
 
-
-        homeButton.setOnAction(actionEvent -> {
-            if (listener != null) {
-                homeButtonCheck();
-            }
-        });
-
-        searchBar.setOnAction(actionEvent -> {
-            if (listener != null) {
-                searchBarCheck();
-            }
-        });
-
         searchPage.setVisible(false);
+        showPage.setVisible(false);
+
     }
 
+    //this function is what i use to show and hide the different screens, this is only temporary
 
-    private void  homeButtonCheck(){
-        searchPage.setVisible(false);
-        homePage.setVisible(true);
-    }
 
-    private void  searchBarCheck(){
+    //THERE were a couple of search functions,  I combined them together
+    @FXML
+    void loadSearchPage(ActionEvent event) throws IOException {
+     //   FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
+        // returns a list of results (to the console atm) for the search query with the text from the search bar
+        try {
+            List<ShowPreview> testResults = apIclient.fetchSearchResults(searchBar.getText());
+            for ( ShowPreview result : testResults) {
+                System.out.println(result.toString());
+            }
+        } catch (Exception e) {
+            System.out.println("Search API Test Error");
+            e.printStackTrace();
+        }
+
+      //  BorderPane pane = loader.load();
+   //     rootPane.getChildren().setAll(pane);
+        showPage.setVisible(false);
         homePage.setVisible(false);
         searchPage.setVisible(true);
+
+
     }
 
     public void setContentListener(ContentListener listener) {
         this.listener = listener;
     }
-}
+
+
+}//end class

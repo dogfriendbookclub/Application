@@ -19,17 +19,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
 
 public class HomePageController implements Initializable {
-    private APIclient apIclient = new APIclient();
-
-    @FXML
-    private VBox vboxContainer;
-
     @FXML
     private ImageView image1;
 
@@ -57,8 +53,27 @@ public class HomePageController implements Initializable {
     @FXML
     private Button showOverviewButton;
 
+    private HomePageListener listener;
+
+    private APIclient apIclient = new APIclient();
+
+    public interface HomePageListener {
+        void onLogout();
+
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
+   //DEAR NICHOLAS, big changes to homePage, the rows are now list based, I think it should be easy to convert what
+    // you have in the FXML initialize, to the new format.
+
+/*
     @FXML
     public void initialize() {
+        System.out.println("homepagecontroller is am being initialized");
+
         try {
             // Fetch the list of popular shows (limited to 15)
             List<ShowPreview> showPreviews = apIclient.fetchPopularShows();
@@ -148,9 +163,13 @@ public class HomePageController implements Initializable {
         }
 
 
-    }
-
-
+        homeButton.setOnAction(actionEvent -> {
+            if (listener != null) {
+         //      loadShowOverview();
+            }
+        });
+    }//end fxml override
+*/
 
 
 
@@ -161,45 +180,7 @@ public class HomePageController implements Initializable {
         rootPane.getChildren().setAll(pane);
     }
 
-    @FXML
-    void loadHomePage(ActionEvent event) throws IOException{
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/homepage/HomePage.fxml"));
 
-        AnchorPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
-    }
 
-    @FXML
-    void loadSearchPage(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
-
-        // returns a list of results (to the console atm) for the search query with the text from the search bar
-        try {
-            List<ShowPreview> testResults = apIclient.fetchSearchResults(searchBar.getText());
-            for ( ShowPreview result : testResults) {
-                System.out.println(result.toString());
-            }
-        } catch (Exception e) {
-            System.out.println("Search API Test Error");
-            e.printStackTrace();
-        }
-
-        AnchorPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
-    }
-
-    /**
-     * Called to initialize a controller after its root element has been
-     * completely processed.
-     *
-     * @param location  The location used to resolve relative paths for the root object, or
-     *                  {@code null} if the location is not known.
-     * @param resources The resources used to localize the root object, or {@code null} if
-     *                  the root object was not localized.
-     */
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
-}
+}//end class
