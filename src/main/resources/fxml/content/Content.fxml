@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -32,19 +31,12 @@
         </HBox>
 
     </top>
-   <bottom>
-
-         <Label text="Create Account | Login" BorderPane.alignment="CENTER">
-             <font>
-                 <Font size="10.0" />
-             </font>
-         </Label>
-   </bottom>
    <center>
       <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-                  <fx:include fx:id="homePage" source="../homepage/HomePage.fxml" />
-            <fx:include fx:id="searchPage" source="../searchpage/SearchPage.fxml" />
+             <fx:include fx:id="homePage" source="../homepage/HomePage.fxml" />
+             <fx:include fx:id="searchPage" source="../searchpage/SearchPage.fxml" />
+             <fx:include fx:id="showScreenTest" source="../showscreentest/ShowScreenTest.fxml" />
          </children>
       </StackPane>
    </center>

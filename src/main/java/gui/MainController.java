@@ -45,14 +45,22 @@ public class MainController implements Initializable, LoginController.LoginListe
         this.content.setVisible(false);
         this.login.setVisible(true);
     }
+/*
 
-    /**
-     *
-     */
     @Override
     public void onHomeButton() {
+
     }
-/*
+
+
+    @Override
+    public void onSearchbar() {
+
+
+    }
+*/
+
+    /*
     @Override
     public void onLogout() {
         this.login.setVisible(true);
