@@ -7,11 +7,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,21 +20,11 @@ import java.util.ResourceBundle;
 public class ContentController implements Initializable {
     private APIclient apIclient = new APIclient();
 
-    public Button logoutButton;
     @FXML
-    private ImageView image1;
+    private Button logoutButton;
 
     @FXML
-    private ImageView image2;
-
-    @FXML
-    private ImageView image3;
-
-    @FXML
-    private ImageView image4;
-
-    @FXML
-    private ImageView image5;
+    private ImageView image1, image2, image3, image4, image5;
 
     @FXML
     private TextField searchBar;
@@ -44,53 +33,59 @@ public class ContentController implements Initializable {
     private Button homeButton;
 
     @FXML
-    private BorderPane rootPane;
+    private StackPane stackPane; // Assuming your main layout is a StackPane
 
     @FXML
-    private BorderPane homePage;
-
+    private BorderPane homePage; // FXML for home page
     @FXML
-    private BorderPane searchPage;
-
+    private BorderPane searchPage; // FXML for search page
     @FXML
-    private BorderPane showPage;
-
-    @FXML
-    private Button showOverviewButton;
+    private BorderPane showPage; // FXML for show overview page
 
     private ContentListener listener;
 
     @FXML
-    void loadShowOverview(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/showoverview/ShowOverview.fxml"));
-        BorderPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
+    void loadShowOverview(ActionEvent event) {
+        switchView(showPage);
     }
 
-    public void loadHomePage(ActionEvent actionEvent) {
-        homePage.setVisible(true);
+    @FXML
+    void loadHomePage(ActionEvent event) {
+        switchView(homePage);
+    }
+
+    @FXML
+    void loadSearchPage(ActionEvent event) {
+        // Fetch search results as before
+        try {
+            List<ShowPreview> testResults = apIclient.fetchSearchResults(searchBar.getText());
+            for (ShowPreview result : testResults) {
+                System.out.println(result.toString());
+            }
+        } catch (Exception e) {
+            System.out.println("Search API Test Error");
+            e.printStackTrace();
+        }
+        switchView(searchPage);
+    }
+
+    private void switchView(BorderPane view) {
+        homePage.setVisible(false);
         searchPage.setVisible(false);
         showPage.setVisible(false);
 
+        if (view != null) {
+            view.setVisible(true);
+        }
     }
 
-
-    public interface ContentListener {
-        void onLogout();
+    public void setContentListener(ContentListener listener) {
+        this.listener = listener;
     }
 
-    /**
-     * Called to initialize a controller after its root element has been
-     * completely processed.
-     *
-     * @param location  The location used to resolve relative paths for the root object, or
-     *                  {@code null} if the location is not known.
-     * @param resources The resources used to localize the root object, or {@code null} if
-     *                  the root object was not localized.
-     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("contentcontroller is am being initialized");
+        System.out.println("ContentController is being initialized");
 
         logoutButton.setOnAction(actionEvent -> {
             if (listener != null) {
@@ -98,41 +93,13 @@ public class ContentController implements Initializable {
             }
         });
 
+        // Initially set all pages to be invisible except the home page
+        homePage.setVisible(true);
         searchPage.setVisible(false);
         showPage.setVisible(false);
-
     }
 
-    //this function is what i use to show and hide the different screens, this is only temporary
-
-
-    //THERE were a couple of search functions,  I combined them together
-    @FXML
-    void loadSearchPage(ActionEvent event) throws IOException {
-     //   FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
-        // returns a list of results (to the console atm) for the search query with the text from the search bar
-        try {
-            List<ShowPreview> testResults = apIclient.fetchSearchResults(searchBar.getText());
-            for ( ShowPreview result : testResults) {
-                System.out.println(result.toString());
-            }
-        } catch (Exception e) {
-            System.out.println("Search API Test Error");
-            e.printStackTrace();
-        }
-
-      //  BorderPane pane = loader.load();
-   //     rootPane.getChildren().setAll(pane);
-        showPage.setVisible(false);
-        homePage.setVisible(false);
-        searchPage.setVisible(true);
-
-
+    public interface ContentListener {
+        void onLogout();
     }
-
-    public void setContentListener(ContentListener listener) {
-        this.listener = listener;
-    }
-
-
-}//end class
+}

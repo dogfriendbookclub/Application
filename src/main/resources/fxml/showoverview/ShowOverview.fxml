@@ -13,8 +13,13 @@
 
 
 <?import javafx.scene.layout.StackPane?>
-<BorderPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.showoverview.ShowOverviewController">
+<?import javafx.scene.control.Button?>
+<BorderPane fx:id="rootPane" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.showoverview.ShowOverviewController">
    <top>
+      <HBox alignment="CENTER_LEFT" spacing="10">
+         <Button fx:id="homeButton" text="Home Page" onAction="#loadHomePage" />
+         <!-- Other buttons or controls -->
+      </HBox>
       <VBox alignment="CENTER" prefHeight="208.0" prefWidth="600.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="CENTER" prefHeight="150.0" prefWidth="210.0" text="Rotating images of specific show" />

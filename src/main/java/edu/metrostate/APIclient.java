@@ -86,7 +86,7 @@ public class APIclient {
             // Loop through the results and extract showID and posterPath
             for (JsonNode node : resultsNode) {
                 //If list is already at 15, break
-                if(showPreviews.size() >= 15){
+                if(showPreviews.size() >= 45){
                     break;
                 }
                 int showID = node.path("id").asInt();
