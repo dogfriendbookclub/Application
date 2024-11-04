@@ -4,13 +4,13 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
-import edu.metrostate.APIclient;
-import edu.metrostate.ShowPreview;
+import edu.metrostate.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -35,7 +35,18 @@ public class ShowOverviewController implements Initializable {
     private MenuItem seasonSelector;
 
     @FXML
+    private MenuButton seasonButton;
+
+    @FXML
     private MenuItem episodeSelector;
+
+    @FXML
+    private MenuButton episodeButton;
+
+    @FXML
+    public void addMenuItem() {
+
+    }
 
      @FXML
     void loadHomePage(ActionEvent event) throws IOException {
@@ -93,6 +104,27 @@ public class ShowOverviewController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        int showId = 56343; // hard coded test value for now
+        try {
+            Show show = apIclient.fetchShowData(showId);
+            seasonButton.getItems().clear();
 
+            for (Season season : show.getSeasons()) {
+                MenuItem seasonItem = new MenuItem("Season " + season.getSeasonNumber());
+
+                seasonItem.setOnAction(event -> {
+                    System.out.println("Selected " + seasonItem.getText());
+                    for (Episode episode : season.getEpisodes()) {
+                        MenuItem episodeItem = new MenuItem("Episode " + episode.getEpisodeNum());
+                        episodeButton.getItems().add(episodeItem);
+                    }
+                });
+
+                seasonButton.getItems().add(seasonItem);
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to fetch seasons", e);
+        }
     }
 }

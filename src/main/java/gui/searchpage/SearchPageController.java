@@ -2,8 +2,11 @@ package gui.searchpage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import edu.metrostate.APIclient;
+import edu.metrostate.ShowPreview;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +20,7 @@ public class SearchPageController implements Initializable {
 
     @FXML
     private ListView listResults;
+
 
 
     /**

@@ -6,15 +6,22 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBoxTreeItem;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.cert.PolicyNode;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -68,9 +75,9 @@ public class ContentController implements Initializable {
     }
 
     public void loadHomePage(ActionEvent actionEvent) {
-        homePage.setVisible(true);
+        homePage.setVisible(false);
         searchPage.setVisible(false);
-        showPage.setVisible(false);
+        showPage.setVisible(true);
 
     }
 
@@ -108,7 +115,7 @@ public class ContentController implements Initializable {
 
     //THERE were a couple of search functions,  I combined them together
     @FXML
-    void loadSearchPage(ActionEvent event) throws IOException {
+    void loadSearchPage(ActionEvent evnt) throws IOException {
      //   FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
         // returns a list of results (to the console atm) for the search query with the text from the search bar
         try {
