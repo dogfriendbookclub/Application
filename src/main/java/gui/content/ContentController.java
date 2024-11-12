@@ -21,6 +21,8 @@ import java.util.ResourceBundle;
 public class ContentController implements Initializable {
     private APIclient apIclient = new APIclient();
 
+
+    //WHAT NEEDS TO BE SENT TO MAIN FIND OUT !!!
     public Button logoutButton;
     @FXML
     private ImageView image1;
@@ -55,16 +57,18 @@ public class ContentController implements Initializable {
     @FXML
     private BorderPane showPage;
 
-    @FXML
-    private Button showOverviewButton;
+  //  @FXML
+  //  private Button showOverviewButton;
 
     private ContentListener listener;
 
+    /*
     @FXML
     void loadShowOverview(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/showoverview/ShowOverview.fxml"));
         BorderPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
+
     }
 
     public void loadHomePage(ActionEvent actionEvent) {
@@ -73,10 +77,13 @@ public class ContentController implements Initializable {
         showPage.setVisible(false);
 
     }
-
+*/
 
     public interface ContentListener {
+        void loadHomePage();
         void onLogout();
+        void loadShowOverview();
+        void loadSearchPage();
     }
 
     /**
@@ -98,14 +105,28 @@ public class ContentController implements Initializable {
             }
         });
 
-        searchPage.setVisible(false);
-        showPage.setVisible(false);
+        homeButton.setOnAction(actionEvent -> {
+            if (listener != null) {
+                listener.loadHomePage();
+            }
+        });
 
     }
 
-    //this function is what i use to show and hide the different screens, this is only temporary
 
+    public BorderPane getHomePage(){
+        return this.homePage;
+    }
 
+    public BorderPane getSearchPage(){
+        return this.searchPage;
+    }
+
+    public BorderPane getShowPage(){
+        return this.showPage;
+    }
+
+/*
     //THERE were a couple of search functions,  I combined them together
     @FXML
     void loadSearchPage(ActionEvent event) throws IOException {
@@ -129,7 +150,7 @@ public class ContentController implements Initializable {
 
 
     }
-
+*/
     public void setContentListener(ContentListener listener) {
         this.listener = listener;
     }

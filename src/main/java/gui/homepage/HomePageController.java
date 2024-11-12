@@ -177,11 +177,6 @@ public class HomePageController implements Initializable {
 
 
     public interface HomePageListener {
-        void onLogout();
-
-    }
-
-    private void handleShowClick(ShowPreview showPreview){
 
     }
 

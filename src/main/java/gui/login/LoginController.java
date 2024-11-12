@@ -14,6 +14,7 @@ public class LoginController implements Initializable {
     @FXML
     private TextField errorBox;
 
+
     @FXML
     private VBox vBoxOne;
 
@@ -56,43 +57,28 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
- //       this.vBoxOne.setVisible(true);
-//        this.vBoxTwo.setVisible(false);
         this.errorBox.setVisible(false);
+        this.vBoxTwo.setVisible(true);
         signInButton.setOnAction(actionEvent -> {
             signInCheck();
         });
     }
-
-
-    private void loginStuff(){
-//        this.vBoxOne.setVisible(false);
-        this.vBoxTwo.setVisible(true);
-        loginButton.setOnAction(actionEvent -> {
-            signInCheck();
-        });
-
-    }//end
 
     private void signInCheck(){
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
 
         if(firstTime){
-            System.out.println("firstTime is true");
             System.out.println(acceptedUser);
             System.out.println(acceptedPass);
             if (username != null && (username.compareTo(acceptedUser) == 0) && password != null &&
                     (password.compareTo(acceptedPass) == 0) ) {
-                System.out.println("this is the entered in username and password");
                 System.out.println(username);
                 System.out.println(password);
                 this.errorBox.setVisible(false);
-
                 performLogin();
             }
             else{
-                System.out.println("wthid wasnt what was orig entered");
                 showLoginError();
             }
         }
@@ -103,9 +89,6 @@ public class LoginController implements Initializable {
                 firstTime = true;
                 acceptedUser = username;
                 acceptedPass = password;
-                //   System.out.println("we are in");
-                this.errorBox.setVisible(false);
-
                 performLogin();
             }
         }
@@ -114,9 +97,8 @@ public class LoginController implements Initializable {
 
     private void performLogin() {
         if (loginListener != null) {
-            //System.out.println("rtgb3trb");
-            //this.vBoxTwo.setVisible(false);
-   //        this.vBoxOne.setVisible(false);
+            //   this.vBoxTwo.setVisible(false);
+            //  this.vBoxOne.setVisible(false);
             loginListener.onLoginComplete();
         }
     }

@@ -15,13 +15,13 @@
 
         <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10" HBox.hgrow="ALWAYS">
 
-            <Button fx:id="homeButton" mnemonicParsing="false" onAction="#loadHomePage" prefHeight="30.0" text="Home Page">
+            <Button fx:id="homeButton" mnemonicParsing="false" prefHeight="30.0" text="Home Page">
                 <font>
                     <Font size="10.0" />
                 </font>
             </Button>
    
-            <TextField fx:id="searchBar" onAction="#loadSearchPage" prefHeight="26.0" promptText="Search" HBox.hgrow="ALWAYS">
+            <TextField fx:id="searchBar" prefHeight="26.0" promptText="Search" HBox.hgrow="ALWAYS">
                 <font>
                     <Font size="12.0" />
                 </font>

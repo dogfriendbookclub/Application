@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,7 +27,7 @@ public class ShowOverviewController implements Initializable {
     private Button homeButton;
 
     @FXML
-    private AnchorPane rootPane;
+    private BorderPane rootPane;
 
     @FXML
     private TextField searchBar;
@@ -42,7 +43,7 @@ public class ShowOverviewController implements Initializable {
 
          FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/homepage/HomePage.fxml"));
 
-         AnchorPane pane = loader.load();
+         BorderPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
     }
 
@@ -52,7 +53,7 @@ public class ShowOverviewController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/seasonoverview/SeasonOverview.fxml"));
 
 
-        AnchorPane pane = loader.load();
+        BorderPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
     }
 
@@ -60,7 +61,7 @@ public class ShowOverviewController implements Initializable {
     void loadEpisodePage(ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/episodeoverview/EpisodeOverview.fxml"));
 
-        AnchorPane pane = loader.load();
+        BorderPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
     }
 
@@ -78,7 +79,7 @@ public class ShowOverviewController implements Initializable {
             e.printStackTrace();
         }
 
-        AnchorPane pane = loader.load();
+        BorderPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
     }
 
