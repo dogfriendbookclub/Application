@@ -1,21 +1,17 @@
 package gui.content;
 
 import edu.metrostate.APIclient;
-import edu.metrostate.ShowPreview;
-import javafx.event.ActionEvent;
+import gui.homepage.HomePageController;
+import gui.searchpage.SearchPageController;
+import gui.showoverview.ShowOverviewController;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ContentController implements Initializable {
@@ -55,7 +51,16 @@ public class ContentController implements Initializable {
     private BorderPane searchPage;
 
     @FXML
-    private BorderPane showPage;
+    private BorderPane showOverview;
+
+    @FXML
+    private HomePageController homePageController;
+
+    @FXML
+    private SearchPageController searchPageController;
+
+    @FXML
+    private ShowOverviewController showOverviewController;
 
   //  @FXML
   //  private Button showOverviewButton;
@@ -107,12 +112,12 @@ public class ContentController implements Initializable {
 
         homeButton.setOnAction(actionEvent -> {
             if (listener != null) {
-                listener.loadHomePage();
+                listener.
+                        loadHomePage();
             }
         });
 
     }
-
 
     public BorderPane getHomePage(){
         return this.homePage;
@@ -122,9 +127,22 @@ public class ContentController implements Initializable {
         return this.searchPage;
     }
 
-    public BorderPane getShowPage(){
-        return this.showPage;
+    public BorderPane getShowOverview(){
+        return this.showOverview;
     }
+
+    public HomePageController getHomePageController(){
+        return this.homePageController;
+    }
+
+    public SearchPageController getSearchPageController(){
+        return this.searchPageController;
+    }
+
+    public ShowOverviewController getShowOverviewController(){
+        return this.showOverviewController;
+    }
+
 
 /*
     //THERE were a couple of search functions,  I combined them together

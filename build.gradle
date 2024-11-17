@@ -17,9 +17,9 @@ dependencies {
     implementation ("com.fasterxml.jackson.core:jackson-annotations:2.14.0")
     implementation ("org.apache.httpcomponents.client5:httpclient5:5.1")
     implementation ("org.slf4j:slf4j-simple:1.7.32")
-    implementation 'org.openjfx:javafx-controls:22.0.2'
-    implementation 'org.openjfx:javafx-fxml:22.0.2'
-    implementation 'org.openjfx:javafx-graphics:22.0.2'
+    implementation 'org.openjfx:javafx-controls:23'
+    implementation 'org.openjfx:javafx-fxml:23'
+    implementation 'org.openjfx:javafx-graphics:23'
 
         implementation("com.google.guava:guava:24.0-jre")
 
@@ -34,7 +34,7 @@ application {
 }
 
 javafx {
-    version = "22.0.2"
+    version = "23"
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.graphics' ]
 }
 

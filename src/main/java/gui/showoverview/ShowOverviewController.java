@@ -6,6 +6,9 @@ import java.util.Objects;
 
 import edu.metrostate.APIclient;
 import edu.metrostate.ShowPreview;
+import gui.content.ContentController;
+import gui.episodeoverview.EpisodeOverviewController;
+import gui.seasonoverview.SeasonOverviewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +18,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +41,24 @@ public class ShowOverviewController implements Initializable {
 
     @FXML
     private MenuItem episodeSelector;
+
+    @FXML
+    private HBox showBox;
+
+    @FXML
+    private BorderPane seasonPage;
+
+    @FXML
+    private BorderPane episodePage;
+
+    @FXML
+    private SeasonOverviewController seasonOverviewController;
+
+    @FXML
+    private EpisodeOverviewController episodeOverviewController;
+
+
+    private ShowOverviewListener listener;
 
      @FXML
     void loadHomePage(ActionEvent event) throws IOException {
@@ -83,6 +105,27 @@ public class ShowOverviewController implements Initializable {
         rootPane.getChildren().setAll(pane);
     }
 
+
+    public HBox getShowBox(){
+         return this.showBox;
+    }
+
+    public BorderPane getSeasonPage(){
+         return this.seasonPage;
+    }
+
+    public BorderPane getEpisodePage(){
+         return this.episodePage;
+    }
+
+    public EpisodeOverviewController getEpisodeOverviewController(){
+         return this.episodeOverviewController;
+    }
+
+    public SeasonOverviewController getSeasonOverviewController(){
+        return this.seasonOverviewController;
+    }
+
     /**
      * Called to initialize a controller after its root element has been
      * completely processed.
@@ -96,4 +139,16 @@ public class ShowOverviewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+
+    public interface ShowOverviewListener{
+
+    }
+
+    public void setShowOverviewListener(ShowOverviewListener listener) {
+        this.listener = listener;
+    }
+
+
+
 }
