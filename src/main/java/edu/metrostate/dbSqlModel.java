@@ -5,11 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public abstract class SqlModel {
+public abstract class dbSqlModel {
 
     private Integer id;
 
-    public SqlModel(Integer id) {
+    public dbSqlModel(Integer id) {
         this.id = id;
     }
 
