@@ -1,7 +1,5 @@
 package edu.metrostate;
 
-import edu.metrostate.Util;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,14 +33,14 @@ public abstract class SqlModel {
                 ResultSet resultSet = statement.getResultSet();
                 Integer id = resultSet.getInt("id");
                 this.setId(id);
-                Util.closeQuietly(resultSet);
+                dbUtil.closeQuietly(resultSet);
                 return true;
             }
             return false;
         } catch (SQLException ex) {
             return false;
         } finally {
-            Util.closeQuietly(statement);
+            dbUtil.closeQuietly(statement);
         }
     }
 
@@ -55,7 +53,7 @@ public abstract class SqlModel {
         } catch (SQLException ex) {
             return false;
         } finally {
-            Util.closeQuietly(statement);
+            dbUtil.closeQuietly(statement);
         }
     }
 }

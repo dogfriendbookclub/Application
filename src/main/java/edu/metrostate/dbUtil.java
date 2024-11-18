@@ -2,7 +2,7 @@ package edu.metrostate;
 
 import java.io.Closeable;
 
-public class Util {
+public class dbUtil {
 
     public static void closeQuietly(Closeable closeable) {
         try {
