@@ -66,6 +66,10 @@ public class ContentController implements Initializable {
             System.out.println("Search API Test Error");
             e.printStackTrace();
         }
+
+
+
+
         switchView(searchPage);
     }
 

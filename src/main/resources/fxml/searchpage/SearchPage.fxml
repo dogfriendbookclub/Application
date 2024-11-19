@@ -3,16 +3,14 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.85" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.searchpage.SearchPageController">
-   <center>
-      <ListView fx:id="listResults" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </center>
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.85" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.searchpage.SearchPageController">
    <right>
       <VBox alignment="TOP_CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="551.0" prefWidth="181.0" BorderPane.alignment="CENTER">
          <children>
@@ -54,4 +52,15 @@
          </children>
       </VBox>
    </top>
+   <center>
+      <ScrollPane fx:id="rowOne" prefHeight="200.0" prefWidth="801.0" BorderPane.alignment="CENTER">
+         <content>
+            <HBox prefHeight="437.0" prefWidth="392.0">
+               <children>
+                  <ListView fx:id="testListView" prefHeight="437.0" prefWidth="397.0" />
+               </children>
+            </HBox>
+         </content>
+      </ScrollPane>
+   </center>
 </BorderPane>
