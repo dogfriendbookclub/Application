@@ -1,6 +1,7 @@
 package gui.content;
 
 import edu.metrostate.APIclient;
+import edu.metrostate.ShowPreview;
 import gui.homepage.HomePageController;
 import gui.searchpage.SearchPageController;
 import gui.showoverview.ShowOverviewController;
@@ -8,10 +9,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ContentController implements Initializable {
@@ -19,21 +20,9 @@ public class ContentController implements Initializable {
 
 
     //WHAT NEEDS TO BE SENT TO MAIN FIND OUT !!!
-    public Button logoutButton;
+    //interface stuff
     @FXML
-    private ImageView image1;
-
-    @FXML
-    private ImageView image2;
-
-    @FXML
-    private ImageView image3;
-
-    @FXML
-    private ImageView image4;
-
-    @FXML
-    private ImageView image5;
+    private Button logoutButton;
 
     @FXML
     private TextField searchBar;
@@ -41,8 +30,7 @@ public class ContentController implements Initializable {
     @FXML
     private Button homeButton;
 
-    @FXML
-    private BorderPane rootPane;
+    //end interface stuff
 
     @FXML
     private BorderPane homePage;
@@ -62,21 +50,18 @@ public class ContentController implements Initializable {
     @FXML
     private ShowOverviewController showOverviewController;
 
-  //  @FXML
-  //  private Button showOverviewButton;
-
     private ContentListener listener;
 
     /*
     @FXML
-    void loadShowOverview(ActionEvent event) throws IOException {
+    void loadShowOverviewPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/showoverview/ShowOverview.fxml"));
         BorderPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
 
     }
 
-    public void loadHomePage(ActionEvent actionEvent) {
+    public void onHomeButton(ActionEvent actionEvent) {
         homePage.setVisible(true);
         searchPage.setVisible(false);
         showPage.setVisible(false);
@@ -85,10 +70,10 @@ public class ContentController implements Initializable {
 */
 
     public interface ContentListener {
-        void loadHomePage();
+        void onHomeButton();
         void onLogout();
-        void loadShowOverview();
-        void loadSearchPage();
+        void searchTermEntered();
+        void loadShowOverviewPage();
     }
 
     /**
@@ -112,13 +97,19 @@ public class ContentController implements Initializable {
 
         homeButton.setOnAction(actionEvent -> {
             if (listener != null) {
-                listener.
-                        loadHomePage();
+                listener.onHomeButton();
+            }
+        });
+
+        searchBar.setOnAction(actionEvent -> {
+            if (listener != null) {
+                searchTest();
             }
         });
 
     }
 
+    //getters for MainController to use
     public BorderPane getHomePage(){
         return this.homePage;
     }
@@ -143,11 +134,33 @@ public class ContentController implements Initializable {
         return this.showOverviewController;
     }
 
+    //this is we at search control would go
+    private void searchTest(){
+        // returns a list of results (to the console atm) for the search query with the text from the search bar
+        //searchbar stuff from here will be injected into searchPage
+        //
+        /*
+        try {
+            List<ShowPreview> testResults = apIclient.fetchSearchResults(searchBar.getText());
+            for ( ShowPreview result : testResults) {
+                System.out.println(result.toString());
+                //rest of code
+            }
+            listener.searchTermEntered(searchBar.getText());
+        } catch (Exception e) {
+            System.out.println("Search API Test Error");
+            e.printStackTrace();
+        }
+    */
+        searchPageController.novaLuna(searchBar.getText());
+        listener.searchTermEntered();
+
+    }
 
 /*
     //THERE were a couple of search functions,  I combined them together
     @FXML
-    void loadSearchPage(ActionEvent event) throws IOException {
+    void searchTermEntered(ActionEvent event) throws IOException {
      //   FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
         // returns a list of results (to the console atm) for the search query with the text from the search bar
         try {

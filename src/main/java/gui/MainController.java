@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable, LoginController.LoginListener, ContentController.ContentListener, ShowOverviewController.ShowOverviewListener{
+public class MainController implements Initializable, LoginController.LoginListener, ContentController.ContentListener, HomePageController.HomePageListener, ShowOverviewController.ShowOverviewListener, SearchPageController.SearchPageListener {
 //    THE WHOLE POINT OF THE INTERFACES IS FOR THINGS WHEN WE WANT TO SWICH BETWEEN SCREENS!!!!!!!!
 //    FOR EXAMPLE THE SEARCH BAR, HOMEBUTTON, THE DROP DOWN MENUS, LOGIN LOGOUT, INTERACTING WITH SHOWS !!!!
 
@@ -47,24 +47,17 @@ public class MainController implements Initializable, LoginController.LoginListe
     @FXML
     private SeasonOverviewController seasonOverviewController;
 
-
     @FXML
     private EpisodeOverviewController episodeOverviewController;
-
-
-    //@FXML
 
     @FXML
     private StringBuilder currentPane;
 
-
     private HashMap<String, Node> viewMap = new HashMap<>();
-
     private HashMap<String, Integer> parentMap = new HashMap<>();
 
 
     //asynchrnous queue system, datamodel.
-
 
 
     private void buildingMap(){
@@ -89,11 +82,6 @@ public class MainController implements Initializable, LoginController.LoginListe
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         buildingMap();
-        Parent contentParent = this.viewMap.get("contentView").getParent();
-        Parent homeParent = this.viewMap.get("homeView").getParent();
-        Parent showParent = this.viewMap.get("showView").getParent();
-        Parent seasonParent = this.viewMap.get("seasonView").getParent();
-
         this.viewMap.get("loginView").setVisible(true);
         this.viewMap.get("contentView").setVisible(false);
         this.viewMap.get("searchView").setVisible(false);
@@ -110,22 +98,22 @@ public class MainController implements Initializable, LoginController.LoginListe
         this.parentMap.put("seasonView", 2);
         this.parentMap.put("episodeView", 2);
 
-
-
         this.loginController.setLoginListener(this);
         this.contentController.setContentListener(this);
         this.showOverviewController.setShowOverviewListener(this);
+        this.homePageController.setHomePageListener(this);
+        this.searchPageController.setSearchPageListener(this);
+
         this.currentPane = new StringBuilder("loginView");
     }
-
 
     private void changeView (String newPane) {
         //if statement would check if string is a valid key
         //one thing i need to also figure out is waht the current parent key is
+
+        System.out.println("currentPane before cahnge: " +currentPane.toString() );
         /*
-
         login
-
         content
             home
             search
@@ -134,6 +122,8 @@ public class MainController implements Initializable, LoginController.LoginListe
                 season
                 episode
          */
+
+        //checks for  validKey
         if (!this.viewMap.containsKey(newPane)) {
             throw new IllegalArgumentException(newPane + "");
         }
@@ -144,34 +134,42 @@ public class MainController implements Initializable, LoginController.LoginListe
 
         else {
             //has the same parent
-            if( this.parentMap.get(newPane) == this.parentMap.get(this.currentPane.toString()) ){
+            if((this.parentMap.get(newPane)).equals(this.parentMap.get(this.currentPane.toString()))){
                 this.viewMap.get(this.currentPane.toString()).setVisible(false);
-                this.viewMap.get(newPane).setVisible(true);
+//                this.viewMap.get(newPane).setVisible(true);
 
+                //somewhere in contnt container going toshow
                 if (newPane.compareTo("showView") == 0){
                     if (!this.viewMap.get("showBox").isVisible() ){
                         this.viewMap.get("showBox").setVisible(true);
                     }
                 }
 
+
                 if (newPane.compareTo("contentView") == 0){
                     if (!this.viewMap.get("homeView").isVisible() ){
                         this.viewMap.get("homeView").setVisible(true);
                     }
                 }
+
             }
 
             // parent level directly to its children
             else if ((this.parentMap.get(this.currentPane.toString()) - this.parentMap.get(newPane)) == -1) {
-                if ( this.parentMap.get(this.currentPane.toString()) == 0 ) { // content and login to child of content
-                    if ((currentPane.toString()).compareTo("contentView") == 1) { //currentPane is login  and going to into the contents of children
+                // content and login to child of content
+                if ( this.parentMap.get(this.currentPane.toString()) == 0 ) {
+                    //currentPane is login  and going to into the contents of children
+                    if ((currentPane.toString()).compareTo("contentView") != 0) {
                         this.viewMap.get(currentPane.toString()).setVisible(false);
                         this.viewMap.get("contentView").setVisible(true);
                     }
 
                     //now login is off and content is on
-                    if ((newPane.compareTo("homeView") == 1) && this.viewMap.get("homeView").isVisible()) { //newPane isnt homeView and homeView is on
+                    if ((newPane.compareTo("homeView") != 0) && this.viewMap.get("homeView").isVisible()) { //newPane isnt homeView and homeView is on
                         this.viewMap.get("homeView").setVisible(false);
+                        if(newPane.compareTo("showView") == 0){
+                            this.viewMap.get("showBox").setVisible(true);
+                        }
                     }
                     else { // newPane is homeView or homeView is off
                         if (!this.viewMap.get("homeView").isVisible()) {
@@ -179,18 +177,17 @@ public class MainController implements Initializable, LoginController.LoginListe
                         }
                     }
 
-                    this.viewMap.get(newPane).setVisible(true); //set whatever new pane is on
                 }
 
                 //something in currentPane going to somethign in showContainer
-                if( this.parentMap.get(this.currentPane.toString()) == 1){
-                        if ((currentPane.toString()).compareTo("showView") == 1) { //we are NOT show but wnat ot access thigns in show box
+                else if( this.parentMap.get(this.currentPane.toString()) == 1){
+                        if ((currentPane.toString()).compareTo("showView") != 0) { //we are NOT show but wnat ot access thigns in show box
                             this.viewMap.get(currentPane.toString()).setVisible(false);
                             this.viewMap.get("showView").setVisible(true);
                         }
 
                         //now showView is off and content is on
-                        if ((newPane.compareTo("showBox") == 1) && this.viewMap.get("showBox").isVisible()) { //newPane isnt showBox(obv) and showBox is on
+                        if ((newPane.compareTo("showBox") != 0) && this.viewMap.get("showBox").isVisible()) { //newPane isnt showBox(obv) and showBox is on
                             this.viewMap.get("showBox").setVisible(false);
                         }
                         else { // newPane is showBox or showBox is off
@@ -201,9 +198,9 @@ public class MainController implements Initializable, LoginController.LoginListe
                 }
             } //end level diff of 1
 
-            //parent level directly to its children
+            //parent level directly to grand children
             else if((this.parentMap.get(this.currentPane.toString()) - this.parentMap.get(newPane)) == -2){// login or content DIRECTLY to season or episode
-                if ((currentPane.toString()).compareTo("contentView") == 1) { //currentPane is login  and going to into the contents of children
+                if ((currentPane.toString()).compareTo("contentView") != 0) { //currentPane is login  and going to into the contents of children
                     this.viewMap.get(currentPane.toString()).setVisible(false);
                     this.viewMap.get("contentView").setVisible(true);
                 }
@@ -218,34 +215,53 @@ public class MainController implements Initializable, LoginController.LoginListe
                 if(this.viewMap.get("showBox").isVisible()){
                     this.viewMap.get("showbox").setVisible(false);
                 }
+       //         this.viewMap.get(newPane).setVisible(true); //set whatever new pane is on
 
-            }
-
+            } //end level diff 2
 
             else{
+                //children to parent
                 this.viewMap.get(this.currentPane.toString()).setVisible(false);
-                this.viewMap.get(newPane).setVisible(true);
+               // this.viewMap.get(newPane).setVisible(true);
 
-                if (newPane.compareTo("showView") == 0){
-                    if (!this.viewMap.get("showBox").isVisible() ){
-                        this.viewMap.get("showBox").setVisible(true);
+                //episode to show or anythin else or content container to show
+                if ((this.parentMap.get(this.currentPane.toString()) - this.parentMap.get(newPane)) == 1){
+                    //check for show first
+                    if(newPane.compareTo("showView") == 0) {
+                        if (!this.viewMap.get("showBox").isVisible()) {
+                            this.viewMap.get("showBox").setVisible(true);
+                        }
+                    }
+                    else{
+                        this.viewMap.get("showView").setVisible(false);
+                    }
+
+                    if (newPane.compareTo("contentView") == 0){
+                        if (!this.viewMap.get("homeView").isVisible()) {
+                            this.viewMap.get("homeView").setVisible(true);
+                        }
+                    }
+
+                    if (newPane.compareTo("loginView") == 0){
+                        this.viewMap.get("contentView").setVisible(false);
                     }
                 }
 
-                if (newPane.compareTo("contentView") == 0){
-                    if (!this.viewMap.get("homeView").isVisible() ){
-                        this.viewMap.get("homeView").setVisible(true);
-                    }
+                if ((this.parentMap.get(this.currentPane.toString()) - this.parentMap.get(newPane)) == 2){
+                    this.viewMap.get("showView").setVisible(false);
+                    this.viewMap.get("contentView").setVisible(false);
                 }
 
             }
+
+                   this.viewMap.get(newPane).setVisible(true); //set whatever new pane is on
+
             this.currentPane.setLength(0);
             this.currentPane.append(newPane);
 
-
+            System.out.println("currentPane after cahnge: " +currentPane.toString() );
             /*
                 big issues
-
                 login -> search, home, show, showContainer    0 to 1
                     issue: content wouldnt turn on (for show container Show wouldnt turn on alongSide content not turning on)
 
@@ -264,53 +280,26 @@ public class MainController implements Initializable, LoginController.LoginListe
                         when it goes to show show would turn on BUT not
 
                 shoBox should only be used with show and should never be called on itself
-
              */
-
-
-
-/*
-            if (newPane.compareTo("loginView") == 0) {
-                this.viewMap.get("contentView").setVisible(false);
-                this.viewMap.get("contentView").getParent();
-            }
-            else if (newPane.compareTo("contentView") == 0) {
-                this.viewMap.get("contentView").setVisible(true);
-                this.viewMap.get("homeView").setVisible(true);
-            }
-*/
-
-
         }
     }
+
+    //begin from login interface
     @Override
     public void onLoginComplete() {
         changeView("contentView");
-
-//        this.login.setVisible(false);
-
-        //      this.contentController.getHomePage().setVisible(true);
-        //      this.contentController.getSearchPage().setVisible(false);
-        //   this.contentController.getShowPage().setVisible(false);
- //       this.content.setVisible(true);
-
-
     }
+    //end from login interface
 
 
-
+    //Begin from Content interface
     /**
      *
      */
     @Override
-    public void loadHomePage() {
+    public void onHomeButton() {
         System.out.println("load homepage works :)");
-   //     changeView("homeView");
-   //     this.contentController.getHomePage().setVisible(true);
         changeView("homeView");
-
-//        this.contentController.getSearchPage().setVisible(false);
- //       this.contentController.getShowPage().setVisible(false);
     }
 
     /**
@@ -320,20 +309,57 @@ public class MainController implements Initializable, LoginController.LoginListe
     public void onLogout() {
         System.out.println("load loagoutr works :)");
         changeView("loginView");
-     //   this.login.setVisible(true);
-    //    this.content.setVisible(false);
 
     }
+
     /**
      *
      */
     @Override
-    public void loadShowOverview() {
+    public void loadShowOverviewPage() {
         System.out.println("load show works :)");
-    //    this.contentController.getHomePage().setVisible(false);
-  //      this.contentController.getSearchPage().setVisible(false);
-//        this.contentController.getShowOverview().setVisible(true);
         changeView("showView");
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void searchTermEntered() {
+        changeView("searchView");
+    }
+    //end from content interface
+
+
+
+    //from HomePageController, homepage interface
+    /**
+     *
+     */
+    @Override
+    public void showClickedOnInHome() {
+        changeView("showView");
+    }
+
+    //end from homepage interface
+
+
+    //begin show interface
+    /**
+     *
+     */
+    @Override
+    public void selectedSeason() {
+        changeView("seasonView");
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void selectedEpisode() {
+        System.out.println("episdo eselected");
+        changeView("episodeView");
 
     }
 
@@ -341,14 +367,15 @@ public class MainController implements Initializable, LoginController.LoginListe
      *
      */
     @Override
-    public void loadSearchPage() {
-        System.out.println("load search works :)");
-        changeView("searchView");
-//        this.contentController.getHomePage().setVisible(false);
-//      this.contentController.getSearchPage().setVisible(true);
-//        this.contentController.getShowOverview().setVisible(false);
-
+    public void showSelected() {
+        changeView("showView");
     }
+
+    //end show itnerface
+
+
+
+
 
 
 

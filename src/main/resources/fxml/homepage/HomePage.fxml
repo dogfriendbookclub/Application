@@ -14,12 +14,12 @@
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.homepage.HomePageController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="173.0" layoutX="33.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="533.0" AnchorPane.bottomAnchor="298.0" AnchorPane.leftAnchor="33.5" AnchorPane.rightAnchor="33.5" AnchorPane.topAnchor="54.0" />
-      <Button fx:id="homeButton" layoutX="9.0" layoutY="9.0" mnemonicParsing="false" onAction="#loadHomePage" prefHeight="12.0" prefWidth="64.0" text="Home Page">
+      <Button fx:id="homeButton" layoutX="9.0" layoutY="9.0" mnemonicParsing="false" onAction="#onHomeButton" prefHeight="12.0" prefWidth="64.0" text="Home Page">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <TextField fx:id="searchBar" layoutX="84.0" layoutY="6.0" onAction="#loadSearchPage" prefHeight="26.0" prefWidth="392.0" promptText="Search">
+      <TextField fx:id="searchBar" layoutX="84.0" layoutY="6.0" onAction="#searchTermEntered" prefHeight="26.0" prefWidth="392.0" promptText="Search">
          <font>
             <Font size="12.0" />
          </font>
@@ -31,7 +31,7 @@
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="113.0" layoutX="13.0" layoutY="255.0" stroke="BLACK" strokeType="INSIDE" width="575.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="113.0" layoutX="13.0" layoutY="396.0" stroke="BLACK" strokeType="INSIDE" width="575.0" />
-      <Button fx:id="showOverviewButton" layoutX="59.0" layoutY="197.0" mnemonicParsing="false" onAction="#loadShowOverview" text="load show overview">
+      <Button fx:id="showOverviewButton" layoutX="59.0" layoutY="197.0" mnemonicParsing="false" onAction="#loadShowOverviewPage" text="load show overview">
          <font>
             <Font size="10.0" />
          </font></Button>
@@ -50,17 +50,17 @@
 
       </VBox>
 
-      <Button fx:id="showOverviewButton1" layoutX="184.0" layoutY="197.0" mnemonicParsing="false" onAction="#loadShowOverview" text="load show overview">
+      <Button fx:id="showOverviewButton1" layoutX="184.0" layoutY="197.0" mnemonicParsing="false" onAction="#loadShowOverviewPage" text="load show overview">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button fx:id="showOverviewButton2" layoutX="313.0" layoutY="197.0" mnemonicParsing="false" onAction="#loadShowOverview" text="load show overview">
+      <Button fx:id="showOverviewButton2" layoutX="313.0" layoutY="197.0" mnemonicParsing="false" onAction="#loadShowOverviewPage" text="load show overview">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button fx:id="showOverviewButton3" layoutX="442.0" layoutY="197.0" mnemonicParsing="false" onAction="#loadShowOverview" text="load show overview">
+      <Button fx:id="showOverviewButton3" layoutX="442.0" layoutY="197.0" mnemonicParsing="false" onAction="#loadShowOverviewPage" text="load show overview">
          <font>
             <Font size="10.0" />
          </font>

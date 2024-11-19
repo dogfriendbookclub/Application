@@ -101,7 +101,7 @@
                <children>
                   <MenuButton fx:id="seasonButton" mnemonicParsing="false" text="Season Selector">
                      <items>
-                        <MenuItem fx:id="seasonSelector1" mnemonicParsing="false" onAction="#loadSeasonPage" text="Season 1" />
+                        <MenuItem fx:id="seasonSelector1" mnemonicParsing="false"  text="Season 1" />
                         <MenuItem mnemonicParsing="false" text="Action 2" />
                      </items>
                      <font>
@@ -110,7 +110,7 @@
                   </MenuButton>
                   <MenuButton fx:id="episodeButton" mnemonicParsing="false" text="Episode Selector">
                      <items>
-                        <MenuItem fx:id="episodeSelector1" mnemonicParsing="false" onAction="#loadEpisodePage" text="Episode 1" />
+                        <MenuItem fx:id="episodeSelector1" mnemonicParsing="false" text="Episode 1" />
                         <MenuItem mnemonicParsing="false" text="Action 2" />
                      </items>
                      <font>

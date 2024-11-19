@@ -1,62 +1,22 @@
 package gui.homepage;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import edu.metrostate.APIclient;
 import edu.metrostate.ShowPreview;
-import gui.showoverview.ShowOverviewController;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
-import javafx.scene.Cursor;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.geometry.Pos;
 
 public class HomePageController implements Initializable {
-    @FXML
-    private ImageView image1;
-
-    @FXML
-    private ImageView image2;
-
-    @FXML
-    private ImageView image3;
-
-    @FXML
-    private ImageView image4;
-
-    @FXML
-    private ImageView image5;
-    @FXML
-    private VBox showsContainer;
-
-    @FXML
-    private TextField searchBar;
-
-    @FXML
-    private Button homeButton;
-
-    @FXML
-    private BorderPane rootPane;
-
-    @FXML
-    private Button showOverviewButton;
-
     private HomePageListener listener;
 
     private APIclient apIclient = new APIclient();
@@ -97,6 +57,8 @@ public class HomePageController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
     }
 
     /**
@@ -149,11 +111,7 @@ public class HomePageController implements Initializable {
                     // Add click event to the image
                     imageView.setOnMouseClicked(event -> {
                         if (event.getClickCount() == 2) { // Respond to double-click
-                            try {
-                                loadShowOverview(showPreview);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                                listener.showClickedOnInHome();
                         }
                     });
 
@@ -174,28 +132,30 @@ public class HomePageController implements Initializable {
 
 
 
-
-
     public interface HomePageListener {
-
+        void showClickedOnInHome();
     }
 
 
+    public void setHomePageListener(HomePageListener listener){
+        this.listener = listener;
+    }
 
+/*
     @FXML
-    // Update to call loadShowOverview with the clicked show
-    private void loadShowOverview(ShowPreview showPreview) throws IOException {
+    // Update to call loadShowOverviewPage with the clicked show
+    private void showClickedOnInHome(ShowPreview showPreview) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/showoverview/ShowOverview.fxml"));
         BorderPane pane = loader.load();
 
-        /* If you need to pass data to the next controller, you can do it here
+         If you need to pass data to the next controller, you can do it here
         ShowOverviewController controller = loader.getController();
-        controller.setShowDetails(showPreview);  Assuming you have a method to set show details */
+        controller.setShowDetails(showPreview);  Assuming you have a method to set show details
 
         // Replace the current root pane with the new one
         rootPane.getChildren().setAll(pane);
     }
-
+*/
 
 
 

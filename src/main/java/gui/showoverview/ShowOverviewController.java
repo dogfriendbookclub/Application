@@ -13,9 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -28,19 +26,18 @@ public class ShowOverviewController implements Initializable {
     private APIclient apIclient = new APIclient();
 
     @FXML
-    private Button homeButton;
+    private MenuButton seasonButton;
 
     @FXML
-    private BorderPane rootPane;
+    private MenuButton episodeButton;
 
     @FXML
-    private TextField searchBar;
+    private MenuItem episodeSelector1;
+
 
     @FXML
-    private MenuItem seasonSelector;
+    private MenuItem seasonSelector1;
 
-    @FXML
-    private MenuItem episodeSelector;
 
     @FXML
     private HBox showBox;
@@ -57,55 +54,10 @@ public class ShowOverviewController implements Initializable {
     @FXML
     private EpisodeOverviewController episodeOverviewController;
 
-
     private ShowOverviewListener listener;
 
-     @FXML
-    void loadHomePage(ActionEvent event) throws IOException {
 
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/homepage/HomePage.fxml"));
-
-         BorderPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
-    }
-
-    @FXML
-    void loadSeasonPage(ActionEvent event) throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/seasonoverview/SeasonOverview.fxml"));
-
-
-        BorderPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
-    }
-
-    @FXML
-    void loadEpisodePage(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/episodeoverview/EpisodeOverview.fxml"));
-
-        BorderPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
-    }
-
-    void loadSearchPage(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
-
-        // returns a list of results (to the console atm) for the search query with the text from the search bar
-        try {
-            List<ShowPreview> testResults = apIclient.fetchSearchResults(searchBar.getText());
-            for ( ShowPreview result : testResults) {
-                System.out.println(result.toString());
-            }
-        } catch (Exception e) {
-            System.out.println("Search API Test Error");
-            e.printStackTrace();
-        }
-
-        BorderPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
-    }
-
-
+    //getters for MainController
     public HBox getShowBox(){
          return this.showBox;
     }
@@ -137,18 +89,49 @@ public class ShowOverviewController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //do whatever
+
+        seasonButton.setOnAction(actionEvent -> {
+            seasonPreviews();
+        });
+
+
+        seasonSelector1.setOnAction(actionEvent -> {
+            listener.selectedSeason();
+        });
+
+        episodeButton.setOnAction(actionEvent -> {
+            episodePreviews();
+       });
+
+        episodeSelector1.setOnAction(actionEvent -> {
+            listener.selectedEpisode();
+        });
+    }
+
+    public void seasonPreviews() {
+        //do whatever
 
     }
+
+    public void episodePreviews() {
+       //do whatever
+
+
+    }
+
+
 
 
     public interface ShowOverviewListener{
-
+        void selectedSeason();
+        void selectedEpisode();
     }
+
 
     public void setShowOverviewListener(ShowOverviewListener listener) {
         this.listener = listener;
     }
-
 
 
 }
