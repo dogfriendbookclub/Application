@@ -339,6 +339,7 @@ public class MainController implements Initializable, LoginController.LoginListe
 
     //end from homepage interface
 
+
     //begin show interface
     /**
      *
@@ -377,6 +378,23 @@ public class MainController implements Initializable, LoginController.LoginListe
 
 
 
+
+
+
+/*
+
+    @Override
+    public void onHomeButton() {
+
+    }
+
+
+    @Override
+    public void onSearchbar() {
+
+
+    }
+*/
 
 
 

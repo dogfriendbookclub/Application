@@ -146,42 +146,6 @@ public class APIclient {
     }
 
 
-    // fix this call
-    public List<ShowPreview> fetchTopRated() throws IOException {
-        String url = BASE_URL + "popular?api_key=" + API_KEY;
-        HttpGet request = new HttpGet(url);
-        try (CloseableHttpResponse response = httpClient.execute(request)) {
-            if (response.getCode() != 200) {
-                throw new IOException("Unexpected response code: " + response.getCode());
-            }
-
-            String jsonResponse = new String(response.getEntity().getContent().readAllBytes());
-            JsonNode rootNode = objectMapper.readTree(jsonResponse);
-
-            // Extract the "results" array from the JSON response
-            JsonNode resultsNode = rootNode.path("results");
-
-            // Create a list to store ShowPreview objects
-            List<ShowPreview> showPreviews = new ArrayList<>();
-
-            // Loop through the results and extract showID and posterPath
-            for (JsonNode node : resultsNode) {
-                //If list is already at 15, break
-                if(showPreviews.size() >= 15){
-                    break;
-                }
-                int showID = node.path("id").asInt();
-                String title = node.path("name").asText();
-                String posterPath = node.path("poster_path").asText();
-
-                // Add the ShowPreview to the list
-                showPreviews.add(new ShowPreview(showID, title, posterPath));
-            }
-
-            return showPreviews; // Return the list of ShowPreview
-        }
-    }
-
 
 
 
