@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import edu.metrostate.APIclient;
 import edu.metrostate.ShowPreview;
-import javafx.event.ActionEvent;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,7 +29,6 @@ public class SearchPageController implements Initializable {
     private SearchPageListener listener;
 
 
-
     public interface SearchPageListener{
        // onFilter selected and what not
        void showSelected(int id);
@@ -47,8 +45,16 @@ public class SearchPageController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        /*
+       assign functionalities to buttons and what not
+       such as for filters and managin the search results that will be passed into here
+       teh funciton in this interface that is passed into main, will be used to get teh search results
 
-
+       for example:
+       action event for when user selects filters
+       ermm print result for what ever is put in the search
+       also how results are displayed
+    */
 
     }
 

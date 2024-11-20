@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
-import edu.metrostate.*;
 import edu.metrostate.APIclient;
 import edu.metrostate.Show;
 import edu.metrostate.ShowPreview;
@@ -15,10 +14,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -128,10 +123,6 @@ public class ShowOverviewController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        int showId = 1396; // hard coded test value for now
-        try {
-            Show show = apIclient.fetchShowData(showId);
-            seasonButton.getItems().clear();
         //do whatever
 
        /* seasonButton.setOnAction(actionEvent -> {
