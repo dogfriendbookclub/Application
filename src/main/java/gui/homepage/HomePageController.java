@@ -67,7 +67,6 @@ public class HomePageController implements Initializable {
     private void setupListView(ListView<ShowPreview> listView, List<ShowPreview> shows) {
         listView.setItems(FXCollections.observableArrayList(shows));
         listView.setOrientation(Orientation.HORIZONTAL);
-
         // Configure the cell factory
         listView.setCellFactory(param -> new ListCell<ShowPreview>() {
             private final ImageView imageView = new ImageView();
@@ -88,6 +87,8 @@ public class HomePageController implements Initializable {
             protected void updateItem(ShowPreview showPreview, boolean empty) {
                 super.updateItem(showPreview, empty);
 
+
+                //pass ID Into show
                 if (empty || showPreview == null) {
                     setGraphic(null);
                 } else {
@@ -128,7 +129,6 @@ public class HomePageController implements Initializable {
             listView.requestLayout(); // Request a layout update to adapt to the new width
         });
     }
-
 
 
 

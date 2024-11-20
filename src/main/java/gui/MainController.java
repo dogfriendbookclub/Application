@@ -10,18 +10,16 @@ import gui.showoverview.ShowOverviewController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable, LoginController.LoginListener, ContentController.ContentListener, HomePageController.HomePageListener, ShowOverviewController.ShowOverviewListener, SearchPageController.SearchPageListener {
-//    THE WHOLE POINT OF THE INTERFACES IS FOR THINGS WHEN WE WANT TO SWICH BETWEEN SCREENS!!!!!!!!
-//    FOR EXAMPLE THE SEARCH BAR, HOMEBUTTON, THE DROP DOWN MENUS, LOGIN LOGOUT, INTERACTING WITH SHOWS !!!!
 
     @FXML
     private Pane login;
@@ -53,35 +51,73 @@ public class MainController implements Initializable, LoginController.LoginListe
     @FXML
     private StringBuilder currentPane;
 
+    //contains references to each fxml file
     private HashMap<String, Node> viewMap = new HashMap<>();
-    private HashMap<String, Integer> parentMap = new HashMap<>();
 
+    //this is used in to switch between fxml files that are of different hierarchy
+    private HashMap<String, Integer> parentMap = new HashMap<>();
+        /*
+        the value stored is the parent "level"
+        the lower the ID, the higher hierarchy:
+
+                             main
+                            /     \
+                           /       \
+                          /         \
+                         /           \
+        level 0        login     content
+                                 /   |   \
+                                /    |    \
+                               /     |     \
+                              /      |      \
+        level 1             home   search   show
+                                          /   |   \
+                                         /    |    \
+                                        /     |     \
+                                       /      |      \
+        level 2                     showBox  season episode
+
+
+         */
 
     //asynchrnous queue system, datamodel.
 
 
-    private void buildingMap(){
+    //change name
+    private void buildingMaps(){
+        //creating controllers
         homePageController = this.contentController.getHomePageController();
         searchPageController = this.contentController.getSearchPageController();
         showOverviewController = this.contentController.getShowOverviewController();
         seasonOverviewController = this.showOverviewController.getSeasonOverviewController();
         episodeOverviewController = this.showOverviewController.getEpisodeOverviewController();
 
+        //has parent level of 0
         this.viewMap.put("loginView", login);
         this.viewMap.put("contentView", content);
+        this.parentMap.put("contentView", 0);
+        this.parentMap.put("loginView", 0);
 
+        //has parent level of 1
         this.viewMap.put("homeView", this.contentController.getHomePage());
         this.viewMap.put("searchView", this.contentController.getSearchPage());
         this.viewMap.put("showView", this.contentController.getShowOverview());
+        this.parentMap.put("homeView", 1);
+        this.parentMap.put("searchView", 1);
+        this.parentMap.put("showView", 1);
+        this.parentMap.put("showBox", 1);
 
+        //has parent level 3
         this.viewMap.put("showBox", this.showOverviewController.getShowBox());
         this.viewMap.put( "seasonView", this.showOverviewController.getSeasonPage());
         this.viewMap.put( "episodeView", this.showOverviewController.getEpisodePage());
+        this.parentMap.put("seasonView", 2);
+        this.parentMap.put("episodeView", 2);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        buildingMap();
+        buildingMaps();
         this.viewMap.get("loginView").setVisible(true);
         this.viewMap.get("contentView").setVisible(false);
         this.viewMap.get("searchView").setVisible(false);
@@ -89,14 +125,6 @@ public class MainController implements Initializable, LoginController.LoginListe
         this.viewMap.get("episodeView").setVisible(false);
         this.viewMap.get("seasonView").setVisible(false);
 
-        this.parentMap.put("contentView", 0);
-        this.parentMap.put("loginView", 0);
-        this.parentMap.put("homeView", 1);
-        this.parentMap.put("searchView", 1);
-        this.parentMap.put("showView", 1);
-        this.parentMap.put("showBox", 1);
-        this.parentMap.put("seasonView", 2);
-        this.parentMap.put("episodeView", 2);
 
         this.loginController.setLoginListener(this);
         this.contentController.setContentListener(this);
@@ -107,26 +135,16 @@ public class MainController implements Initializable, LoginController.LoginListe
         this.currentPane = new StringBuilder("loginView");
     }
 
+    //needs cleanup, repeating logic
     private void changeView (String newPane) {
-        //if statement would check if string is a valid key
-        //one thing i need to also figure out is waht the current parent key is
-
-        System.out.println("currentPane before cahnge: " +currentPane.toString() );
-        /*
-        login
-        content
-            home
-            search
-            show
-                showBox
-                season
-                episode
-         */
+        //debug
+        System.out.println("currentPane before change: " +currentPane.toString() );
 
         //checks for  validKey
         if (!this.viewMap.containsKey(newPane)) {
             throw new IllegalArgumentException(newPane + "");
         }
+
         //checks to see if this is the same pane
         if (newPane.compareTo(this.currentPane.toString()) == 0) {
             System.out.println("this is the same pane");
@@ -136,42 +154,41 @@ public class MainController implements Initializable, LoginController.LoginListe
             //has the same parent
             if((this.parentMap.get(newPane)).equals(this.parentMap.get(this.currentPane.toString()))){
                 this.viewMap.get(this.currentPane.toString()).setVisible(false);
-//                this.viewMap.get(newPane).setVisible(true);
 
-                //somewhere in contnt container going toshow
+                //somewhere in parent level 1 going to show
                 if (newPane.compareTo("showView") == 0){
                     if (!this.viewMap.get("showBox").isVisible() ){
-                        this.viewMap.get("showBox").setVisible(true);
+                        this.viewMap.get("showBox").setVisible(true); //make sure showBox is on
                     }
                 }
 
-
+                // somewhere in level 0 going to content
                 if (newPane.compareTo("contentView") == 0){
                     if (!this.viewMap.get("homeView").isVisible() ){
-                        this.viewMap.get("homeView").setVisible(true);
+                        this.viewMap.get("homeView").setVisible(true); //check if home is on
                     }
                 }
 
             }
 
-            // parent level directly to its children
+            //  parent directly to child
             else if ((this.parentMap.get(this.currentPane.toString()) - this.parentMap.get(newPane)) == -1) {
-                // content and login to child of content
+                // level 0 to level 1
                 if ( this.parentMap.get(this.currentPane.toString()) == 0 ) {
-                    //currentPane is login  and going to into the contents of children
+                    // checks if currentPane is contentPane
                     if ((currentPane.toString()).compareTo("contentView") != 0) {
                         this.viewMap.get(currentPane.toString()).setVisible(false);
                         this.viewMap.get("contentView").setVisible(true);
                     }
 
-                    //now login is off and content is on
-                    if ((newPane.compareTo("homeView") != 0) && this.viewMap.get("homeView").isVisible()) { //newPane isnt homeView and homeView is on
+                    //newPane isnt homeView and homeView is on
+                    if ((newPane.compareTo("homeView") != 0) && this.viewMap.get("homeView").isVisible()) {
                         this.viewMap.get("homeView").setVisible(false);
                         if(newPane.compareTo("showView") == 0){
                             this.viewMap.get("showBox").setVisible(true);
                         }
                     }
-                    else { // newPane is homeView or homeView is off
+                    else { // newPane is homeView or homeView is off //this shouldnt work vbut does
                         if (!this.viewMap.get("homeView").isVisible()) {
                             this.viewMap.get("homeView").setVisible(true);
                         }
@@ -179,7 +196,7 @@ public class MainController implements Initializable, LoginController.LoginListe
 
                 }
 
-                //something in currentPane going to somethign in showContainer
+                //level 1 to level 2
                 else if( this.parentMap.get(this.currentPane.toString()) == 1){
                         if ((currentPane.toString()).compareTo("showView") != 0) { //we are NOT show but wnat ot access thigns in show box
                             this.viewMap.get(currentPane.toString()).setVisible(false);
@@ -198,7 +215,7 @@ public class MainController implements Initializable, LoginController.LoginListe
                 }
             } //end level diff of 1
 
-            //parent level directly to grand children
+            //level 0 to level 2
             else if((this.parentMap.get(this.currentPane.toString()) - this.parentMap.get(newPane)) == -2){// login or content DIRECTLY to season or episode
                 if ((currentPane.toString()).compareTo("contentView") != 0) { //currentPane is login  and going to into the contents of children
                     this.viewMap.get(currentPane.toString()).setVisible(false);
@@ -219,12 +236,12 @@ public class MainController implements Initializable, LoginController.LoginListe
 
             } //end level diff 2
 
+            //child to parent
             else{
-                //children to parent
                 this.viewMap.get(this.currentPane.toString()).setVisible(false);
                // this.viewMap.get(newPane).setVisible(true);
 
-                //episode to show or anythin else or content container to show
+                //episode/season to anything inside content container
                 if ((this.parentMap.get(this.currentPane.toString()) - this.parentMap.get(newPane)) == 1){
                     //check for show first
                     if(newPane.compareTo("showView") == 0) {
@@ -254,33 +271,12 @@ public class MainController implements Initializable, LoginController.LoginListe
 
             }
 
-                   this.viewMap.get(newPane).setVisible(true); //set whatever new pane is on
+            this.viewMap.get(newPane).setVisible(true); //set whatever new pane is on
 
             this.currentPane.setLength(0);
             this.currentPane.append(newPane);
 
             System.out.println("currentPane after cahnge: " +currentPane.toString() );
-            /*
-                big issues
-                login -> search, home, show, showContainer    0 to 1
-                    issue: content wouldnt turn on (for show container Show wouldnt turn on alongSide content not turning on)
-
-                content -> anything in in its container (i.e home, search)  0 to 1
-                    isssue: content would turn itself off making evrything in its contianer inivisbe
-
-                show -> showcontainer 1 to 2
-                    isssue: show would turn itself off making evrything in its contianer inivisbe
-
-                contentContainer -> showContainer 1 to 2
-                    issue: contentContainer would turn itself off but not show on thus making show invisible
-                    SPECIAL CASE: when it goes to show i must be able to manage showBox
-
-                showContainer -> anything in contentContainer(including show) 2 to 1
-                    issues: show congtainer would turn itself off but not show
-                        when it goes to show show would turn on BUT not
-
-                shoBox should only be used with show and should never be called on itself
-             */
         }
     }
 
@@ -367,7 +363,13 @@ public class MainController implements Initializable, LoginController.LoginListe
      *
      */
     @Override
-    public void showSelected() {
+    public void showSelected(int id) {
+
+        try {
+            this.showOverviewController.loadShowData(id);
+        } catch (IOException e) {
+             e.printStackTrace();
+        }
         changeView("showView");
     }
 
@@ -380,8 +382,6 @@ public class MainController implements Initializable, LoginController.LoginListe
 
 
 /*
-    THE WHOLE POINT OF THE INTERFACES IS FOR THINGS WHEN WE WANT TO SWICH BETWEEN SCREENS!!!!!!!!
-    FOR EXAMPLE THE SEARCH BAR, HOMEBUTTON, THE DROP DOWN MENUS, LOGIN LOGOUT, INTERACTING WITH SHOWS !!!!
 
     @Override
     public void onHomeButton() {

@@ -6,7 +6,7 @@ module Application {
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.annotation;
     requires java.sql;
-    requires com.google.common;
+
 
     opens gui to javafx.fxml;
     opens edu.metrostate to javafx.fxml;

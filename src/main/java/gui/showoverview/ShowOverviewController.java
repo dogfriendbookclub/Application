@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import edu.metrostate.APIclient;
+import edu.metrostate.Show;
 import edu.metrostate.ShowPreview;
 import gui.content.ContentController;
 import gui.episodeoverview.EpisodeOverviewController;
@@ -23,21 +24,33 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ShowOverviewController implements Initializable {
-    private APIclient apIclient = new APIclient();
+    @FXML
+    private ListView<String> cretaorsList;
 
     @FXML
-    private MenuButton seasonButton;
-
-    @FXML
-    private MenuButton episodeButton;
-
-    @FXML
-    private MenuItem episodeSelector1;
+    private ListView<String> mainCastList;
 
 
     @FXML
-    private MenuItem seasonSelector1;
+    private TextArea synopsisTextBox;
 
+    @FXML
+    private HBox featuredStars;
+
+    @FXML
+    private Label featuredReviewTextBox;
+
+    @FXML
+    private HBox yourStars;
+
+    @FXML
+    private TextField userShowReview;
+
+    @FXML
+    private ComboBox<String> seasonButton;
+
+    @FXML
+    private ComboBox<String> episodeButton;
 
     @FXML
     private HBox showBox;
@@ -48,11 +61,14 @@ public class ShowOverviewController implements Initializable {
     @FXML
     private BorderPane episodePage;
 
+
     @FXML
     private SeasonOverviewController seasonOverviewController;
 
     @FXML
     private EpisodeOverviewController episodeOverviewController;
+
+    private APIclient apIclient = new APIclient();
 
     private ShowOverviewListener listener;
 
@@ -95,22 +111,23 @@ public class ShowOverviewController implements Initializable {
             seasonPreviews();
         });
 
-
-        seasonSelector1.setOnAction(actionEvent -> {
-            listener.selectedSeason();
-        });
-
         episodeButton.setOnAction(actionEvent -> {
             episodePreviews();
        });
-
-        episodeSelector1.setOnAction(actionEvent -> {
-            listener.selectedEpisode();
-        });
     }
+
+
+    public void loadShowData(int id) throws IOException {
+        Show show = apIclient.fetchShowData(id);
+        synopsisTextBox.clear();
+        synopsisTextBox.appendText(show.getPremise());
+    }
+
+
 
     public void seasonPreviews() {
         //do whatever
+
 
     }
 
@@ -126,6 +143,8 @@ public class ShowOverviewController implements Initializable {
     public interface ShowOverviewListener{
         void selectedSeason();
         void selectedEpisode();
+
+
     }
 
 

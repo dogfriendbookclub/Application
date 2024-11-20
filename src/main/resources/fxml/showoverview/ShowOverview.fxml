@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.showoverview.ShowOverviewController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.showoverview.ShowOverviewController">
    <top>
-      <VBox alignment="CENTER" prefHeight="208.0" prefWidth="600.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="208.0" prefWidth="600.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="150.0" prefWidth="210.0" text="Rotating images of specific show" />
-            <HBox alignment="BOTTOM_LEFT" prefHeight="30.0" prefWidth="271.0">
+            <MediaView fitHeight="128.0" fitWidth="553.0" VBox.vgrow="ALWAYS" />
+            <HBox alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="271.0">
                <children>
-                  <Label prefHeight="19.0" prefWidth="126.0" text="Specific Show Title">
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="126.0" text="Specific Show Title">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -27,7 +29,7 @@
                   <Label prefHeight="17.0" prefWidth="70.0" text="(years aired)" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="58.0" prefWidth="558.0" spacing="10.0">
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="58.0" prefWidth="558.0" spacing="10.0">
                <children>
                   <VBox prefHeight="84.0" prefWidth="334.0">
                      <children>
@@ -38,7 +40,7 @@
                                     <Font name="System Bold" size="10.0" />
                                  </font>
                               </Label>
-                              <HBox prefHeight="16.0" prefWidth="87.0">
+                              <HBox fx:id="averageStars" prefHeight="16.0" prefWidth="87.0">
                                  <children>
                                     <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
                                     <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
@@ -58,7 +60,7 @@
                               <Font name="System Bold" size="10.0" />
                            </font>
                         </Label>
-                        <HBox fillHeight="false" prefHeight="29.0" prefWidth="90.0">
+                        <HBox fx:id="highestRatedSeason" fillHeight="false" prefHeight="29.0" prefWidth="90.0">
                            <children>
                               <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
                               <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
@@ -72,7 +74,7 @@
                               <Font name="System Bold" size="10.0" />
                            </font>
                         </Label>
-                        <HBox fillHeight="false" prefHeight="17.0" prefWidth="87.0">
+                        <HBox fx:id="highestRatedEpisode" fillHeight="false" prefHeight="17.0" prefWidth="87.0">
                            <children>
                               <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
                               <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
@@ -95,115 +97,58 @@
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="TOP_RIGHT" prefHeight="32.0" prefWidth="580.0">
+            <HBox alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="15.0" prefWidth="580.0" spacing="10.0">
                <children>
-                  <MenuButton fx:id="seasonButton" mnemonicParsing="false" text="Season Selector">
-                     <items>
-                        <MenuItem fx:id="seasonSelector1" mnemonicParsing="false"  text="Season 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                     <font>
-                        <Font name="Arial Bold" size="10.0" />
-                     </font>
-                  </MenuButton>
-                  <MenuButton fx:id="episodeButton" mnemonicParsing="false" text="Episode Selector">
-                     <items>
-                        <MenuItem fx:id="episodeSelector1" mnemonicParsing="false" text="Episode 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                     <font>
-                        <Font name="Arial Bold" size="10.0" />
-                     </font>
-                  </MenuButton>
+                  <ComboBox fx:id="seasonButton" prefHeight="20.0" prefWidth="100.0" promptText="Season " />
+                  <ComboBox fx:id="episodeButton" prefHeight="20.0" prefWidth="100.0" promptText="Episode" />
                </children>
             </HBox>
-            <StackPane prefHeight="347.0" prefWidth="558.0">
+            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="347.0" prefWidth="558.0">
                <children>
-                  <HBox fx:id="showBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                  <HBox fx:id="showBox" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <VBox alignment="CENTER_LEFT" prefHeight="340.0" prefWidth="157.0">
+                        <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="340.0" prefWidth="157.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label prefHeight="19.0" prefWidth="150.0" text="Show Overview Screen">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                              <VBox prefHeight="200.0" prefWidth="100.0">
+                              <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <Label prefHeight="19.0" prefWidth="59.0" text="Creator(s)">
+                                    <Label fx:id="creatorLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="59.0" text="Creator(s)">
                                        <font>
                                           <Font name="System Bold" size="10.0" />
                                        </font>
                                     </Label>
-                                    <Label prefHeight="19.0" prefWidth="64.0" text="Creator Name">
-                                       <font>
-                                          <Font name="Arial Italic" size="10.0" />
-                                       </font>
-                                    </Label>
-                                    <Label prefHeight="19.0" prefWidth="64.0" text="Creator Name">
-                                       <font>
-                                          <Font name="Arial Italic" size="10.0" />
-                                       </font>
-                                    </Label>
+                                    <ListView fx:id="cretaorsList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" />
                                  </children>
                               </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0">
+                              <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <Label prefHeight="19.0" prefWidth="59.0" text="Main Cast">
+                                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="59.0" text="Main Cast">
                                        <font>
                                           <Font name="System Bold" size="10.0" />
                                        </font>
                                     </Label>
-                                    <Label prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
-                                       <font>
-                                          <Font name="Arial Italic" size="10.0" />
-                                       </font>
-                                    </Label>
-                                    <Label prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
-                                       <font>
-                                          <Font name="Arial Italic" size="10.0" />
-                                       </font>
-                                    </Label>
-                                    <Label prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
-                                       <font>
-                                          <Font name="Arial Italic" size="10.0" />
-                                       </font>
-                                    </Label>
-                                    <Label prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
-                                       <font>
-                                          <Font name="Arial Italic" size="10.0" />
-                                       </font>
-                                    </Label>
+                                    <ListView fx:id="mainCastList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" />
                                  </children>
                               </VBox>
                            </children>
                         </VBox>
-                        <VBox prefHeight="340.0" prefWidth="275.0">
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="340.0" prefWidth="275.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label alignment="CENTER_RIGHT" prefHeight="19.0" prefWidth="46.0" text="Synopsis">
+                              <Label fx:id="synopsisTitle" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="46.0" text="Synopsis">
                                  <font>
                                     <Font name="System Bold" size="10.0" />
                                  </font>
                               </Label>
-                              <HBox prefHeight="130.0" prefWidth="322.0" style="-fx-border-color: black;">
+                              <TextArea fx:id="synopsisTextBox" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="117.0" prefWidth="256.0" style="-fx-border-color: black;" wrapText="true" VBox.vgrow="ALWAYS" />
+                              <HBox alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="73.0" prefWidth="322.0">
                                  <children>
-                                    <Label alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="123.0" prefWidth="241.0" text="Synopsis text...">
-                                       <font>
-                                          <Font size="10.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="BOTTOM_CENTER" prefHeight="73.0" prefWidth="322.0">
-                                 <children>
-                                    <Label alignment="BOTTOM_CENTER" prefHeight="19.0" prefWidth="93.0" text="Feature Review">
+                                    <Label alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="93.0" text="Feature Review">
                                        <font>
                                           <Font name="System Bold" size="10.0" />
                                        </font>
                                     </Label>
-                                    <HBox alignment="BOTTOM_CENTER" fillHeight="false" prefHeight="73.0" prefWidth="144.0">
+                                    <HBox fx:id="featuredStars" alignment="BOTTOM_CENTER" fillHeight="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="73.0" prefWidth="144.0">
                                        <children>
                                           <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
                                           <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
@@ -212,16 +157,16 @@
                                           <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
                                        </children>
                                     </HBox>
-                                    <Label alignment="CENTER" contentDisplay="TOP" prefHeight="15.0" prefWidth="162.0" text="Username - date of review">
+                                    <Label alignment="BOTTOM_CENTER" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="15.0" prefWidth="162.0" text="Username - date of review">
                                        <font>
                                           <Font size="10.0" />
                                        </font>
                                     </Label>
                                  </children>
                               </HBox>
-                              <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
+                              <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
                                  <children>
-                                    <Label alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="94.0" prefWidth="242.0" text="Feature Review...">
+                                    <Label fx:id="featuredReviewTextBox" alignment="TOP_LEFT" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="94.0" prefWidth="242.0" text="Feature Review...">
                                        <font>
                                           <Font size="10.0" />
                                        </font>
@@ -230,14 +175,14 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <VBox prefHeight="340.0" prefWidth="141.0">
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="340.0" prefWidth="141.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label prefHeight="17.0" prefWidth="100.0" text="Your Show Rating">
+                              <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="100.0" text="Your Show Rating">
                                  <font>
                                     <Font name="System Bold" size="10.0" />
                                  </font>
                               </Label>
-                              <HBox prefHeight="16.0" prefWidth="87.0">
+                              <HBox fx:id="yourStars" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="87.0">
                                  <children>
                                     <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
                                     <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
@@ -246,12 +191,12 @@
                                     <Polygon fill="WHITE" points="6.50091552734375, -44.039031982421875, -0.29909515380859375, -44.039039611816406, -2.6990814208984375, -51.0, -5.299095153808594, -44.039039611816406, -11.299087524414062, -44.039039611816406, -6.699089050292969, -40.20000457763672, -8.599998474121094, -34.59999084472656, -2.6990890502929688, -37.99999237060547, 3.3009109497070312, -34.599998474121094, 1.1009063720703125, -40.20000457763672" stroke="BLACK" strokeType="INSIDE" />
                                  </children>
                               </HBox>
-                              <Label prefHeight="17.0" prefWidth="71.0" text="Your Review">
+                              <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="71.0" text="Your Review">
                                  <font>
                                     <Font name="System Bold" size="10.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="userShowReview" alignment="TOP_LEFT" prefHeight="194.0" prefWidth="152.0" promptText="Maximum 500 characters">
+                              <TextField fx:id="userShowReview" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="194.0" prefWidth="152.0" promptText="Maximum 500 characters">
                                  <font>
                                     <Font size="10.0" />
                                  </font>
@@ -263,8 +208,8 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                   </HBox>
-                  <fx:include fx:id="seasonPage" source="../seasonoverview/SeasonOverview.fxml" />
-                  <fx:include fx:id="episodePage" source="../episodeoverview/EpisodeOverview.fxml" />
+                  <fx:include fx:id="seasonPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="../seasonoverview/SeasonOverview.fxml" />
+                  <fx:include fx:id="episodePage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="../episodeoverview/EpisodeOverview.fxml" />
                </children>
             </StackPane>
          </children>
