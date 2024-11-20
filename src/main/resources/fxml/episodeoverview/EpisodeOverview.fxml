@@ -4,6 +4,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane opacity="0.0" prefHeight="558.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.episodeoverview.EpisodeOverviewController">
+<BorderPane prefHeight="558.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.episodeoverview.EpisodeOverviewController">
    <padding>
          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
       </padding>
@@ -74,15 +75,7 @@
                            <Font name="System Bold" size="10.0" />
                         </font>
                      </Label>
-                     <HBox prefHeight="130.0" prefWidth="322.0" style="-fx-border-color: black;">
-                        <children>
-                           <Label fx:id="synopsisTextBox" alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="123.0" prefWidth="241.0" text="Synopsis text...">
-                              <font>
-                                 <Font size="10.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </HBox>
+                  <TextArea fx:id="synopsisBox" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" />
                      <HBox alignment="BOTTOM_CENTER" prefHeight="73.0" prefWidth="322.0">
                         <children>
                            <Label alignment="BOTTOM_CENTER" prefHeight="19.0" prefWidth="93.0" text="Feature Review">
@@ -107,15 +100,7 @@
                         <DatePicker fx:id="featuredDate" prefHeight="20.0" prefWidth="20.0" />
                         </children>
                      </HBox>
-                     <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
-                        <children>
-                           <Label fx:id="featuredReviewBox" alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="94.0" prefWidth="242.0" text="Feature Review...">
-                              <font>
-                                 <Font size="10.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </HBox>
+                  <TextArea prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" />
                   </children>
                </VBox>
                <VBox prefHeight="340.0" prefWidth="141.0">
