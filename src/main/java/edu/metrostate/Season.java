@@ -86,4 +86,9 @@ public class Season implements Reviewable, Likable {
     public void setStars(double stars) {
         this.stars = stars;
     }
+
+    @Override
+    public String toString() {
+        return "";
+    }
 }

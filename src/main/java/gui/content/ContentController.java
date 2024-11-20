@@ -7,11 +7,22 @@ import gui.searchpage.SearchPageController;
 import gui.showoverview.ShowOverviewController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBoxTreeItem;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.security.cert.PolicyNode;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -52,7 +63,7 @@ public class ContentController implements Initializable {
 
     private ContentListener listener;
 
-    /*
+
     @FXML
     void loadShowOverviewPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/showoverview/ShowOverview.fxml"));
@@ -61,10 +72,13 @@ public class ContentController implements Initializable {
 
     }
 
+    public void loadHomePage(ActionEvent actionEvent) {
+        homePage.setVisible(false);
+
     public void onHomeButton(ActionEvent actionEvent) {
         homePage.setVisible(true);
         searchPage.setVisible(false);
-        showPage.setVisible(false);
+        showPage.setVisible(true);
 
     }
 */
