@@ -94,7 +94,6 @@ public class ContentController implements Initializable {
                 listener.onLogout();
             }
         });
-
         homeButton.setOnAction(actionEvent -> {
             if (listener != null) {
                 listener.onHomeButton();
