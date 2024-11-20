@@ -57,7 +57,7 @@ public class ContentController implements Initializable {
     void loadShowOverviewPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/showoverview/ShowOverview.fxml"));
         BorderPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
+        rootPane.ge  dvg babtewtb tChildren().setAll(pane);
 
     }
 
