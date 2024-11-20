@@ -5,7 +5,9 @@ import edu.metrostate.ShowPreview;
 import gui.homepage.HomePageController;
 import gui.searchpage.SearchPageController;
 import gui.showoverview.ShowOverviewController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
@@ -20,6 +22,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.net.URL;
 import java.security.cert.PolicyNode;
 import java.util.Iterator;
@@ -63,7 +66,7 @@ public class ContentController implements Initializable {
 
     private ContentListener listener;
 
-
+/*
     @FXML
     void loadShowOverviewPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/showoverview/ShowOverview.fxml"));
@@ -74,6 +77,7 @@ public class ContentController implements Initializable {
 
     public void loadHomePage(ActionEvent actionEvent) {
         homePage.setVisible(false);
+    }
 
     public void onHomeButton(ActionEvent actionEvent) {
         homePage.setVisible(true);
@@ -81,12 +85,16 @@ public class ContentController implements Initializable {
         showPage.setVisible(true);
 
     }
+
 */
 
     public interface ContentListener {
         void onHomeButton();
+
         void onLogout();
+
         void searchTermEntered();
+
         void loadShowOverviewPage();
     }
 
@@ -124,36 +132,37 @@ public class ContentController implements Initializable {
     }
 
     //getters for MainController to use
-    public BorderPane getHomePage(){
+    public BorderPane getHomePage() {
         return this.homePage;
     }
 
-    public BorderPane getSearchPage(){
+    public BorderPane getSearchPage() {
         return this.searchPage;
     }
 
-    public BorderPane getShowOverview(){
+    public BorderPane getShowOverview() {
         return this.showOverview;
     }
 
-    public HomePageController getHomePageController(){
+    public HomePageController getHomePageController() {
         return this.homePageController;
     }
 
-    public SearchPageController getSearchPageController(){
+    public SearchPageController getSearchPageController() {
         return this.searchPageController;
     }
 
-    public ShowOverviewController getShowOverviewController(){
+    public ShowOverviewController getShowOverviewController() {
         return this.showOverviewController;
     }
 
     //this is we at search control would go
-    private void searchTest(){
+    private void searchTest() {
         searchPageController.novaLuna(searchBar.getText());
         listener.searchTermEntered();
 
     }
+}
 
 /*
     //THERE were a couple of search functions,  I combined them together
@@ -181,4 +190,4 @@ public class ContentController implements Initializable {
     }
 
 
-}//end class
+}//end class */

@@ -55,17 +55,17 @@ public class ShowOverviewController implements Initializable {
     private MenuButton episodeButton;
 
      @FXML
-    void loadHomePage(ActionEvent event) throws IOException {
+    //void loadHomePage(ActionEvent event) throws IOException {
     private HBox yourStars;
 
     @FXML
     private TextField userShowReview;
 
-    @FXML
+    /* @FXML
     private ComboBox<String> seasonButton;
 
     @FXML
-    private ComboBox<String> episodeButton;
+    private ComboBox<String> episodeButton; */
 
     @FXML
     private HBox showBox;
@@ -97,11 +97,13 @@ public class ShowOverviewController implements Initializable {
          return this.seasonPage;
     }
 
+    /*
     void loadSearchPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
 
         AnchorPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
+    } */
 
     public BorderPane getEpisodePage(){
          return this.episodePage;
@@ -132,34 +134,13 @@ public class ShowOverviewController implements Initializable {
             seasonButton.getItems().clear();
         //do whatever
 
-        seasonButton.setOnAction(actionEvent -> {
+       /* seasonButton.setOnAction(actionEvent -> {
             seasonPreviews();
         });
 
         episodeButton.setOnAction(actionEvent -> {
             episodePreviews();
-       });
-    }
-
-
-    public void loadShowData(int id) throws IOException {
-        Show show = apIclient.fetchShowData(id);
-        synopsisTextBox.clear();
-        synopsisTextBox.appendText(show.getPremise());
-    }
-
-
-
-    public void seasonPreviews() {
-        //do whatever
-
-
-    }
-
-    public void episodePreviews() {
-       //do whatever
-
-
+       }); */
             for (Season season : show.getSeasons()) {
                 MenuItem seasonItem = new MenuItem("Season " + season.getSeasonNumber());
 
@@ -192,6 +173,58 @@ public class ShowOverviewController implements Initializable {
     }
 
 
+
+    public void loadShowData(int id) throws IOException {
+        Show show = apIclient.fetchShowData(id);
+        synopsisTextBox.clear();
+        synopsisTextBox.appendText(show.getPremise());
+    }
+
+
+
+    public void seasonPreviews() {
+        //do whatever
+
+
+    }
+
+    public void episodePreviews() {
+        //do whatever
+    }
+
+/*
+            for (Season season : show.getSeasons()) {
+                MenuItem seasonItem = new MenuItem("Season " + season.getSeasonNumber());
+
+                seasonItem.setOnAction(event -> {
+                    seasonButton.setText(seasonItem.getText());
+                    System.out.println("Selected " + seasonItem.getText());
+
+                    episodeButton.getItems().clear();
+                    episodeButton.setText("Select Episode");
+
+                    for (Episode episode : season.getEpisodes()) {
+                        MenuItem episodeItem = new MenuItem("Episode " + episode.getEpisodeNum());
+                        System.out.println("Episode " + episode.getEpisodeNum() + " added to selector");
+
+                        episodeItem.setOnAction(event2 -> {
+                            episodeButton.setText(episodeItem.getText());
+                            System.out.println("Selected " + episodeItem.getText());
+                        });
+
+                        episodeButton.getItems().add(episodeItem);
+                    }
+                });
+
+                seasonButton.getItems().add(seasonItem);
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to fetch data", e);
+        }
+    }
+
+*/
 
 
     public interface ShowOverviewListener{
