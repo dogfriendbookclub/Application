@@ -5,81 +5,93 @@ import java.util.List;
 import java.util.Objects;
 
 import edu.metrostate.APIclient;
+import edu.metrostate.Show;
 import edu.metrostate.ShowPreview;
+import gui.content.ContentController;
+import gui.episodeoverview.EpisodeOverviewController;
+import gui.seasonoverview.SeasonOverviewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ShowOverviewController implements Initializable {
+    @FXML
+    private ListView<String> cretaorsList;
+
+    @FXML
+    private ListView<String> mainCastList;
+
+
+    @FXML
+    private TextArea synopsisTextBox;
+
+    @FXML
+    private HBox featuredStars;
+
+    @FXML
+    private Label featuredReviewTextBox;
+
+    @FXML
+    private HBox yourStars;
+
+    @FXML
+    private TextField userShowReview;
+
+    @FXML
+    private ComboBox<String> seasonButton;
+
+    @FXML
+    private ComboBox<String> episodeButton;
+
+    @FXML
+    private HBox showBox;
+
+    @FXML
+    private BorderPane seasonPage;
+
+    @FXML
+    private BorderPane episodePage;
+
+
+    @FXML
+    private SeasonOverviewController seasonOverviewController;
+
+    @FXML
+    private EpisodeOverviewController episodeOverviewController;
+
     private APIclient apIclient = new APIclient();
 
-    @FXML
-    private Button homeButton;
+    private ShowOverviewListener listener;
 
-    @FXML
-    private AnchorPane rootPane;
 
-    @FXML
-    private TextField searchBar;
-
-    @FXML
-    private MenuItem seasonSelector;
-
-    @FXML
-    private MenuItem episodeSelector;
-
-     @FXML
-    void loadHomePage(ActionEvent event) throws IOException {
-
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/homepage/HomePage.fxml"));
-
-         AnchorPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
+    //getters for MainController
+    public HBox getShowBox(){
+         return this.showBox;
     }
 
-    @FXML
-    void loadSeasonPage(ActionEvent event) throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/seasonoverview/SeasonOverview.fxml"));
-
-
-        AnchorPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
+    public BorderPane getSeasonPage(){
+         return this.seasonPage;
     }
 
-    @FXML
-    void loadEpisodePage(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/episodeoverview/EpisodeOverview.fxml"));
-
-        AnchorPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
+    public BorderPane getEpisodePage(){
+         return this.episodePage;
     }
 
-    void loadSearchPage(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
+    public EpisodeOverviewController getEpisodeOverviewController(){
+         return this.episodeOverviewController;
+    }
 
-        // returns a list of results (to the console atm) for the search query with the text from the search bar
-        try {
-            List<ShowPreview> testResults = apIclient.fetchSearchResults(searchBar.getText());
-            for ( ShowPreview result : testResults) {
-                System.out.println(result.toString());
-            }
-        } catch (Exception e) {
-            System.out.println("Search API Test Error");
-            e.printStackTrace();
-        }
-
-        AnchorPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
+    public SeasonOverviewController getSeasonOverviewController(){
+        return this.seasonOverviewController;
     }
 
     /**
@@ -93,6 +105,52 @@ public class ShowOverviewController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //do whatever
+
+        seasonButton.setOnAction(actionEvent -> {
+            seasonPreviews();
+        });
+
+        episodeButton.setOnAction(actionEvent -> {
+            episodePreviews();
+       });
+    }
+
+
+    public void loadShowData(int id) throws IOException {
+        Show show = apIclient.fetchShowData(id);
+        synopsisTextBox.clear();
+        synopsisTextBox.appendText(show.getPremise());
+    }
+
+
+
+    public void seasonPreviews() {
+        //do whatever
+
 
     }
+
+    public void episodePreviews() {
+       //do whatever
+
+
+    }
+
+
+
+
+    public interface ShowOverviewListener{
+        void selectedSeason();
+        void selectedEpisode();
+
+
+    }
+
+
+    public void setShowOverviewListener(ShowOverviewListener listener) {
+        this.listener = listener;
+    }
+
+
 }
