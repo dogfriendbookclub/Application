@@ -5,12 +5,15 @@ import edu.metrostate.ShowPreview;
 import gui.homepage.HomePageController;
 import gui.searchpage.SearchPageController;
 import gui.showoverview.ShowOverviewController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -52,19 +55,24 @@ public class ContentController implements Initializable {
 
     private ContentListener listener;
 
+/*
     /*
     @FXML
     void loadShowOverviewPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/showoverview/ShowOverview.fxml"));
         BorderPane pane = loader.load();
-        rootPane.ge  dvg babtewtb tChildren().setAll(pane);
+        rootPane.getChildren().setAll(pane);
 
+    }
+
+    public void loadHomePage(ActionEvent actionEvent) {
+        homePage.setVisible(false);
     }
 
     public void onHomeButton(ActionEvent actionEvent) {
         homePage.setVisible(true);
         searchPage.setVisible(false);
-        showPage.setVisible(false);
+        showPage.setVisible(true);
 
     }
 */
@@ -94,6 +102,7 @@ public class ContentController implements Initializable {
                 listener.onLogout();
             }
         });
+
         homeButton.setOnAction(actionEvent -> {
             if (listener != null) {
                 listener.onHomeButton();
@@ -134,27 +143,12 @@ public class ContentController implements Initializable {
     }
 
     //this is we at search control would go
-    private void searchTest(){
-        // returns a list of results (to the console atm) for the search query with the text from the search bar
-        //searchbar stuff from here will be injected into searchPage
-        //
-        /*
-        try {
-            List<ShowPreview> testResults = apIclient.fetchSearchResults(searchBar.getText());
-            for ( ShowPreview result : testResults) {
-                System.out.println(result.toString());
-                //rest of code
-            }
-            listener.searchTermEntered(searchBar.getText());
-        } catch (Exception e) {
-            System.out.println("Search API Test Error");
-            e.printStackTrace();
-        }
-    */
+    private void searchTest() {
         searchPageController.novaLuna(searchBar.getText());
         listener.searchTermEntered();
 
     }
+}
 
 /*
     //THERE were a couple of search functions,  I combined them together
@@ -179,8 +173,6 @@ public class ContentController implements Initializable {
         searchPage.setVisible(true);
 
 
-    }
-*/
     public void setContentListener(ContentListener listener) {
         this.listener = listener;
     }

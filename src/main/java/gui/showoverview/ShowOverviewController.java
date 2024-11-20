@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import edu.metrostate.*;
 import edu.metrostate.APIclient;
 import edu.metrostate.Show;
 import edu.metrostate.ShowPreview;
@@ -19,6 +20,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -31,6 +36,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ShowOverviewController implements Initializable {
+    @FXML
+    private ListView<String> cretaorsList;
 
     @FXML
     private ListView<String> mainCastList;
@@ -46,16 +53,26 @@ public class ShowOverviewController implements Initializable {
     private Label featuredReviewTextBox;
 
     @FXML
+    private MenuButton seasonButton;
+
+    @FXML
+    private MenuItem episodeSelector;
+
+    @FXML
+    private MenuButton episodeButton;
+
+     @FXML
+    //void loadHomePage(ActionEvent event) throws IOException {
     private HBox yourStars;
 
     @FXML
     private TextField userShowReview;
 
-    @FXML
+    /* @FXML
     private ComboBox<String> seasonButton;
 
     @FXML
-    private ComboBox<String> episodeButton;
+    private ComboBox<String> episodeButton; */
 
     @FXML
     private HBox showBox;
@@ -100,6 +117,14 @@ public class ShowOverviewController implements Initializable {
          return this.seasonPage;
     }
 
+    /*
+    void loadSearchPage(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
+
+        AnchorPane pane = loader.load();
+        rootPane.getChildren().setAll(pane);
+    } */
+
     public BorderPane getEpisodePage(){
          return this.episodePage;
     }
@@ -123,15 +148,48 @@ public class ShowOverviewController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        int showId = 1396; // hard coded test value for now
+        try {
+            Show show = apIclient.fetchShowData(showId);
+            seasonButton.getItems().clear();
         //do whatever
 
-        seasonButton.setOnAction(actionEvent -> {
+       /* seasonButton.setOnAction(actionEvent -> {
             seasonPreviews();
         });
 
         episodeButton.setOnAction(actionEvent -> {
             episodePreviews();
-       });
+       }); */
+            for (Season season : show.getSeasons()) {
+                MenuItem seasonItem = new MenuItem("Season " + season.getSeasonNumber());
+
+                seasonItem.setOnAction(event -> {
+                    seasonButton.setText(seasonItem.getText());
+                    System.out.println("Selected " + seasonItem.getText());
+
+                    episodeButton.getItems().clear();
+                    episodeButton.setText("Select Episode");
+
+                    for (Episode episode : season.getEpisodes()) {
+                        MenuItem episodeItem = new MenuItem("Episode " + episode.getEpisodeNum());
+                        System.out.println("Episode " + episode.getEpisodeNum() + " added to selector");
+
+                        episodeItem.setOnAction(event2 -> {
+                            episodeButton.setText(episodeItem.getText());
+                            System.out.println("Selected " + episodeItem.getText());
+                        });
+
+                        episodeButton.getItems().add(episodeItem);
+                    }
+                });
+
+                seasonButton.getItems().add(seasonItem);
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to fetch data", e);
+        }
     }
 
 
@@ -197,13 +255,42 @@ public class ShowOverviewController implements Initializable {
     }
 
     public void episodePreviews() {
-       //do whatever
+        //do whatever
 
+/*
+            for (Season season : show.getSeasons()) {
+                MenuItem seasonItem = new MenuItem("Season " + season.getSeasonNumber());
 
+                seasonItem.setOnAction(event -> {
+                    seasonButton.setText(seasonItem.getText());
+                    System.out.println("Selected " + seasonItem.getText());
+
+                    episodeButton.getItems().clear();
+                    episodeButton.setText("Select Episode");
+
+                    for (Episode episode : season.getEpisodes()) {
+                        MenuItem episodeItem = new MenuItem("Episode " + episode.getEpisodeNum());
+                        System.out.println("Episode " + episode.getEpisodeNum() + " added to selector");
+
+                        episodeItem.setOnAction(event2 -> {
+                            episodeButton.setText(episodeItem.getText());
+                            System.out.println("Selected " + episodeItem.getText());
+                        });
+
+                        episodeButton.getItems().add(episodeItem);
+                    }
+                });
+
+                seasonButton.getItems().add(seasonItem);
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to fetch data", e);
+        }
     }
 
-
-
+*/
+    }
 
     public interface ShowOverviewListener{
         void selectedSeason();
