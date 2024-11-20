@@ -164,7 +164,15 @@
                                     </Label>
                                  </children>
                               </HBox>
-                              <TextArea prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" />
+                              <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;">
+                                 <children>
+                                    <Label fx:id="featuredReviewTextBox" alignment="TOP_LEFT" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="94.0" prefWidth="242.0" text="Feature Review...">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
                         <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="340.0" prefWidth="141.0" HBox.hgrow="ALWAYS">
