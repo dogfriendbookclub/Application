@@ -45,16 +45,8 @@ public class SearchPageController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        /*
-       assign functionalities to buttons and what not
-       such as for filters and managin the search results that will be passed into here
-       teh funciton in this interface that is passed into main, will be used to get teh search results
 
-       for example:
-       action event for when user selects filters
-       ermm print result for what ever is put in the search
-       also how results are displayed
-    */
+
 
     }
 
