@@ -23,6 +23,7 @@ public class SearchPageController implements Initializable {
 
 
 
+
     /**
      * Called to initialize a controller after its root element has been
      * completely processed.

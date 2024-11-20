@@ -67,6 +67,8 @@ public class ContentController implements Initializable {
 
     private ContentListener listener;
 
+
+
     @FXML
     void loadShowOverview(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/showoverview/ShowOverview.fxml"));
@@ -117,6 +119,7 @@ public class ContentController implements Initializable {
     @FXML
     void loadSearchPage(ActionEvent evnt) throws IOException {
      //   FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
+
         // returns a list of results (to the console atm) for the search query with the text from the search bar
         try {
             List<ShowPreview> testResults = apIclient.fetchSearchResults(searchBar.getText());
@@ -127,6 +130,9 @@ public class ContentController implements Initializable {
             System.out.println("Search API Test Error");
             e.printStackTrace();
         }
+
+)
+
 
       //  BorderPane pane = loader.load();
    //     rootPane.getChildren().setAll(pane);

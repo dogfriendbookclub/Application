@@ -43,11 +43,6 @@ public class ShowOverviewController implements Initializable {
     @FXML
     private MenuButton episodeButton;
 
-    @FXML
-    public void addMenuItem() {
-
-    }
-
      @FXML
     void loadHomePage(ActionEvent event) throws IOException {
 
@@ -78,17 +73,6 @@ public class ShowOverviewController implements Initializable {
     void loadSearchPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
 
-        // returns a list of results (to the console atm) for the search query with the text from the search bar
-        try {
-            List<ShowPreview> testResults = apIclient.fetchSearchResults(searchBar.getText());
-            for ( ShowPreview result : testResults) {
-                System.out.println(result.toString());
-            }
-        } catch (Exception e) {
-            System.out.println("Search API Test Error");
-            e.printStackTrace();
-        }
-
         AnchorPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
     }
@@ -104,7 +88,7 @@ public class ShowOverviewController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        int showId = 56343; // hard coded test value for now
+        int showId = 1396; // hard coded test value for now
         try {
             Show show = apIclient.fetchShowData(showId);
             seasonButton.getItems().clear();
@@ -113,9 +97,21 @@ public class ShowOverviewController implements Initializable {
                 MenuItem seasonItem = new MenuItem("Season " + season.getSeasonNumber());
 
                 seasonItem.setOnAction(event -> {
+                    seasonButton.setText(seasonItem.getText());
                     System.out.println("Selected " + seasonItem.getText());
+
+                    episodeButton.getItems().clear();
+                    episodeButton.setText("Select Episode");
+
                     for (Episode episode : season.getEpisodes()) {
                         MenuItem episodeItem = new MenuItem("Episode " + episode.getEpisodeNum());
+                        System.out.println("Episode " + episode.getEpisodeNum() + " added to selector");
+
+                        episodeItem.setOnAction(event2 -> {
+                            episodeButton.setText(episodeItem.getText());
+                            System.out.println("Selected " + episodeItem.getText());
+                        });
+
                         episodeButton.getItems().add(episodeItem);
                     }
                 });
@@ -124,7 +120,7 @@ public class ShowOverviewController implements Initializable {
             }
 
         } catch (IOException e) {
-            throw new RuntimeException("Failed to fetch seasons", e);
+            throw new RuntimeException("Failed to fetch data", e);
         }
     }
 }
