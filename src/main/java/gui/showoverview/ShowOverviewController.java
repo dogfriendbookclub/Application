@@ -5,6 +5,12 @@ import java.util.List;
 import java.util.Objects;
 
 import edu.metrostate.*;
+import edu.metrostate.APIclient;
+import edu.metrostate.Show;
+import edu.metrostate.ShowPreview;
+import gui.content.ContentController;
+import gui.episodeoverview.EpisodeOverviewController;
+import gui.seasonoverview.SeasonOverviewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,26 +19,31 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ShowOverviewController implements Initializable {
-    private APIclient apIclient = new APIclient();
+    @FXML
+    private ListView<String> cretaorsList;
 
     @FXML
-    private Button homeButton;
+    private ListView<String> mainCastList;
+
 
     @FXML
-    private AnchorPane rootPane;
+    private TextArea synopsisTextBox;
 
     @FXML
-    private TextField searchBar;
+    private HBox featuredStars;
 
     @FXML
-    private MenuItem seasonSelector;
+    private Label featuredReviewTextBox;
 
     @FXML
     private MenuButton seasonButton;
@@ -45,29 +56,45 @@ public class ShowOverviewController implements Initializable {
 
      @FXML
     void loadHomePage(ActionEvent event) throws IOException {
-
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/homepage/HomePage.fxml"));
-
-         AnchorPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
-    }
+    private HBox yourStars;
 
     @FXML
-    void loadSeasonPage(ActionEvent event) throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/seasonoverview/SeasonOverview.fxml"));
-
-
-        AnchorPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
-    }
+    private TextField userShowReview;
 
     @FXML
-    void loadEpisodePage(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/episodeoverview/EpisodeOverview.fxml"));
+    private ComboBox<String> seasonButton;
 
-        AnchorPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
+    @FXML
+    private ComboBox<String> episodeButton;
+
+    @FXML
+    private HBox showBox;
+
+    @FXML
+    private BorderPane seasonPage;
+
+    @FXML
+    private BorderPane episodePage;
+
+
+    @FXML
+    private SeasonOverviewController seasonOverviewController;
+
+    @FXML
+    private EpisodeOverviewController episodeOverviewController;
+
+    private APIclient apIclient = new APIclient();
+
+    private ShowOverviewListener listener;
+
+
+    //getters for MainController
+    public HBox getShowBox(){
+         return this.showBox;
+    }
+
+    public BorderPane getSeasonPage(){
+         return this.seasonPage;
     }
 
     void loadSearchPage(ActionEvent event) throws IOException {
@@ -75,6 +102,17 @@ public class ShowOverviewController implements Initializable {
 
         AnchorPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
+
+    public BorderPane getEpisodePage(){
+         return this.episodePage;
+    }
+
+    public EpisodeOverviewController getEpisodeOverviewController(){
+         return this.episodeOverviewController;
+    }
+
+    public SeasonOverviewController getSeasonOverviewController(){
+        return this.seasonOverviewController;
     }
 
     /**
@@ -92,6 +130,35 @@ public class ShowOverviewController implements Initializable {
         try {
             Show show = apIclient.fetchShowData(showId);
             seasonButton.getItems().clear();
+        //do whatever
+
+        seasonButton.setOnAction(actionEvent -> {
+            seasonPreviews();
+        });
+
+        episodeButton.setOnAction(actionEvent -> {
+            episodePreviews();
+       });
+    }
+
+
+    public void loadShowData(int id) throws IOException {
+        Show show = apIclient.fetchShowData(id);
+        synopsisTextBox.clear();
+        synopsisTextBox.appendText(show.getPremise());
+    }
+
+
+
+    public void seasonPreviews() {
+        //do whatever
+
+
+    }
+
+    public void episodePreviews() {
+       //do whatever
+
 
             for (Season season : show.getSeasons()) {
                 MenuItem seasonItem = new MenuItem("Season " + season.getSeasonNumber());
@@ -123,4 +190,21 @@ public class ShowOverviewController implements Initializable {
             throw new RuntimeException("Failed to fetch data", e);
         }
     }
+
+
+
+
+    public interface ShowOverviewListener{
+        void selectedSeason();
+        void selectedEpisode();
+
+
+    }
+
+
+    public void setShowOverviewListener(ShowOverviewListener listener) {
+        this.listener = listener;
+    }
+
+
 }

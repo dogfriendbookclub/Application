@@ -19,6 +19,7 @@ public class APIclient {
     private static final String IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
     private static final String SEARCH_URL = "https://api.themoviedb.org/3/search/tv";
 
+
     private final CloseableHttpClient httpClient;
     private final ObjectMapper objectMapper;
 
@@ -27,6 +28,7 @@ public class APIclient {
         this.httpClient = HttpClients.createDefault();
         this.objectMapper = new ObjectMapper();
     }
+
     //This method is a call that will fetch the data of a show, need to work on Episodes
     public Show fetchShowData(int showId) throws IOException {
         String url = BASE_URL + showId + "?api_key=" + API_KEY + "&append_to_response=seasons,episodes";
@@ -179,6 +181,10 @@ public class APIclient {
             return showPreviews; // Return the list of ShowPreview
         }
     }
+
+
+
+
 
 
 
