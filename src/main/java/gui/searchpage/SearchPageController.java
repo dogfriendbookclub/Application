@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import edu.metrostate.APIclient;
 import edu.metrostate.ShowPreview;
+import javafx.event.ActionEvent;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,6 +28,7 @@ public class SearchPageController implements Initializable {
     private APIclient apIclient = new APIclient();
 
     private SearchPageListener listener;
+
 
 
     public interface SearchPageListener{
