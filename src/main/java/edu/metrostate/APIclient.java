@@ -44,9 +44,8 @@ public class APIclient {
             return objectMapper.readValue(jsonResponse, Show.class);
         }
     }
-    // Fetches the poster image URL for a show
-    public String fetchPosterImageUrl(int showId) throws IOException {
-        String url = BASE_URL + showId + "?api_key=" + API_KEY;
+    public List<String> fetchMainCast(int showId) throws IOException {
+        String url = BASE_URL + showId + "/credits?api_key=" + API_KEY; // Use the correct credits endpoint
         HttpGet request = new HttpGet(url);
         try (CloseableHttpResponse response = httpClient.execute(request)) {
             if (response.getCode() != 200) {
@@ -56,14 +55,18 @@ public class APIclient {
             String jsonResponse = new String(response.getEntity().getContent().readAllBytes());
             JsonNode rootNode = objectMapper.readTree(jsonResponse);
 
-            // Extract the poster_path from the JSON response
-            String posterPath = rootNode.path("poster_path").asText();
-            if (posterPath == null || posterPath.isEmpty()) {
-                throw new IOException("Poster path not found for the show.");
+            // Extract the "cast" array (this contains the main cast members)
+            JsonNode castNode = rootNode.path("cast");
+
+            List<String> castNames = new ArrayList<>();
+
+            // Loop through the cast array and extract the name of each actor/actress
+            for (JsonNode castMember : castNode) {
+                String name = castMember.path("name").asText();
+                castNames.add(name);
             }
 
-            // Construct the full image URL
-            return IMAGE_BASE_URL + posterPath;
+            return castNames;
         }
     }
 
