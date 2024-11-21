@@ -14,19 +14,20 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.image.ImageView?>
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.showoverview.ShowOverviewController">
    <top>
-      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="208.0" prefWidth="600.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
+      <VBox fx:id="backdropBackground" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"  prefWidth="600.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
          <children>
-            <MediaView fitHeight="128.0" fitWidth="553.0" VBox.vgrow="ALWAYS" />
+            <ImageView fitHeight="200.0" fitWidth="600.0" VBox.vgrow="ALWAYS" preserveRatio="true" />
             <HBox alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="271.0">
                <children>
-                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="126.0" text="Specific Show Title">
+                  <Label fx:id="showTitle" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="19.0"  text="Specific Show Title" style="-fx-text-fill: white; -fx-font-size: 24px;" >
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="17.0" prefWidth="70.0" text="(years aired)" />
+                  <Label fx:id="yearsAired" prefHeight="17.0" prefWidth="70.0" text="(years aired)" style="-fx-text-fill: white" />
                </children>
             </HBox>
             <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="58.0" prefWidth="558.0" spacing="10.0">
@@ -118,7 +119,7 @@
                                           <Font name="System Bold" size="10.0" />
                                        </font>
                                     </Label>
-                                    <ListView fx:id="cretaorsList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" />
+                                    <ListView fx:id="creatorsList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" />
                                  </children>
                               </VBox>
                               <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0">
@@ -208,8 +209,8 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                   </HBox>
-                  <fx:include fx:id="seasonPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="../seasonoverview/SeasonOverview.fxml" />
-                  <fx:include fx:id="episodePage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="../episodeoverview/EpisodeOverview.fxml" />
+                  <fx:include fx:id="seasonPage"  source="../seasonoverview/SeasonOverview.fxml" />
+                  <fx:include fx:id="episodePage"  source="../episodeoverview/EpisodeOverview.fxml" />
                </children>
             </StackPane>
          </children>
