@@ -1,6 +1,11 @@
 package gui.showoverview;
 
+import edu.metrostate.Creator;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,17 +20,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ShowOverviewController implements Initializable {
-    @FXML
-    private ListView<String> cretaorsList;
 
     @FXML
     private ListView<String> mainCastList;
@@ -60,6 +65,19 @@ public class ShowOverviewController implements Initializable {
 
     @FXML
     private BorderPane episodePage;
+
+    @FXML
+    private VBox backdropBackground;
+
+    @FXML
+    private Label showTitle;
+
+    @FXML
+    private Label yearsAired;
+
+    @FXML
+    private ListView creatorsList;
+
 
 
     @FXML
@@ -119,8 +137,55 @@ public class ShowOverviewController implements Initializable {
 
     public void loadShowData(int id) throws IOException {
         Show show = apIclient.fetchShowData(id);
+        yearsAired.setText(show.getYearStart());
+        showTitle.setText(show.getTitle());
         synopsisTextBox.clear();
         synopsisTextBox.appendText(show.getPremise());
+        creatorsList.getItems().clear();
+        populatecreators(show);
+        mainCastList.getItems().clear();
+        populateCast(id);
+        setVBoxBackdrop(show.getPosterPath());
+    }
+
+    private void setVBoxBackdrop(String backDropPath) {
+        if (backDropPath != null && !backDropPath.isEmpty()) {
+            try {
+                // Construct the full URL for the image
+                String fullImageUrl = "https://image.tmdb.org/t/p/original" + backDropPath;
+
+                // Set the background image
+                backdropBackground.setStyle(
+                        "-fx-background-image: url('" + fullImageUrl + "'); " +
+                                "-fx-background-size: cover; " +
+                                "-fx-background-position: center; " +
+                                "-fx-background-repeat: no-repeat;"
+                );
+            } catch (Exception e) {
+                System.err.println("Failed to set backdrop VBox background: " + e.getMessage());
+            }
+        } else {
+            System.out.println("Backdrop path is invalid or empty.");
+        }
+    }
+
+    public void populatecreators(Show show){
+        List<Creator> creators = show.getCreators();  // Get the creators from the Show class
+
+        // Create a list to store the creator names
+        List<String> creatorNames = new ArrayList<>();
+        for (Creator creator : creators) {
+            creatorNames.add(creator.getName());  // Add creator name to the list
+        }
+
+        // Set the creator names to the ListView
+        ObservableList<String> observableCreatorNames = FXCollections.observableArrayList(creatorNames);
+        creatorsList.setItems(observableCreatorNames);
+    }
+    public void populateCast(int id) throws IOException {
+        List<String> mainCast = apIclient.fetchMainCast(id);
+        ObservableList<String> observableMainCastList = FXCollections.observableArrayList(mainCast);
+        mainCastList.setItems(observableMainCastList);
     }
 
 
