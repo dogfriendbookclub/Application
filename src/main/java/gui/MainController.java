@@ -333,7 +333,12 @@ public class MainController implements Initializable, LoginController.LoginListe
      *
      */
     @Override
-    public void showClickedOnInHome() {
+    public void showClickedOnInHome(int id) {
+        try {
+            this.showOverviewController.loadShowData(id);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         changeView("showView");
     }
 
