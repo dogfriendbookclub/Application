@@ -112,7 +112,7 @@ public class HomePageController implements Initializable {
                     // Add click event to the image
                     imageView.setOnMouseClicked(event -> {
                         if (event.getClickCount() == 2) { // Respond to double-click
-                                listener.showClickedOnInHome();
+                                listener.showClickedOnInHome(showPreview.getShowId());
                         }
                     });
 
@@ -133,7 +133,7 @@ public class HomePageController implements Initializable {
 
 
     public interface HomePageListener {
-        void showClickedOnInHome();
+        void showClickedOnInHome(int id);
     }
 
 
