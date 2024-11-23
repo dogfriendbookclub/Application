@@ -8,9 +8,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
+import edu.metrostate.*;
 import edu.metrostate.*;
 import edu.metrostate.APIclient;
+import edu.metrostate.Season;
 import edu.metrostate.Show;
 import edu.metrostate.ShowPreview;
 import gui.content.ContentController;
@@ -148,10 +149,10 @@ public class ShowOverviewController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        int showId = 1396; // hard coded test value for now
-        try {
+       /* int showId = 1396; // hard coded test value for now
+
             Show show = apIclient.fetchShowData(showId);
-            seasonButton.getItems().clear();
+            seasonButton.getItems().clear(); */
         //do whatever
 
        /* seasonButton.setOnAction(actionEvent -> {
@@ -161,35 +162,7 @@ public class ShowOverviewController implements Initializable {
         episodeButton.setOnAction(actionEvent -> {
             episodePreviews();
        }); */
-            for (Season season : show.getSeasons()) {
-                MenuItem seasonItem = new MenuItem("Season " + season.getSeasonNumber());
-
-                seasonItem.setOnAction(event -> {
-                    seasonButton.setText(seasonItem.getText());
-                    System.out.println("Selected " + seasonItem.getText());
-
-                    episodeButton.getItems().clear();
-                    episodeButton.setText("Select Episode");
-
-                    for (Episode episode : season.getEpisodes()) {
-                        MenuItem episodeItem = new MenuItem("Episode " + episode.getEpisodeNum());
-                        System.out.println("Episode " + episode.getEpisodeNum() + " added to selector");
-
-                        episodeItem.setOnAction(event2 -> {
-                            episodeButton.setText(episodeItem.getText());
-                            System.out.println("Selected " + episodeItem.getText());
-                        });
-
-                        episodeButton.getItems().add(episodeItem);
-                    }
-                });
-
-                seasonButton.getItems().add(seasonItem);
-            }
-
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to fetch data", e);
-        }
+       //
     }
 
 
@@ -205,6 +178,33 @@ public class ShowOverviewController implements Initializable {
         mainCastList.getItems().clear();
         populateCast(id);
         setVBoxBackdrop(show.getPosterPath());
+
+        for (Season season : show.getSeasons()) {
+            MenuItem seasonItem = new MenuItem("Season " + season.getSeasonNumber());
+
+            seasonItem.setOnAction(event -> {
+                seasonButton.setText(seasonItem.getText());
+                System.out.println("Selected " + seasonItem.getText());
+
+                episodeButton.getItems().clear();
+                episodeButton.setText("Select Episode");
+
+                for (Episode episode : season.getEpisodes()) {
+                    MenuItem episodeItem = new MenuItem("Episode " + episode.getEpisodeNum());
+                    System.out.println("Episode " + episode.getEpisodeNum() + " added to selector");
+
+                    episodeItem.setOnAction(event2 -> {
+                        episodeButton.setText(episodeItem.getText());
+                        System.out.println("Selected " + episodeItem.getText());
+                    });
+
+                    episodeButton.getItems().add(episodeItem);
+                }
+            });
+
+            seasonButton.getItems().add(seasonItem);
+        }
+
     }
 
     private void setVBoxBackdrop(String backDropPath) {
@@ -258,39 +258,6 @@ public class ShowOverviewController implements Initializable {
     public void episodePreviews() {
         //do whatever
 
-/*
-            for (Season season : show.getSeasons()) {
-                MenuItem seasonItem = new MenuItem("Season " + season.getSeasonNumber());
-
-                seasonItem.setOnAction(event -> {
-                    seasonButton.setText(seasonItem.getText());
-                    System.out.println("Selected " + seasonItem.getText());
-
-                    episodeButton.getItems().clear();
-                    episodeButton.setText("Select Episode");
-
-                    for (Episode episode : season.getEpisodes()) {
-                        MenuItem episodeItem = new MenuItem("Episode " + episode.getEpisodeNum());
-                        System.out.println("Episode " + episode.getEpisodeNum() + " added to selector");
-
-                        episodeItem.setOnAction(event2 -> {
-                            episodeButton.setText(episodeItem.getText());
-                            System.out.println("Selected " + episodeItem.getText());
-                        });
-
-                        episodeButton.getItems().add(episodeItem);
-                    }
-                });
-
-                seasonButton.getItems().add(seasonItem);
-            }
-
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to fetch data", e);
-        }
-    }
-
-*/
     }
 
 

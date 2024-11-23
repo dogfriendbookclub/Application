@@ -153,7 +153,7 @@ public class ContentController implements Initializable {
         listener.searchTermEntered();
 
     }
-}
+
 
 /*
     //THERE were a couple of search functions,  I combined them together
@@ -176,7 +176,7 @@ public class ContentController implements Initializable {
         showPage.setVisible(false);
         homePage.setVisible(false);
         searchPage.setVisible(true);
-
+*/
 
     public void setContentListener(ContentListener listener) {
         this.listener = listener;
