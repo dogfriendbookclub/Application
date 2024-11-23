@@ -193,6 +193,7 @@ public class ShowOverviewController implements Initializable {
     }
 
 
+
     public void loadShowData(int id) throws IOException {
         Show show = apIclient.fetchShowData(id);
         yearsAired.setText(show.getYearStart());
@@ -291,6 +292,7 @@ public class ShowOverviewController implements Initializable {
 
 */
     }
+
 
     public interface ShowOverviewListener{
         void selectedSeason();

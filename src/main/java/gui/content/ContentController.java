@@ -75,12 +75,16 @@ public class ContentController implements Initializable {
         showPage.setVisible(true);
 
     }
+
 */
 
     public interface ContentListener {
         void onHomeButton();
+
         void onLogout();
+
         void searchTermEntered();
+
         void loadShowOverviewPage();
     }
 
@@ -118,32 +122,33 @@ public class ContentController implements Initializable {
     }
 
     //getters for MainController to use
-    public BorderPane getHomePage(){
+    public BorderPane getHomePage() {
         return this.homePage;
     }
 
-    public BorderPane getSearchPage(){
+    public BorderPane getSearchPage() {
         return this.searchPage;
     }
 
-    public BorderPane getShowOverview(){
+    public BorderPane getShowOverview() {
         return this.showOverview;
     }
 
-    public HomePageController getHomePageController(){
+    public HomePageController getHomePageController() {
         return this.homePageController;
     }
 
-    public SearchPageController getSearchPageController(){
+    public SearchPageController getSearchPageController() {
         return this.searchPageController;
     }
 
-    public ShowOverviewController getShowOverviewController(){
+    public ShowOverviewController getShowOverviewController() {
         return this.showOverviewController;
     }
 
     //this is we at search control would go
     private void searchTest() {
+
         searchPageController.novaLuna(searchBar.getText());
         listener.searchTermEntered();
 
@@ -178,4 +183,4 @@ public class ContentController implements Initializable {
     }
 
 
-}//end class
+}//end class */
