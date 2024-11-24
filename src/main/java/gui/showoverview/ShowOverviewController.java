@@ -38,11 +38,10 @@ import java.util.ResourceBundle;
 
 public class ShowOverviewController implements Initializable {
     @FXML
-    private ListView<String> cretaorsList;
+    private ListView<String> creatorsList;
 
     @FXML
     private ListView<String> mainCastList;
-
 
     @FXML
     private TextArea synopsisTextBox;
@@ -93,10 +92,6 @@ public class ShowOverviewController implements Initializable {
     @FXML
     private Label yearsAired;
 
-    @FXML
-    private ListView creatorsList;
-
-
 
     @FXML
     private SeasonOverviewController seasonOverviewController;
@@ -118,13 +113,7 @@ public class ShowOverviewController implements Initializable {
          return this.seasonPage;
     }
 
-    /*
-    void loadSearchPage(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
 
-        AnchorPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
-    } */
 
     public BorderPane getEpisodePage(){
          return this.episodePage;
@@ -177,7 +166,7 @@ public class ShowOverviewController implements Initializable {
         populatecreators(show);
         mainCastList.getItems().clear();
         populateCast(id);
-        setVBoxBackdrop(show.getPosterPath());
+      //  setVBoxBackdrop(show.getPosterPath());
 
         for (Season season : show.getSeasons()) {
             MenuItem seasonItem = new MenuItem("Season " + season.getSeasonNumber());
