@@ -1,81 +1,41 @@
 package gui.homepage;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import edu.metrostate.APIclient;
 import edu.metrostate.ShowPreview;
-import javafx.event.ActionEvent;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
+import javafx.geometry.Orientation;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.geometry.Pos;
 
 public class HomePageController implements Initializable {
-    @FXML
-    private ImageView image1;
-
-    @FXML
-    private ImageView image2;
-
-    @FXML
-    private ImageView image3;
-
-    @FXML
-    private ImageView image4;
-
-    @FXML
-    private ImageView image5;
-
-    @FXML
-    private TextField searchBar;
-
-    @FXML
-    private Button homeButton;
-
-    @FXML
-    private AnchorPane rootPane;
-
-    @FXML
-    private Button showOverviewButton;
-
     private HomePageListener listener;
 
     private APIclient apIclient = new APIclient();
 
-    public interface HomePageListener {
-        void onLogout();
+    @FXML
+    private ListView<ShowPreview> testListView;
 
-    }
+    @FXML
+    private ListView<ShowPreview> testListView1;
+
+    @FXML
+    private ListView<ShowPreview> testListView11;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
-   //DEAR NICHOLAS, big changes to homePage, the rows are now list based, I think it should be easy to convert what
-    // you have in the FXML initialize, to the new format.
-
-/*
-    @FXML
-    public void initialize() {
-        System.out.println("homepagecontroller is am being initialized");
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("HomepageController is being initialized");
 
         try {
-            // Fetch the list of popular shows (limited to 15)
+            // Fetch the list of popular shows (we assume the API fetch returns at least 45 for this example)
             List<ShowPreview> showPreviews = apIclient.fetchPopularShows();
 
             // Check if the list is null or empty
@@ -84,101 +44,119 @@ public class HomePageController implements Initializable {
                 return; // Exit early if there's no data to process
             }
 
-            // Maximum number of images per row
-            int maxImagesPerRow = 5;
+            // Divide the list into separate lists of 5 shows each
+            List<ShowPreview> rowOneShows = showPreviews.subList(0, Math.min(5, showPreviews.size()));
+            List<ShowPreview> rowTwoShows = showPreviews.size() > 5 ? showPreviews.subList(5, Math.min(10, showPreviews.size())) : List.of();
+            List<ShowPreview> rowThreeShows = showPreviews.size() > 10 ? showPreviews.subList(10, Math.min(15, showPreviews.size())) : List.of();
 
-            // Temporary HBox to hold images and titles
-            HBox currentHBox = new HBox(10); // 10 is the spacing between images
-            currentHBox.setAlignment(javafx.geometry.Pos.CENTER);
+            // Set each ListView with the corresponding list and custom cell factory
+            setupListView(testListView, rowOneShows);
+            setupListView(testListView1, rowTwoShows);
+            setupListView(testListView11, rowThreeShows);
 
-            // Iterate through the list of ShowPreview
-            for (int i = 0; i < showPreviews.size(); i++) {
-                ShowPreview showPreview = showPreviews.get(i);
-
-                // Fetch the poster URL using the showId
-                String posterUrl = apIclient.fetchPosterImageUrl(showPreview.getShowId());
-
-                // Check if the poster URL is valid
-                if (posterUrl == null || posterUrl.isEmpty()) {
-                    System.out.println("Poster URL is null or empty for show ID: " + showPreview.getShowId());
-                    continue; // Skip this show if there's no valid image
-                }
-
-                // Create an ImageView for each poster
-                ImageView imageView = new ImageView();
-                imageView.setFitWidth(96); // Set the desired width for the images
-                imageView.setFitHeight(122); // Set the desired height for the images
-                imageView.setPreserveRatio(true);
-
-                // Load the image
-                try {
-                    Image image = new Image(posterUrl);
-                    imageView.setImage(image);
-                } catch (Exception e) {
-                    System.out.println("Failed to load image for show ID: " + showPreview.getShowId());
-                    e.printStackTrace();
-                    continue; // Skip this image if there's a loading error
-                }
-
-                // Create a Label for the show title
-                Label titleLabel = new Label(showPreview.getTitle());
-                titleLabel.setWrapText(true); // Enable wrapping for longer titles
-
-                // Create a VBox to hold the ImageView and the Label
-                VBox showVBox = new VBox(imageView, titleLabel);
-                showVBox.setAlignment(javafx.geometry.Pos.CENTER); // Center align items in VBox
-
-
-                // Make the VBox clickable
-                showVBox.setOnMouseClicked(event -> {
-                    // Action to be taken when clicked
-                    System.out.println("Clicked on: " + showPreview.getShowId());
-                    try {
-                        loadShowOverview(null);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    // You can access other properties of showPreview here, such as showPreview.getShowId()
-                });
-
-                // Change cursor on hover
-                showVBox.setOnMouseEntered(event -> showVBox.setCursor(Cursor.HAND));
-                showVBox.setOnMouseExited(event -> showVBox.setCursor(Cursor.DEFAULT));
-
-                // Add the VBox to the current HBox
-                currentHBox.getChildren().add(showVBox);
-
-                // If the row is filled or it's the last image, add the current HBox to the VBox
-                if ((i + 1) % maxImagesPerRow == 0 || i == showPreviews.size() - 1) {
-                    vboxContainer.getChildren().add(currentHBox);
-                    currentHBox = new HBox(10); // Create a new HBox for the next row
-                    currentHBox.setAlignment(javafx.geometry.Pos.CENTER);
-                }
-
-            }
-
-        } catch (IOException e) {
-            System.out.println("An IOException occurred during API call.");
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-        homeButton.setOnAction(actionEvent -> {
-            if (listener != null) {
-         //      loadShowOverview();
+    }
+
+    /**
+     * Configures a ListView to display a list of ShowPreview objects with a custom cell factory.
+     */
+    private void setupListView(ListView<ShowPreview> listView, List<ShowPreview> shows) {
+        listView.setItems(FXCollections.observableArrayList(shows));
+        listView.setOrientation(Orientation.HORIZONTAL);
+        // Configure the cell factory
+        listView.setCellFactory(param -> new ListCell<ShowPreview>() {
+            private final ImageView imageView = new ImageView();
+            private final Label titleLabel = new Label();
+            private final VBox cellContent = new VBox(imageView, titleLabel); // Use VBox directly
+
+            {
+
+                // Set padding and alignment for cell content
+                cellContent.setAlignment(Pos.CENTER);
+                cellContent.setSpacing(5);
+
+                // Set the graphic to the cell content
+                setGraphic(cellContent);
+            }
+
+            @Override
+            protected void updateItem(ShowPreview showPreview, boolean empty) {
+                super.updateItem(showPreview, empty);
+
+
+                //pass ID Into show
+                if (empty || showPreview == null) {
+                    setGraphic(null);
+                } else {
+                    // Set the image and title for each cell
+                    String posterUrl = "https://image.tmdb.org/t/p/w500" + showPreview.getPosterPath();
+                    imageView.setImage(new Image(posterUrl));
+                    titleLabel.setText(showPreview.getTitle());
+
+                    // Bind the image width to the ListView's width to adapt when resizing
+                    double padding = 10; // Padding around the image
+                    double imageWidth = (listView.getWidth() / 5) - (padding * 2); // Calculate width per image minus padding
+                    imageView.setFitHeight(122); // Fixed height
+                    imageView.setFitWidth(imageWidth); // Adapt width
+
+                    // Maintain the aspect ratio
+                    imageView.setPreserveRatio(true);
+
+                    // Update the graphic for the ListCell
+                    setGraphic(cellContent);
+
+                    // Add click event to the image
+                    imageView.setOnMouseClicked(event -> {
+                        if (event.getClickCount() == 2) { // Respond to double-click
+                                listener.showClickedOnInHome(showPreview.getShowId());
+                        }
+                    });
+
+                }
             }
         });
-    }//end fxml override
-*/
+
+        // Set a fixed height for each cell
+        listView.setFixedCellSize(150);
+        listView.setPrefHeight(150);
+
+        // Update the ListView's width to allow resizing
+        listView.widthProperty().addListener((observable, oldValue, newValue) -> {
+            listView.requestLayout(); // Request a layout update to adapt to the new width
+        });
+    }
 
 
 
+    public interface HomePageListener {
+        void showClickedOnInHome(int id);
+    }
+
+
+    public void setHomePageListener(HomePageListener listener){
+        this.listener = listener;
+    }
+
+/*
     @FXML
-    void loadShowOverview(ActionEvent event) throws IOException {
+    // Update to call loadShowOverviewPage with the clicked show
+    private void showClickedOnInHome(ShowPreview showPreview) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/showoverview/ShowOverview.fxml"));
-        AnchorPane pane = loader.load();
+        BorderPane pane = loader.load();
+
+         If you need to pass data to the next controller, you can do it here
+        ShowOverviewController controller = loader.getController();
+        controller.setShowDetails(showPreview);  Assuming you have a method to set show details
+
+        // Replace the current root pane with the new one
         rootPane.getChildren().setAll(pane);
     }
+*/
+
 
 
 
