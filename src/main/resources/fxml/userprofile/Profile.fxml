@@ -60,7 +60,8 @@
             <StackPane>
                <ImageView fx:id="profilePic" fitWidth="200.0" fitHeight="200.0" pickOnBounds="true" preserveRatio="true" />
                <Circle fx:id="profileClip" radius="100.0" />
-            </StackPane>            <Text fx:id="username" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
+            </StackPane>
+            <Text fx:id="username" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
             <TextField fx:id="userDescription" prefHeight="25.0" prefWidth="532.0" />
          </children>
          <padding>

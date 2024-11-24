@@ -6,8 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
-import org.w3c.dom.Text;
-
+import javafx.scene.text.Text;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -27,15 +26,15 @@ public class ProfilePageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        Image image = new Image(getClass().getResource("/images/rottenPotatoAvatar.png").toExternalForm());
+        /* Image image = new Image(getClass().getResource("/images/rottenPotatoAvatar.png").toExternalForm());
         profilePic.setImage(image);
         profileClip.setCenterX(profilePic.getFitWidth() / 2);
         profileClip.setCenterY(profilePic.getFitHeight() / 2);
-        profilePic.setClip(profileClip);
+        profilePic.setClip(profileClip); */
 
     }
 
-    public void setProfilePageListener(MainController mainController) {
+    public void setProfilePageListener(ProfilePageListener listener) {
         this.listener = listener;
     }
 
