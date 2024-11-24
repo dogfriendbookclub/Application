@@ -4,7 +4,7 @@ CREATE TABLE review (
     showId INTEGER,
     seasonId INTEGER,
     episodeId INTEGER,
-    reviewText VARCHAR(500),
+    reviewText VARCHAR,
     reviewScore INTEGER DEFAULT 0,
     FOREIGN KEY (userId) REFERENCES user(userId)
 )
