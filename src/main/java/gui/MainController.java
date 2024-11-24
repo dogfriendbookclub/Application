@@ -1,5 +1,6 @@
 package gui;
 
+import gui.profile.ProfilePageController;
 import gui.content.ContentController;
 import gui.episodeoverview.EpisodeOverviewController;
 import gui.homepage.HomePageController;
@@ -11,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
 
@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable, LoginController.LoginListener, ContentController.ContentListener, HomePageController.HomePageListener, ShowOverviewController.ShowOverviewListener, SearchPageController.SearchPageListener {
+public class MainController implements Initializable, LoginController.LoginListener, ContentController.ContentListener, HomePageController.HomePageListener, ShowOverviewController.ShowOverviewListener, SearchPageController.SearchPageListener, ProfilePageController.ProfilePageListener {
 
     @FXML
     private Pane login;
@@ -50,6 +50,9 @@ public class MainController implements Initializable, LoginController.LoginListe
     private EpisodeOverviewController episodeOverviewController;
 
     @FXML
+    private ProfilePageController profilePageController;
+
+    @FXML
     private StringBuilder currentPane;
 
     //contains references to each fxml file
@@ -67,11 +70,11 @@ public class MainController implements Initializable, LoginController.LoginListe
                           /         \
                          /           \
         level 0        login     content
-                                 /   |   \
-                                /    |    \
-                               /     |     \
-                              /      |      \
-        level 1             home   search   show
+                                 /   |   \  \
+                                /    |    \   \
+                               /     |     \    \
+                              /      |      \      \
+        level 1             home   search   show   profile
                                           /   |   \
                                          /    |    \
                                         /     |     \
@@ -92,6 +95,7 @@ public class MainController implements Initializable, LoginController.LoginListe
         showOverviewController = this.contentController.getShowOverviewController();
         seasonOverviewController = this.showOverviewController.getSeasonOverviewController();
         episodeOverviewController = this.showOverviewController.getEpisodeOverviewController();
+        profilePageController = this.profilePageController.getProfilePageController();
 
         //has parent level of 0
         this.viewMap.put("loginView", login);
@@ -103,6 +107,7 @@ public class MainController implements Initializable, LoginController.LoginListe
         this.viewMap.put("homeView", this.contentController.getHomePage());
         this.viewMap.put("searchView", this.contentController.getSearchPage());
         this.viewMap.put("showView", this.contentController.getShowOverview());
+        this.viewMap.put("profile", this.contentController.getProfilePage());
         this.parentMap.put("homeView", 1);
         this.parentMap.put("searchView", 1);
         this.parentMap.put("showView", 1);
@@ -125,6 +130,7 @@ public class MainController implements Initializable, LoginController.LoginListe
         this.viewMap.get("showView").setVisible(false);
         this.viewMap.get("episodeView").setVisible(false);
         this.viewMap.get("seasonView").setVisible(false);
+        this.viewMap.get("profile").setVisible(false);
 
 
         this.loginController.setLoginListener(this);
@@ -132,6 +138,7 @@ public class MainController implements Initializable, LoginController.LoginListe
         this.showOverviewController.setShowOverviewListener(this);
         this.homePageController.setHomePageListener(this);
         this.searchPageController.setSearchPageListener(this);
+        this.profilePageController.setProfilePageListener(this);
 
         this.currentPane = new StringBuilder("loginView");
     }
@@ -316,6 +323,17 @@ public class MainController implements Initializable, LoginController.LoginListe
     public void loadShowOverviewPage() {
         System.out.println("load show works :)");
         changeView("showView");
+    }
+
+    @Override
+    public void onProfileButton() {
+        System.out.println("load profile works");
+        changeView("profile");
+    }
+
+    public void loadProfilePage() {
+        System.out.println("load profile works");
+        changeView("profile");
     }
 
     /**

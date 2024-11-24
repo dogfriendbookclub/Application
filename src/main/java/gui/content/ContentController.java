@@ -1,21 +1,17 @@
 package gui.content;
 
 import edu.metrostate.APIclient;
-import edu.metrostate.ShowPreview;
+import gui.profile.ProfilePageController;
 import gui.homepage.HomePageController;
 import gui.searchpage.SearchPageController;
 import gui.showoverview.ShowOverviewController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ContentController implements Initializable {
@@ -33,6 +29,9 @@ public class ContentController implements Initializable {
     @FXML
     private Button homeButton;
 
+    @FXML
+    private Button profileButton;
+
     //end interface stuff
 
     @FXML
@@ -45,6 +44,9 @@ public class ContentController implements Initializable {
     private BorderPane showOverview;
 
     @FXML
+    private BorderPane profilePage;
+
+    @FXML
     private HomePageController homePageController;
 
     @FXML
@@ -52,6 +54,9 @@ public class ContentController implements Initializable {
 
     @FXML
     private ShowOverviewController showOverviewController;
+
+    @FXML
+    private ProfilePageController profilePageController;
 
     private ContentListener listener;
 
@@ -86,6 +91,8 @@ public class ContentController implements Initializable {
         void searchTermEntered();
 
         void loadShowOverviewPage();
+
+        void onProfileButton();
     }
 
     /**
@@ -119,6 +126,12 @@ public class ContentController implements Initializable {
             }
         });
 
+        searchBar.setOnAction(actionEvent -> {
+            if (listener != null) {
+                listener.onProfileButton();
+            }
+        });
+
     }
 
     //getters for MainController to use
@@ -134,6 +147,10 @@ public class ContentController implements Initializable {
         return this.showOverview;
     }
 
+    public BorderPane getProfilePage() {
+        return this.profilePage;
+    }
+
     public HomePageController getHomePageController() {
         return this.homePageController;
     }
@@ -144,6 +161,10 @@ public class ContentController implements Initializable {
 
     public ShowOverviewController getShowOverviewController() {
         return this.showOverviewController;
+    }
+
+    public ProfilePageController getProfilePageController() {
+        return this.profilePageController;
     }
 
     //this is we at search control would go
