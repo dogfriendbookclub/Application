@@ -170,6 +170,7 @@ public class ShowOverviewController implements Initializable {
         populatecreators(show);
         mainCastList.getItems().clear();
         populateCast(id);
+        imageTest(show.getPosterPath());
 
         for (Season season : show.getSeasons()) {
             MenuItem seasonItem = new MenuItem("Season " + season.getSeasonNumber());

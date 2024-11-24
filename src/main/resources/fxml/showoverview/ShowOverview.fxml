@@ -16,11 +16,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<<<<<<< Updated upstream
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.showoverview.ShowOverviewController">
-=======
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.showoverview.ShowOverviewController">
->>>>>>> Stashed changes
+
+
+   <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.showoverview.ShowOverviewController">
+
    <top>
       <StackPane fx:id="imageStack" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
@@ -91,13 +90,10 @@
             <HBox alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="15.0" prefWidth="580.0" spacing="10.0">
                <children>
                   <Button fx:id="likeButton" alignment="BOTTOM_LEFT" mnemonicParsing="false" text="like" />
-<<<<<<< Updated upstream
+
                   <MenuButton fx:id="seasonButton" prefHeight="20.0" prefWidth="100.0" text="Season " />
                   <MenuButton fx:id="episodeButton" prefHeight="20.0" prefWidth="100.0" text="Episode" />
-=======
-                  <MenuButton fx:id="seasonButton" prefHeight="20.0" prefWidth="100.0" text="season" />
-                  <MenuButton fx:id="episodeButton" prefHeight="20.0" prefWidth="100.0" text="episode" />
->>>>>>> Stashed changes
+
                </children>
             </HBox>
             <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="347.0" prefWidth="558.0">
@@ -106,33 +102,8 @@
                      <children>
                         <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="340.0" prefWidth="157.0" HBox.hgrow="ALWAYS">
                            <children>
-<<<<<<< Updated upstream
-                              <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0">
-                                 <children>
-                                    <Label fx:id="creatorLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="59.0" text="Creator(s)">
-                                       <font>
-                                          <Font name="System Bold" size="10.0" />
-                                       </font>
-                                    </Label>
-                                    <ListView fx:id="creatorsList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" />
-                                 </children>
-                              </VBox>
-                              <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0">
-                                 <children>
-                                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="59.0" text="Main Cast">
-                                       <font>
-                                          <Font name="System Bold" size="10.0" />
-                                       </font>
-                                    </Label>
-                                    <ListView fx:id="mainCastList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" />
-                                 </children>
-                              </VBox>
-=======
-                              <Label fx:id="creatorLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="59.0" text="Creator(s)">
-                                 <font>
-                                    <Font name="System Bold" size="10.0" />
-                                 </font>
-                              </Label>
+
+
                               <ListView fx:id="creatorsList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: grey;" stylesheets="@showOverviewLists.css" />
                               <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="59.0" text="Main Cast">
                                  <font>
@@ -140,7 +111,7 @@
                                  </font>
                               </Label>
                               <ListView fx:id="mainCastList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: grey;" stylesheets="@showOverviewLists.css" VBox.vgrow="ALWAYS" />
->>>>>>> Stashed changes
+
                            </children>
                         </VBox>
                         <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="340.0" prefWidth="275.0" HBox.hgrow="ALWAYS">
