@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+         <children>
+            <Label text="Label" />
+            <ScrollPane fx:id="rowFeatured1" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="151.0" prefWidth="560.0" style="-fx-border-color: black;" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+               <content>
+                  <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                     <children>
+                        <ListView fx:id="likedShows" fixedCellSize="4.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+               </content>
+            </ScrollPane>
+            <Label text="Label" />
+            <ScrollPane fx:id="rowTwo1" fitToHeight="true" fitToWidth="true" layoutX="20.0" layoutY="354.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="151.0" prefWidth="560.0" style="-fx-border-color: black;" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+               <content>
+                  <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                     <children>
+                        <ListView fx:id="testListView11" fixedCellSize="15.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+               </content>
+            </ScrollPane>
+            <Label text="Label" />
+            <ScrollPane fx:id="rowThree1" fitToHeight="true" fitToWidth="true" layoutX="20.0" layoutY="354.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="151.0" prefWidth="560.0" style="-fx-border-color: black;" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+               <content>
+                  <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                     <children>
+                        <ListView fx:id="testListView111" fixedCellSize="15.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+               </content>
+            </ScrollPane>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </center>
+   <top>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Circle fx:id="profilePic" fill="DODGERBLUE" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
+            <Text fx:id="username" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
+            <TextField fx:id="userDescription" prefHeight="25.0" prefWidth="532.0" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </top>
+</BorderPane>

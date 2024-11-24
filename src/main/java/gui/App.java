@@ -12,15 +12,19 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        try {
+            System.out.println("initializing app.java");
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src/main/resources/fxml/homepage/HomePage.fxml")));
-        Scene scene = new Scene(root);
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src/main/resources/fxml/homepage/HomePage.fxml")));
+            Scene scene = new Scene(root);
 
 
-
-        primaryStage.setTitle("app");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+            primaryStage.setTitle("app");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
  
  public static void main(String[] args) {
