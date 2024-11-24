@@ -37,18 +37,24 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ShowOverviewController implements Initializable {
+
     @FXML
-    private ListView<String> cretaorsList;
+    private Button likeButton;
+
+    @FXML
+    private StackPane imageStack;
+
+    @FXML
+    private  ImageView showImages;
+
+    @FXML
+    private ListView<String> creatorsList;
 
     @FXML
     private ListView<String> mainCastList;
 
-
     @FXML
     private TextArea synopsisTextBox;
-
-    @FXML
-    private HBox featuredStars;
 
     @FXML
     private Label featuredReviewTextBox;
@@ -57,14 +63,7 @@ public class ShowOverviewController implements Initializable {
     private MenuButton seasonButton;
 
     @FXML
-    private MenuItem episodeSelector;
-
-    @FXML
     private MenuButton episodeButton;
-
-     @FXML
-    //void loadHomePage(ActionEvent event) throws IOException {
-    private HBox yourStars;
 
     @FXML
     private TextField userShowReview;
@@ -93,10 +92,6 @@ public class ShowOverviewController implements Initializable {
     @FXML
     private Label yearsAired;
 
-    @FXML
-    private ListView creatorsList;
-
-
 
     @FXML
     private SeasonOverviewController seasonOverviewController;
@@ -111,27 +106,21 @@ public class ShowOverviewController implements Initializable {
 
     //getters for MainController
     public HBox getShowBox(){
-         return this.showBox;
+        return this.showBox;
     }
 
     public BorderPane getSeasonPage(){
-         return this.seasonPage;
+        return this.seasonPage;
     }
 
-    /*
-    void loadSearchPage(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
 
-        AnchorPane pane = loader.load();
-        rootPane.getChildren().setAll(pane);
-    } */
 
     public BorderPane getEpisodePage(){
-         return this.episodePage;
+        return this.episodePage;
     }
 
     public EpisodeOverviewController getEpisodeOverviewController(){
-         return this.episodeOverviewController;
+        return this.episodeOverviewController;
     }
 
     public SeasonOverviewController getSeasonOverviewController(){
@@ -149,23 +138,19 @@ public class ShowOverviewController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       /* int showId = 1396; // hard coded test value for now
 
-            Show show = apIclient.fetchShowData(showId);
-            seasonButton.getItems().clear(); */
-        //do whatever
-
-       /* seasonButton.setOnAction(actionEvent -> {
+        seasonButton.setOnAction(actionEvent -> {
             seasonPreviews();
         });
 
         episodeButton.setOnAction(actionEvent -> {
             episodePreviews();
-       }); */
-       //
+        });
+
+        likeButton.setOnAction(actionEvent -> {
+            listener.likedShow();
+        });
     }
-
-
 
     public void loadShowData(int id) throws IOException {
         Show show = apIclient.fetchShowData(id);
@@ -177,7 +162,7 @@ public class ShowOverviewController implements Initializable {
         populatecreators(show);
         mainCastList.getItems().clear();
         populateCast(id);
-        setVBoxBackdrop(show.getPosterPath());
+        imageTest(show.getPosterPath());
 
         for (Season season : show.getSeasons()) {
             MenuItem seasonItem = new MenuItem("Season " + season.getSeasonNumber());
@@ -207,6 +192,28 @@ public class ShowOverviewController implements Initializable {
 
     }
 
+
+    //reviews, use reviewws fxml, create list view
+
+    // same function as nicks setVBoxBackdrop, jsut with an image
+    private void imageTest(String backDropPath){
+        if (backDropPath != null && !backDropPath.isEmpty()) {
+            try {
+                // Construct the full URL for the image
+                String fullImageUrl = "https://image.tmdb.org/t/p/original" + backDropPath;
+
+                Image image = new Image(fullImageUrl);
+
+                showImages.setImage(image);
+
+            } catch (Exception e) {
+                System.err.println("Failed to set backdrop VBox background: " + e.getMessage());
+            }
+        } else {
+            System.out.println("Backdrop path is invalid or empty.");
+        }
+    }
+
     private void setVBoxBackdrop(String backDropPath) {
         if (backDropPath != null && !backDropPath.isEmpty()) {
             try {
@@ -230,7 +237,6 @@ public class ShowOverviewController implements Initializable {
 
     public void populatecreators(Show show){
         List<Creator> creators = show.getCreators();  // Get the creators from the Show class
-
         // Create a list to store the creator names
         List<String> creatorNames = new ArrayList<>();
         for (Creator creator : creators) {
@@ -238,7 +244,8 @@ public class ShowOverviewController implements Initializable {
         }
 
         // Set the creator names to the ListView
-        ObservableList<String> observableCreatorNames = FXCollections.observableArrayList(creatorNames);
+        ObservableList<String> observableCreatorNames =
+                FXCollections.observableArrayList(creatorNames);
         creatorsList.setItems(observableCreatorNames);
     }
     public void populateCast(int id) throws IOException {
@@ -251,21 +258,17 @@ public class ShowOverviewController implements Initializable {
 
     public void seasonPreviews() {
         //do whatever
-
-
     }
 
     public void episodePreviews() {
         //do whatever
-
     }
 
 
     public interface ShowOverviewListener{
         void selectedSeason();
         void selectedEpisode();
-
-
+        void likedShow();
     }
 
 

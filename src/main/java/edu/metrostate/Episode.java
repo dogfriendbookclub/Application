@@ -25,10 +25,10 @@ public class Episode implements Reviewable, Likable {
     private int episodeId;
 
     @JsonProperty("vote_count")
-    private double stars;
+    private int stars;
 
     public Episode(String synopsis, String episodeName, int episodeNum, int runtime,
-                   int showId, int seasonId, int episodeId, double stars)  {
+                   int showId, int seasonId, int episodeId, int stars)  {
         this.synopsis = synopsis;
         this.episodeName = episodeName;
         this.episodeNum = episodeNum;
@@ -59,7 +59,7 @@ public class Episode implements Reviewable, Likable {
     }
 
     @Override
-    public double getStars() {
+    public int getStars() {
         return stars;
     }
 
@@ -83,7 +83,7 @@ public class Episode implements Reviewable, Likable {
         return episodeId;
     }
 
-    public void setStars(double stars) {
+    public void setStars(int stars) {
         this.stars = stars;
     }
 }
