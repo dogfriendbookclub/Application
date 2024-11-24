@@ -39,8 +39,6 @@ import java.util.ResourceBundle;
 public class ShowOverviewController implements Initializable {
 
     @FXML
-<<<<<<< Updated upstream
-=======
     private Button likeButton;
 
     @FXML
@@ -50,7 +48,6 @@ public class ShowOverviewController implements Initializable {
     private  ImageView showImages;
 
     @FXML
->>>>>>> Stashed changes
     private ListView<String> creatorsList;
 
     @FXML
@@ -95,10 +92,6 @@ public class ShowOverviewController implements Initializable {
     @FXML
     private Label yearsAired;
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
     @FXML
     private SeasonOverviewController seasonOverviewController;
@@ -177,12 +170,6 @@ public class ShowOverviewController implements Initializable {
         populatecreators(show);
         mainCastList.getItems().clear();
         populateCast(id);
-<<<<<<< Updated upstream
-      //  setVBoxBackdrop(show.getPosterPath());
-=======
-        imageTest(show.getPosterPath());
-     //   setVBoxBackdrop(show.getPosterPath());
->>>>>>> Stashed changes
 
         for (Season season : show.getSeasons()) {
             MenuItem seasonItem = new MenuItem("Season " + season.getSeasonNumber());
