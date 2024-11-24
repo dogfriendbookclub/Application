@@ -126,7 +126,7 @@ public class ContentController implements Initializable {
             }
         });
 
-        searchBar.setOnAction(actionEvent -> {
+        profileButton.setOnAction(actionEvent -> {
             if (listener != null) {
                 listener.onProfileButton();
             }
