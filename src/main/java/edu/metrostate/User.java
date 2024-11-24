@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class User extends dbSqlModel {
 
@@ -18,17 +19,19 @@ public class User extends dbSqlModel {
     List<Reviewable> saved;
     List<Review> reactions;
 
-    public User(String handle, String password, int userId) {
+    public User(String handle) {
         super(null);
         this.userHandle = handle;
-        this.password = password;
-        this.userId = userId;
+        //this.password = password;
+        Random rand = new Random();
+        this.userId = rand.nextInt(1000);
+        System.out.println("user " + userHandle + " created with userId " + userId);
     }
 
-    public User(String handle, String password, int userId, int id) {
+    public User(String handle, int userId, int id) {
         super(id);
         this.userHandle = handle;
-        this.password = password;
+        //this.password = password;
         this.userId = userId;
     }
 

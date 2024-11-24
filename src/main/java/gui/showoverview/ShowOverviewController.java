@@ -154,6 +154,10 @@ public class ShowOverviewController implements Initializable {
 
     public void loadShowData(int id) throws IOException {
         Show show = apIclient.fetchShowData(id);
+        for (Season season : show.getSeasons()) {
+            season.setShowId(id);
+            season.addAllEpisodes();
+        }
         yearsAired.setText(show.getYearStart());
         showTitle.setText(show.getTitle());
         synopsisTextBox.clear();
@@ -165,7 +169,7 @@ public class ShowOverviewController implements Initializable {
         imageTest(show.getPosterPath());
 
         for (Season season : show.getSeasons()) {
-            MenuItem seasonItem = new MenuItem("Season " + season.getSeasonNumber());
+            MenuItem seasonItem = new MenuItem(season.getName());
 
             seasonItem.setOnAction(event -> {
                 seasonButton.setText(seasonItem.getText());
