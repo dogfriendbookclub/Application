@@ -37,7 +37,20 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ShowOverviewController implements Initializable {
+
     @FXML
+<<<<<<< Updated upstream
+=======
+    private Button likeButton;
+
+    @FXML
+    private StackPane imageStack;
+
+    @FXML
+    private  ImageView showImages;
+
+    @FXML
+>>>>>>> Stashed changes
     private ListView<String> creatorsList;
 
     @FXML
@@ -47,23 +60,13 @@ public class ShowOverviewController implements Initializable {
     private TextArea synopsisTextBox;
 
     @FXML
-    private HBox featuredStars;
-
-    @FXML
     private Label featuredReviewTextBox;
 
     @FXML
     private MenuButton seasonButton;
 
     @FXML
-    private MenuItem episodeSelector;
-
-    @FXML
     private MenuButton episodeButton;
-
-     @FXML
-    //void loadHomePage(ActionEvent event) throws IOException {
-    private HBox yourStars;
 
     @FXML
     private TextField userShowReview;
@@ -92,6 +95,10 @@ public class ShowOverviewController implements Initializable {
     @FXML
     private Label yearsAired;
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
     @FXML
     private SeasonOverviewController seasonOverviewController;
@@ -144,13 +151,17 @@ public class ShowOverviewController implements Initializable {
             seasonButton.getItems().clear(); */
         //do whatever
 
-       /* seasonButton.setOnAction(actionEvent -> {
+       seasonButton.setOnAction(actionEvent -> {
             seasonPreviews();
         });
 
         episodeButton.setOnAction(actionEvent -> {
             episodePreviews();
-       }); */
+       });
+
+        likeButton.setOnAction(actionEvent -> {
+            listener.likedShow();
+        });
        //
     }
 
@@ -166,7 +177,12 @@ public class ShowOverviewController implements Initializable {
         populatecreators(show);
         mainCastList.getItems().clear();
         populateCast(id);
+<<<<<<< Updated upstream
       //  setVBoxBackdrop(show.getPosterPath());
+=======
+        imageTest(show.getPosterPath());
+     //   setVBoxBackdrop(show.getPosterPath());
+>>>>>>> Stashed changes
 
         for (Season season : show.getSeasons()) {
             MenuItem seasonItem = new MenuItem("Season " + season.getSeasonNumber());
@@ -195,6 +211,24 @@ public class ShowOverviewController implements Initializable {
         }
 
     }
+    //same function as nicks setVBoxBackdrop, jsut with an image
+    private void imageTest(String backDropPath){
+        if (backDropPath != null && !backDropPath.isEmpty()) {
+            try {
+                // Construct the full URL for the image
+                String fullImageUrl = "https://image.tmdb.org/t/p/original" + backDropPath;
+
+                Image image = new Image(fullImageUrl);
+
+                showImages.setImage(image);
+
+            } catch (Exception e) {
+                System.err.println("Failed to set backdrop VBox background: " + e.getMessage());
+            }
+        } else {
+            System.out.println("Backdrop path is invalid or empty.");
+        }
+    }
 
     private void setVBoxBackdrop(String backDropPath) {
         if (backDropPath != null && !backDropPath.isEmpty()) {
@@ -219,7 +253,6 @@ public class ShowOverviewController implements Initializable {
 
     public void populatecreators(Show show){
         List<Creator> creators = show.getCreators();  // Get the creators from the Show class
-
         // Create a list to store the creator names
         List<String> creatorNames = new ArrayList<>();
         for (Creator creator : creators) {
@@ -227,8 +260,11 @@ public class ShowOverviewController implements Initializable {
         }
 
         // Set the creator names to the ListView
-        ObservableList<String> observableCreatorNames = FXCollections.observableArrayList(creatorNames);
+        ObservableList<String> observableCreatorNames =
+                FXCollections.observableArrayList(creatorNames);
         creatorsList.setItems(observableCreatorNames);
+
+
     }
     public void populateCast(int id) throws IOException {
         List<String> mainCast = apIclient.fetchMainCast(id);
@@ -253,6 +289,7 @@ public class ShowOverviewController implements Initializable {
     public interface ShowOverviewListener{
         void selectedSeason();
         void selectedEpisode();
+        void likedShow();
 
 
     }

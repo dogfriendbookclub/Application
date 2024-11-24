@@ -198,20 +198,20 @@ public class MainController implements Initializable, LoginController.LoginListe
 
                 //level 1 to level 2
                 else if( this.parentMap.get(this.currentPane.toString()) == 1){
-                        if ((currentPane.toString()).compareTo("showView") != 0) { //we are NOT show but wnat ot access thigns in show box
-                            this.viewMap.get(currentPane.toString()).setVisible(false);
-                            this.viewMap.get("showView").setVisible(true);
-                        }
+                    if ((currentPane.toString()).compareTo("showView") != 0) { //we are NOT show but wnat ot access thigns in show box
+                        this.viewMap.get(currentPane.toString()).setVisible(false);
+                        this.viewMap.get("showView").setVisible(true);
+                    }
 
-                        //now showView is off and content is on
-                        if ((newPane.compareTo("showBox") != 0) && this.viewMap.get("showBox").isVisible()) { //newPane isnt showBox(obv) and showBox is on
-                            this.viewMap.get("showBox").setVisible(false);
+                    //now showView is off and content is on
+                    if ((newPane.compareTo("showBox") != 0) && this.viewMap.get("showBox").isVisible()) { //newPane isnt showBox(obv) and showBox is on
+                        this.viewMap.get("showBox").setVisible(false);
+                    }
+                    else { // newPane is showBox or showBox is off
+                        if (!this.viewMap.get("showBox").isVisible()) {
+                            this.viewMap.get("showBox").setVisible(true);
                         }
-                        else { // newPane is showBox or showBox is off
-                            if (!this.viewMap.get("showBox").isVisible()) {
-                                this.viewMap.get("showBox").setVisible(true);
-                            }
-                        }
+                    }
                 }
             } //end level diff of 1
 
@@ -232,14 +232,14 @@ public class MainController implements Initializable, LoginController.LoginListe
                 if(this.viewMap.get("showBox").isVisible()){
                     this.viewMap.get("showbox").setVisible(false);
                 }
-       //         this.viewMap.get(newPane).setVisible(true); //set whatever new pane is on
+                //         this.viewMap.get(newPane).setVisible(true); //set whatever new pane is on
 
             } //end level diff 2
 
             //child to parent
             else{
                 this.viewMap.get(this.currentPane.toString()).setVisible(false);
-               // this.viewMap.get(newPane).setVisible(true);
+                // this.viewMap.get(newPane).setVisible(true);
 
                 //episode/season to anything inside content container
                 if ((this.parentMap.get(this.currentPane.toString()) - this.parentMap.get(newPane)) == 1){
@@ -312,15 +312,6 @@ public class MainController implements Initializable, LoginController.LoginListe
      *
      */
     @Override
-    public void loadShowOverviewPage() {
-        System.out.println("load show works :)");
-        changeView("showView");
-    }
-
-    /**
-     *
-     */
-    @Override
     public void searchTermEntered() {
         changeView("searchView");
     }
@@ -368,12 +359,20 @@ public class MainController implements Initializable, LoginController.LoginListe
      *
      */
     @Override
+    public void likedShow() {
+
+    }
+
+    /**
+     *
+     */
+    @Override
     public void showSelected(int id) {
 
         try {
             this.showOverviewController.loadShowData(id);
         } catch (IOException e) {
-             e.printStackTrace();
+            e.printStackTrace();
         }
         changeView("showView");
     }
@@ -404,4 +403,3 @@ public class MainController implements Initializable, LoginController.LoginListe
 
 
 }
-

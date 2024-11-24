@@ -106,7 +106,6 @@ public class APIclient {
         }
     }
 
-
     public List<ShowPreview> fetchSearchResults(String searchQuery) throws IOException {
         final int NUMRESULTS = 5;
 

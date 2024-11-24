@@ -2,6 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -23,54 +25,10 @@
                            <Font name="System Bold" size="15.0" />
                         </font>
                      </Label>
-                     <VBox prefHeight="200.0" prefWidth="100.0">
-                        <children>
-                           <Label prefHeight="19.0" prefWidth="59.0" text="Creator(s)">
-                              <font>
-                                 <Font name="System Bold" size="10.0" />
-                              </font>
-                           </Label>
-                           <Label prefHeight="19.0" prefWidth="64.0" text="Creator Name">
-                              <font>
-                                 <Font name="Arial Italic" size="10.0" />
-                              </font>
-                           </Label>
-                           <Label prefHeight="19.0" prefWidth="64.0" text="Creator Name">
-                              <font>
-                                 <Font name="Arial Italic" size="10.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </VBox>
-                     <VBox prefHeight="200.0" prefWidth="100.0">
-                        <children>
-                           <Label prefHeight="19.0" prefWidth="59.0" text="Main Cast">
-                              <font>
-                                 <Font name="System Bold" size="10.0" />
-                              </font>
-                           </Label>
-                           <Label prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
-                              <font>
-                                 <Font name="Arial Italic" size="10.0" />
-                              </font>
-                           </Label>
-                           <Label prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
-                              <font>
-                                 <Font name="Arial Italic" size="10.0" />
-                              </font>
-                           </Label>
-                           <Label prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
-                              <font>
-                                 <Font name="Arial Italic" size="10.0" />
-                              </font>
-                           </Label>
-                           <Label prefHeight="19.0" prefWidth="137.0" text="Actor name - Character Name">
-                              <font>
-                                 <Font name="Arial Italic" size="10.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </VBox>
+                  <Label text="Creators(s)" />
+                  <ListView fx:id="creatorsList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: grey;" stylesheets="@../showoverview/showOverviewLists.css" />
+                  <Label text="Main Cast" />
+                  <ListView fx:id="castList" layoutX="10.0" layoutY="195.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: grey;" stylesheets="@../showoverview/showOverviewLists.css" />
                   </children>
                </VBox>
                <VBox prefHeight="270.0" prefWidth="264.0">
@@ -83,22 +41,11 @@
                               </font>
                            </Label>
                         <Text fx:id="reviewRate" strokeType="OUTSIDE" strokeWidth="0.0" text="rate" />
-                           <Label alignment="CENTER" contentDisplay="TOP" prefHeight="15.0" prefWidth="162.0" text="Username - date of review">
-                              <font>
-                                 <Font size="10.0" />
-                              </font>
-                           </Label>
+                        <Text fx:id="featureUsername" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
+                        <Text fx:id="featureDate" strokeType="OUTSIDE" strokeWidth="0.0" text="date" />
                         </children>
                      </HBox>
-                     <HBox prefHeight="186.0" prefWidth="256.0" style="-fx-border-color: black;">
-                        <children>
-                           <Label alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="250.0" prefWidth="242.0" text="Feature Review...">
-                              <font>
-                                 <Font size="10.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </HBox>
+                  <TextArea fx:id="featureReview" prefHeight="184.0" prefWidth="299.0" style="-fx-border-color: black;" />
                   </children>
                </VBox>
                <VBox prefHeight="340.0" prefWidth="141.0">
@@ -114,7 +61,7 @@
                            <Font name="System Bold" size="10.0" />
                         </font>
                      </Label>
-                     <TextField fx:id="searchBar11" alignment="TOP_LEFT" prefHeight="194.0" prefWidth="152.0" promptText="Maximum 500 characters">
+                     <TextField fx:id="userReview" alignment="TOP_LEFT" prefHeight="194.0" prefWidth="152.0" promptText="Maximum 500 characters">
                         <font>
                            <Font size="10.0" />
                         </font>

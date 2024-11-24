@@ -103,6 +103,9 @@ public class LoginController implements Initializable {
         }
     }
 
+    private void backGroundImage(){}
+
+
     private void showLoginError() {//changes this so it jsut appears over textBOX
         this.errorBox.setVisible(true);
     }
