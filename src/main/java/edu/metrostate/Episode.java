@@ -12,29 +12,29 @@ public class Episode implements Reviewable, Likable {
     @JsonProperty("episode_number")
     private int episodeNum;
 
-
+    @JsonProperty("runtime")
     private int runtime;
 
     @JsonProperty("series_id")
     private int showId;
 
     @JsonProperty("season_number")
-    private int seasonId;
+    private int seasonNum;
 
     @JsonProperty("id")
     private int episodeId;
 
-    @JsonProperty("vote_count")
+    @JsonProperty("vote_average")
     private int stars;
 
     public Episode(String synopsis, String episodeName, int episodeNum, int runtime,
-                   int showId, int seasonId, int episodeId, int stars)  {
+                   int showId, int seasonNum, int episodeId, int stars)  {
         this.synopsis = synopsis;
         this.episodeName = episodeName;
         this.episodeNum = episodeNum;
         this.runtime = runtime;
         this.showId = showId;
-        this.seasonId = seasonId;
+        this.seasonNum = seasonNum;
         this.episodeId = episodeId;
         this.stars = stars;
     }
@@ -75,8 +75,8 @@ public class Episode implements Reviewable, Likable {
         *  numOfReviews++ */
     }
 
-    public int getSeasonId() {
-        return seasonId;
+    public int getSeasonNum() {
+        return seasonNum;
     }
 
     public int getEpisodeId() {

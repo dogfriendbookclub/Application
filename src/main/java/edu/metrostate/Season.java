@@ -3,6 +3,8 @@ package edu.metrostate;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,9 @@ import java.util.List;
 public class Season implements Reviewable, Likable {
     @JsonAlias("season_number")
     private int seasonNumber;
+
+    @JsonProperty("name")
+    private String name;
 
     @JsonProperty("air_date")
     private String airdate;
@@ -29,13 +34,15 @@ public class Season implements Reviewable, Likable {
     @JsonProperty("episode_count")
     private int episodeCount;
 
+    private APIclient apIclient = new APIclient();
+
     // Default constructor
     public Season() {
     }
 
     // Parameterized constructor
     public Season(int seasonNumber, String airdate, int showId, int seasonId, int stars,
-                  List<Episode> episodes, int episodeCount)  {
+                  List<Episode> episodes, int episodeCount, String name)  {
         this.seasonNumber = seasonNumber;
         this.airdate = airdate;
         this.showId = showId;
@@ -43,6 +50,8 @@ public class Season implements Reviewable, Likable {
         this.stars = stars;
         this.episodes = episodes != null ? episodes : new ArrayList<>(); // Ensure episodes is not null
         this.episodeCount = episodeCount;
+        this.name = name;
+
     }
 
     public int getSeasonNumber() {
@@ -71,6 +80,13 @@ public class Season implements Reviewable, Likable {
          *  numOfReviews++ */
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setShowId(int showId) {
+        this.showId = showId;
+    }
     public int getSeasonId() {
         return seasonId;
     }
@@ -85,5 +101,17 @@ public class Season implements Reviewable, Likable {
 
     public void setStars(int stars) {
         this.stars = stars;
+    }
+
+    public void addEpisode(Episode episode) {
+        episodes.add(episode);
+    }
+
+    public void addAllEpisodes() {
+        try {
+            apIclient.fetchEpisodes(this);
+        } catch (IOException e) {
+            System.err.println("Failed to fetch episodes for Season " + this.seasonNumber + ": " + e.getMessage());
+        }
     }
 }

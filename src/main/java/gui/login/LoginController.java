@@ -1,5 +1,6 @@
 package gui.login;
 
+import edu.metrostate.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -77,6 +78,7 @@ public class LoginController implements Initializable {
                 System.out.println(password);
                 this.errorBox.setVisible(false);
                 performLogin();
+                User user = new User(acceptedUser);
             }
             else{
                 showLoginError();
@@ -90,6 +92,7 @@ public class LoginController implements Initializable {
                 acceptedUser = username;
                 acceptedPass = password;
                 performLogin();
+                User user = new User(acceptedUser);
             }
         }
     }
