@@ -1,8 +1,13 @@
 package edu.metrostate;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class User extends dbSqlModel {
 
     String userHandle;
     private String password;
@@ -11,8 +16,17 @@ public class User {
     List<Likable> likes;
     List<Review> bookmarks;
     List<Reviewable> saved;
+    List<Review> reactions;
 
     public User(String handle, String password, int userId) {
+        super(null);
+        this.userHandle = handle;
+        this.password = password;
+        this.userId = userId;
+    }
+
+    public User(String handle, String password, int userId, int id) {
+        super(id);
         this.userHandle = handle;
         this.password = password;
         this.userId = userId;
@@ -34,11 +48,34 @@ public class User {
         return userId;
     }
 
-    public List<Review> getReviews() {
-        return reviews;
+    public List<Review> getReviews(Connection connection) {
+        List<Review> reviewList = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM task WHERE userId = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, userId);
+            Boolean result = statement.execute();
+            if (result) {
+                ResultSet resultSet = statement.getResultSet();
+                while (resultSet.next()) {
+                    Integer reviewId = resultSet.getInt("reviewId");
+                    String reviewText = resultSet.getString("reviewText");
+                    Integer reviewScore = resultSet.getInt("reviewScore");
+                    String mediaType = resultSet.getString("mediaType");
+                    Review review = new Review(reviewText, reviewScore, mediaType, reviewId);
+                    review.setReviewId(review.getReviewId());
+                    reviewList.add(review);
+                }
+                dbUtil.closeQuietly(resultSet);
+            }
+            dbUtil.closeQuietly(statement);
+        } catch (SQLException ex) {
+
+        }
+        return reviewList;
     }
 
-    public List<Likable> getLikes() {
+    public List<Likable> getLikes(Connection connection) {
         return likes;
     }
 
@@ -56,5 +93,27 @@ public class User {
 
     public void removeLike(Likable likable) {
         likes.remove(likable);
+    }
+
+    public void addReaction(Review review) {
+        reactions.add(review);
+    }
+
+    public void removeReaction(Review review) {
+        reactions.remove(review);
+    }
+
+    public List<Review> getReactions() {
+        return bookmarks;
+    }
+
+    @Override
+    public PreparedStatement insertStatement(Connection connection) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public PreparedStatement updateStatement(Connection connection) throws SQLException {
+        return null;
     }
 }
