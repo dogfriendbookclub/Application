@@ -144,6 +144,7 @@ public class MainController implements Initializable, LoginController.LoginListe
         this.currentPane = new StringBuilder("loginView");
     }
 
+
     //needs cleanup, repeating logic
     private void changeView (String newPane) {
         //debug
@@ -324,6 +325,12 @@ public class MainController implements Initializable, LoginController.LoginListe
     public void loadShowOverviewPage() {
         System.out.println("load show works :)");
         changeView("showView");
+    }
+
+    @Override
+    public void onProfileButton() {
+        System.out.println("load profile works");
+        changeView("profileView");
     }
 
     /**

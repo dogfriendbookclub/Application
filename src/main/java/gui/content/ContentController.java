@@ -29,6 +29,9 @@ public class ContentController implements Initializable {
     @FXML
     private Button homeButton;
 
+    @FXML
+    private Button profileButton;
+
     //end interface stuff
 
     @FXML
@@ -90,6 +93,8 @@ public class ContentController implements Initializable {
         void searchTermEntered();
 
         void loadShowOverviewPage();
+
+        void onProfileButton();
     }
 
     /**
@@ -122,6 +127,12 @@ public class ContentController implements Initializable {
                 searchTest();
             }
         });
+
+        profileButton.setOnAction(actionEvent -> {
+            if (listener != null) {
+                listener.onProfileButton();
+            }
+                });
 
     }
 
