@@ -1,10 +1,10 @@
 package gui;
 
-import gui.profile.ProfilePageController;
 import gui.content.ContentController;
 import gui.episodeoverview.EpisodeOverviewController;
 import gui.homepage.HomePageController;
 import gui.login.LoginController;
+import gui.userprofile.ProfileController;
 import gui.searchpage.SearchPageController;
 import gui.seasonoverview.SeasonOverviewController;
 import gui.showoverview.ShowOverviewController;
@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable, LoginController.LoginListener, ContentController.ContentListener, HomePageController.HomePageListener, ShowOverviewController.ShowOverviewListener, SearchPageController.SearchPageListener, ProfilePageController.ProfilePageListener {
+public class MainController implements Initializable, LoginController.LoginListener, ContentController.ContentListener, HomePageController.HomePageListener, ShowOverviewController.ShowOverviewListener, SearchPageController.SearchPageListener, ProfileController.ProfileListener {
 
     @FXML
     private Pane login;
@@ -50,7 +50,7 @@ public class MainController implements Initializable, LoginController.LoginListe
     private EpisodeOverviewController episodeOverviewController;
 
     @FXML
-    private ProfilePageController profilePageController;
+    private ProfileController profileController;
 
     @FXML
     private StringBuilder currentPane;
@@ -70,11 +70,11 @@ public class MainController implements Initializable, LoginController.LoginListe
                           /         \
                          /           \
         level 0        login     content
-                                 /   |   \  \
-                                /    |    \   \
-                               /     |     \    \
-                              /      |      \      \
-        level 1             home   search   show   profile
+                                 /   |   \
+                                /    |    \
+                               /     |     \
+                              /      |      \
+        level 1             home   search   show
                                           /   |   \
                                          /    |    \
                                         /     |     \
@@ -93,10 +93,9 @@ public class MainController implements Initializable, LoginController.LoginListe
         homePageController = this.contentController.getHomePageController();
         searchPageController = this.contentController.getSearchPageController();
         showOverviewController = this.contentController.getShowOverviewController();
+        profileController = this.contentController.getProfileController();
         seasonOverviewController = this.showOverviewController.getSeasonOverviewController();
         episodeOverviewController = this.showOverviewController.getEpisodeOverviewController();
-        profilePageController = this.profilePageController.getProfilePageController();
-
         //has parent level of 0
         this.viewMap.put("loginView", login);
         this.viewMap.put("contentView", content);
@@ -107,10 +106,12 @@ public class MainController implements Initializable, LoginController.LoginListe
         this.viewMap.put("homeView", this.contentController.getHomePage());
         this.viewMap.put("searchView", this.contentController.getSearchPage());
         this.viewMap.put("showView", this.contentController.getShowOverview());
-        this.viewMap.put("profile", this.contentController.getProfilePage());
+        this.viewMap.put("profileView", this.contentController.getProfile());
+
         this.parentMap.put("homeView", 1);
         this.parentMap.put("searchView", 1);
         this.parentMap.put("showView", 1);
+        this.parentMap.put("profileView", 1);
         this.parentMap.put("showBox", 1);
 
         //has parent level 3
@@ -130,7 +131,8 @@ public class MainController implements Initializable, LoginController.LoginListe
         this.viewMap.get("showView").setVisible(false);
         this.viewMap.get("episodeView").setVisible(false);
         this.viewMap.get("seasonView").setVisible(false);
-        this.viewMap.get("profile").setVisible(false);
+        this.viewMap.get("profileView").setVisible(false);
+
 
 
         this.loginController.setLoginListener(this);
@@ -138,8 +140,7 @@ public class MainController implements Initializable, LoginController.LoginListe
         this.showOverviewController.setShowOverviewListener(this);
         this.homePageController.setHomePageListener(this);
         this.searchPageController.setSearchPageListener(this);
-        this.profilePageController.setProfilePageListener(this);
-
+        this.profileController.setProfileListener(this);
         this.currentPane = new StringBuilder("loginView");
     }
 
@@ -323,17 +324,6 @@ public class MainController implements Initializable, LoginController.LoginListe
     public void loadShowOverviewPage() {
         System.out.println("load show works :)");
         changeView("showView");
-    }
-
-    @Override
-    public void onProfileButton() {
-        System.out.println("load profile works");
-        changeView("profile");
-    }
-
-    public void loadProfilePage() {
-        System.out.println("load profile works");
-        changeView("profile");
     }
 
     /**

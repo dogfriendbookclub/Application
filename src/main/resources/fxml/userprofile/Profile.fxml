@@ -12,9 +12,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.image.ImageView?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.profile.ProfilePageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.userprofile.ProfileController">
    <center>
       <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
          <children>
@@ -57,10 +55,7 @@
    <top>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <StackPane>
-               <ImageView fx:id="profilePic" fitWidth="200.0" fitHeight="200.0" pickOnBounds="true" preserveRatio="true" />
-               <Circle fx:id="profileClip" radius="100.0" />
-            </StackPane>
+            <Circle fx:id="profilePic" fill="DODGERBLUE" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
             <Text fx:id="username" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
             <TextField fx:id="userDescription" prefHeight="25.0" prefWidth="532.0" />
          </children>

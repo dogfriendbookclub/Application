@@ -1,8 +1,8 @@
 package gui.content;
 
 import edu.metrostate.APIclient;
-import gui.profile.ProfilePageController;
 import gui.homepage.HomePageController;
+import gui.userprofile.ProfileController;
 import gui.searchpage.SearchPageController;
 import gui.showoverview.ShowOverviewController;
 import javafx.fxml.FXML;
@@ -29,9 +29,6 @@ public class ContentController implements Initializable {
     @FXML
     private Button homeButton;
 
-    @FXML
-    private Button profileButton;
-
     //end interface stuff
 
     @FXML
@@ -44,7 +41,8 @@ public class ContentController implements Initializable {
     private BorderPane showOverview;
 
     @FXML
-    private BorderPane profilePage;
+    private BorderPane profile;
+
 
     @FXML
     private HomePageController homePageController;
@@ -56,7 +54,8 @@ public class ContentController implements Initializable {
     private ShowOverviewController showOverviewController;
 
     @FXML
-    private ProfilePageController profilePageController;
+    private ProfileController profileController;
+
 
     private ContentListener listener;
 
@@ -91,8 +90,6 @@ public class ContentController implements Initializable {
         void searchTermEntered();
 
         void loadShowOverviewPage();
-
-        void onProfileButton();
     }
 
     /**
@@ -126,12 +123,6 @@ public class ContentController implements Initializable {
             }
         });
 
-        profileButton.setOnAction(actionEvent -> {
-            if (listener != null) {
-                listener.onProfileButton();
-            }
-        });
-
     }
 
     //getters for MainController to use
@@ -147,10 +138,6 @@ public class ContentController implements Initializable {
         return this.showOverview;
     }
 
-    public BorderPane getProfilePage() {
-        return this.profilePage;
-    }
-
     public HomePageController getHomePageController() {
         return this.homePageController;
     }
@@ -163,9 +150,15 @@ public class ContentController implements Initializable {
         return this.showOverviewController;
     }
 
-    public ProfilePageController getProfilePageController() {
-        return this.profilePageController;
+
+    public BorderPane getProfile() {
+        return this.profile;
     }
+
+    public ProfileController getProfileController() {
+        return this.profileController;
+    }
+
 
     //this is we at search control would go
     private void searchTest() {
