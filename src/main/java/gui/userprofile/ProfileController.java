@@ -1,6 +1,5 @@
-package gui.profile;
+package gui.userprofile;
 
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import java.net.URL;

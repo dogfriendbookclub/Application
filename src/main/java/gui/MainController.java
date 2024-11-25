@@ -4,7 +4,7 @@ import gui.content.ContentController;
 import gui.episodeoverview.EpisodeOverviewController;
 import gui.homepage.HomePageController;
 import gui.login.LoginController;
-import gui.profile.ProfileController;
+import gui.userprofile.ProfileController;
 import gui.searchpage.SearchPageController;
 import gui.seasonoverview.SeasonOverviewController;
 import gui.showoverview.ShowOverviewController;

@@ -2,7 +2,7 @@ package gui.content;
 
 import edu.metrostate.APIclient;
 import gui.homepage.HomePageController;
-import gui.profile.ProfileController;
+import gui.userprofile.ProfileController;
 import gui.searchpage.SearchPageController;
 import gui.showoverview.ShowOverviewController;
 import javafx.fxml.FXML;
