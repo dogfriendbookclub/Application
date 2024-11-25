@@ -104,7 +104,7 @@ public class SearchPageController implements Initializable {
                     setGraphic(cellContent);
 
                     // Add click event to the image
-                    imageView.setOnMouseClicked(event -> {
+                    listView.setOnMouseClicked(event -> {
                         if (event.getClickCount() == 2) { // Respond to double-click
                             listener.showSelected( showPreview.getShowId());
                             System.out.println("Show has been selected in searchPAge Controller");

@@ -1,5 +1,8 @@
 package gui;
 
+import edu.metrostate.Episode;
+import edu.metrostate.Season;
+import edu.metrostate.Show;
 import gui.content.ContentController;
 import gui.episodeoverview.EpisodeOverviewController;
 import gui.homepage.HomePageController;
@@ -351,7 +354,7 @@ public class MainController implements Initializable, LoginController.LoginListe
      *
      */
     @Override
-    public void selectedSeason() {
+    public void selectedSeason(Season season) {
         changeView("seasonView");
     }
 
@@ -359,7 +362,7 @@ public class MainController implements Initializable, LoginController.LoginListe
      *
      */
     @Override
-    public void selectedEpisode() {
+    public void selectedEpisode(Episode episode) {
         System.out.println("episdo eselected");
         changeView("episodeView");
 

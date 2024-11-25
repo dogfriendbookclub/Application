@@ -18,41 +18,41 @@
 
 
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.showoverview.ShowOverviewController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.showoverview.ShowOverviewController">
 
     <top>
         <StackPane fx:id="imageStack" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fx:id="showImages" fitHeight="207.0" fitWidth="579.0" pickOnBounds="true" preserveRatio="true">
-                    <viewport>
-                        <Rectangle2D />
-                    </viewport>
-                    <StackPane.margin>
-                        <Insets />
-                    </StackPane.margin>
-                </ImageView>
-                <VBox fx:id="backdropBackground" alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="208.0" prefWidth="600.0" style="-fx-border-color: black;">
+                <VBox fx:id="backdropBackground" alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="208.0" prefWidth="600.0" style="-fx-border-color: black; -fx-background-color: black;">
+                    <ImageView fx:id="showImages" fitHeight="207.0" fitWidth="579.0" pickOnBounds="true" preserveRatio="true">
+                        <viewport>
+                            <Rectangle2D />
+                        </viewport>
+                        <StackPane.margin>
+                            <Insets />
+                        </StackPane.margin>
+                    </ImageView>
                     <children>
                         <HBox alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="271.0">
                             <children>
-                                <Label fx:id="showTitle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="126.0" text="Specific Show Title">
+                                <Label fx:id="showTitle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="126.0" text="Specific Show Title" style="-fx-text-fill: white">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="yearsAired" prefHeight="17.0" prefWidth="70.0" text="(years aired)" />
+                                <Label fx:id="yearsAired" prefHeight="17.0" prefWidth="70.0" text="(years aired)" style="-fx-text-fill: black" />
                             </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="58.0" prefWidth="558.0" spacing="10.0">
                             <children>
-                                <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="43.0" prefWidth="234.0" style="-fx-border-color: black;">
+                                <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="43.0" prefWidth="234.0" >
                                     <children>
-                                        <Label prefHeight="19.0" prefWidth="77.0" text="Average rating">
+                                        <Label prefHeight="19.0" prefWidth="77.0" text="Average rating" style="-fx-text-fill: white;">
                                             <font>
                                                 <Font name="System Bold" size="10.0" />
                                             </font>
                                         </Label>
-                                        <Text fx:id="averageRate" strokeType="OUTSIDE" strokeWidth="0.0" text="rate" />
+                                        <Text fx:id="averageRate" fill="white" text="rate" />
                                     </children>
                                 </HBox>
                                 <HBox fillHeight="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="68.0" prefWidth="377.0" style="-fx-border-color: black;">
@@ -102,8 +102,11 @@
                             <children>
                                 <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="340.0" prefWidth="157.0" HBox.hgrow="ALWAYS">
                                     <children>
-
-
+                                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="59.0" text="Creator(s)">
+                                            <font>
+                                                <Font name="System Bold" size="10.0" />
+                                            </font>
+                                        </Label>
                                         <ListView fx:id="creatorsList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: grey;"/>
                                         <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="59.0" text="Main Cast">
                                             <font>

@@ -39,7 +39,7 @@ public class Show implements Reviewable, Likable {
 
     @JsonProperty("backdrop_path")
     private String posterPath;
-
+    @JsonProperty("vote_average")
     private int stars;
 
     public Show(List<Creator> creator, List<Genre> genre, String premise, String yearStart, String stillRunning,
