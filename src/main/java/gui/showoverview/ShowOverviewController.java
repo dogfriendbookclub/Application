@@ -158,6 +158,8 @@ public class ShowOverviewController implements Initializable {
             season.setShowId(id);
             season.addAllEpisodes();
         }
+
+        seasonButton.getItems().clear();
         yearsAired.setText(show.getYearStart());
         showTitle.setText(show.getTitle());
         synopsisTextBox.clear();

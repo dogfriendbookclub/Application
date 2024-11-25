@@ -46,6 +46,7 @@ public class SeasonOverviewController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/seasonoverview/SeasonOverview.fxml"));
         AnchorPane pane = loader.load();
         rootPane.getChildren().setAll(pane);
+
     }
 
     @FXML
