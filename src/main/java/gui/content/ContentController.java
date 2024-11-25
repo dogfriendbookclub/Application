@@ -1,21 +1,17 @@
 package gui.content;
 
 import edu.metrostate.APIclient;
-import edu.metrostate.ShowPreview;
 import gui.homepage.HomePageController;
+import gui.profile.ProfileController;
 import gui.searchpage.SearchPageController;
 import gui.showoverview.ShowOverviewController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ContentController implements Initializable {
@@ -45,6 +41,10 @@ public class ContentController implements Initializable {
     private BorderPane showOverview;
 
     @FXML
+    private BorderPane profile;
+
+
+    @FXML
     private HomePageController homePageController;
 
     @FXML
@@ -52,6 +52,10 @@ public class ContentController implements Initializable {
 
     @FXML
     private ShowOverviewController showOverviewController;
+
+    @FXML
+    private ProfileController profileController;
+
 
     private ContentListener listener;
 
@@ -145,6 +149,16 @@ public class ContentController implements Initializable {
     public ShowOverviewController getShowOverviewController() {
         return this.showOverviewController;
     }
+
+
+    public BorderPane getProfile() {
+        return this.profile;
+    }
+
+    public ProfileController getProfileController() {
+        return this.profileController;
+    }
+
 
     //this is we at search control would go
     private void searchTest() {
