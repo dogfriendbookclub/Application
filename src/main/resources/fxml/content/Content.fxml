@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
@@ -7,26 +11,29 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.content.ContentController">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.content.ContentController">
 
 
     <!-- Top contains search bar, home button and login button-->
     <top>
 
         <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10" HBox.hgrow="ALWAYS">
-
-            <Button fx:id="homeButton" mnemonicParsing="false" onAction="#loadHomePage" prefHeight="30.0" text="Home Page">
-                <font>
-                    <Font size="10.0" />
-                </font>
-            </Button>
+   <children>
    
-            <TextField fx:id="searchBar" onAction="#loadSearchPage" prefHeight="26.0" promptText="Search" HBox.hgrow="ALWAYS">
-                <font>
-                    <Font size="12.0" />
-                </font>
-            </TextField>
-         <Button fx:id="logoutButton" mnemonicParsing="false" text="Log out" />
+               <Button fx:id="homeButton" mnemonicParsing="false" prefHeight="30.0" text="Home Page">
+                   <font>
+                       <Font size="10.0" />
+                   </font>
+               </Button>
+      
+               <TextField fx:id="searchBar" prefHeight="26.0" promptText="Search" HBox.hgrow="ALWAYS">
+                   <font>
+                       <Font size="12.0" />
+                   </font>
+               </TextField>
+            <Button fx:id="profileButton" mnemonicParsing="false" text="Profile" />
+            <Button fx:id="logoutButton" mnemonicParsing="false" text="Log out" />
+   </children>
 
         </HBox>
 
@@ -36,7 +43,9 @@
          <children>
              <fx:include fx:id="homePage" source="../homepage/HomePage.fxml" />
              <fx:include fx:id="searchPage" source="../searchpage/SearchPage.fxml" />
-             <fx:include fx:id="showPage" source="../showoverview/ShowOverview.fxml" />
+             <fx:include fx:id="showOverview" source="../showoverview/ShowOverview.fxml" />
+             <fx:include fx:id="profile" source="../userprofile/Profile.fxml" />
+
          </children>
       </StackPane>
    </center>

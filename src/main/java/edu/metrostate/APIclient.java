@@ -19,6 +19,7 @@ public class APIclient {
     private static final String IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
     private static final String SEARCH_URL = "https://api.themoviedb.org/3/search/tv";
 
+
     private final CloseableHttpClient httpClient;
     private final ObjectMapper objectMapper;
 
@@ -27,9 +28,10 @@ public class APIclient {
         this.httpClient = HttpClients.createDefault();
         this.objectMapper = new ObjectMapper();
     }
+
     //This method is a call that will fetch the data of a show, need to work on Episodes
     public Show fetchShowData(int showId) throws IOException {
-        String url = BASE_URL + showId + "?api_key=" + API_KEY + "&append_to_response=seasons,episodes";
+        String url = BASE_URL + showId + "?api_key=" + API_KEY + "&append_to_response=seasons";
         HttpGet request = new HttpGet(url);
         try (CloseableHttpResponse response = httpClient.execute(request)) {
             if (response.getCode() != 200) {
@@ -42,9 +44,48 @@ public class APIclient {
             return objectMapper.readValue(jsonResponse, Show.class);
         }
     }
-    // Fetches the poster image URL for a show
-    public String fetchPosterImageUrl(int showId) throws IOException {
-        String url = BASE_URL + showId + "?api_key=" + API_KEY;
+
+    public void fetchEpisodes(Season season) throws IOException {
+        String url = BASE_URL + season.getShowId() + "/season/" + season.getSeasonNumber() + "?api_key=" + API_KEY;
+        HttpGet request = new HttpGet(url);
+        try (CloseableHttpResponse response = httpClient.execute(request)) {
+            if (response.getCode() != 200) {
+                System.out.println("Request URL: " + url);
+                System.out.println("Show ID: " + season.getShowId());
+                System.out.println("Season Number: " + season.getSeasonNumber());
+                throw new IOException("Unexpected response code: " + response.getCode());
+            }
+
+            String jsonResponse = new String(response.getEntity().getContent().readAllBytes());
+            System.out.println("JSON Response: " + jsonResponse); // Debug print
+
+            JsonNode rootNode = objectMapper.readTree(jsonResponse);
+            JsonNode episodesNode = rootNode.path("episodes");
+
+            if (episodesNode.isArray()) {
+                for (JsonNode episodeNode : episodesNode) {
+                    Episode episode = new Episode(
+                            episodeNode.path("overview").asText(),
+                            episodeNode.path("name").asText(),
+                            episodeNode.path("episode_number").asInt(),
+                            episodeNode.path("runtime").asInt(0),
+                            season.getShowId(),
+                            season.getSeasonNumber(),
+                            episodeNode.path("id").asInt(),
+                            episodeNode.path("vote_average").asInt(0)
+                    );
+
+                    season.getEpisodes().add(episode);
+                }
+            } else {
+                System.err.println("No episodes found for season: " + season.getSeasonNumber());
+            }
+        }
+
+    }
+
+    public List<String> fetchMainCast(int showId) throws IOException {
+        String url = BASE_URL + showId + "/credits?api_key=" + API_KEY; // Use the correct credits endpoint
         HttpGet request = new HttpGet(url);
         try (CloseableHttpResponse response = httpClient.execute(request)) {
             if (response.getCode() != 200) {
@@ -54,14 +95,18 @@ public class APIclient {
             String jsonResponse = new String(response.getEntity().getContent().readAllBytes());
             JsonNode rootNode = objectMapper.readTree(jsonResponse);
 
-            // Extract the poster_path from the JSON response
-            String posterPath = rootNode.path("poster_path").asText();
-            if (posterPath == null || posterPath.isEmpty()) {
-                throw new IOException("Poster path not found for the show.");
+            // Extract the "cast" array (this contains the main cast members)
+            JsonNode castNode = rootNode.path("cast");
+
+            List<String> castNames = new ArrayList<>();
+
+            // Loop through the cast array and extract the name of each actor/actress
+            for (JsonNode castMember : castNode) {
+                String name = castMember.path("name").asText();
+                castNames.add(name);
             }
 
-            // Construct the full image URL
-            return IMAGE_BASE_URL + posterPath;
+            return castNames;
         }
     }
 
@@ -142,6 +187,10 @@ public class APIclient {
         }
 
     }
+
+
+
+
 
 
 

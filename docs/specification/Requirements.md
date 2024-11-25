@@ -1,4 +1,4 @@
-# Non-functional Requirements
+ # Non-functional Requirements
 
 ## Data Integrity
 Our database will use constraints to maintain accurate relationships between data. We will implement access controls to limit data modification to authorized personnel only, and encrypt sensitive information to protect against unauthorized access. These measures collectively ensure that the data remains accurate, reliable, and secure.
