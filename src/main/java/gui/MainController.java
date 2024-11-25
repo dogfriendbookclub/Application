@@ -1,5 +1,6 @@
 package gui;
 
+import edu.metrostate.User;
 import gui.content.ContentController;
 import gui.episodeoverview.EpisodeOverviewController;
 import gui.homepage.HomePageController;
@@ -295,6 +296,7 @@ public class MainController implements Initializable, LoginController.LoginListe
     public void onLoginComplete() {
         changeView("contentView");
     }
+
     //end from login interface
 
 
@@ -397,6 +399,11 @@ public class MainController implements Initializable, LoginController.LoginListe
              e.printStackTrace();
         }
         changeView("showView");
+    }
+
+    @Override
+    public User getUser() {
+        return this.loginController.getUser();
     }
 
     //end show itnerface

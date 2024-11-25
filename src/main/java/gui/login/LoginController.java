@@ -42,6 +42,8 @@ public class LoginController implements Initializable {
 
     private boolean firstTime = false;
 
+    private User user;
+
     public interface LoginListener {
         void onLoginComplete(); //change name too similair to teachers
     }
@@ -78,7 +80,6 @@ public class LoginController implements Initializable {
                 System.out.println(password);
                 this.errorBox.setVisible(false);
                 performLogin();
-                User user = new User(acceptedUser);
             }
             else{
                 showLoginError();
@@ -92,9 +93,11 @@ public class LoginController implements Initializable {
                 acceptedUser = username;
                 acceptedPass = password;
                 performLogin();
-                User user = new User(acceptedUser);
             }
         }
+
+        user = new User(acceptedUser);
+        System.out.println("user " + user.getUserHandle() + " created with id " + user.getUserId());
     }
 
 
@@ -115,7 +118,10 @@ public class LoginController implements Initializable {
     }
 
 
-
+    public User getUser() {
+        System.out.println("getting user " + user.getUserHandle() + "to send to content controller");
+        return user;
+    }
 
 }
 

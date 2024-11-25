@@ -1,6 +1,6 @@
 package gui.profile;
 
-import gui.MainController;
+import gui.content.ContentController;
 import javafx.scene.image.Image;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,14 +23,19 @@ public class ProfilePageController implements Initializable {
     @FXML
     private Text username;
 
+    @FXML
+    private ContentController contentController;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        /* Image image = new Image(getClass().getResource("/images/rottenPotatoAvatar.png").toExternalForm());
+        Image image = new Image(getClass().getResource("fxml/userprofile/rottenPotatoAvatar.png").toExternalForm());
         profilePic.setImage(image);
-        profileClip.setCenterX(profilePic.getFitWidth() / 2);
+        /*profileClip.setCenterX(profilePic.getFitWidth() / 2);
         profileClip.setCenterY(profilePic.getFitHeight() / 2);
         profilePic.setClip(profileClip); */
+
+        username.setText(contentController.getUser().getUserHandle());
 
     }
 

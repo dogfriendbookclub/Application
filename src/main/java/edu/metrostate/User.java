@@ -25,7 +25,6 @@ public class User extends dbSqlModel {
         //this.password = password;
         Random rand = new Random();
         this.userId = rand.nextInt(1000);
-        System.out.println("user " + userHandle + " created with userId " + userId);
     }
 
     public User(String handle, int userId, int id) {

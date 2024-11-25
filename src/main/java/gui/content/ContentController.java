@@ -1,7 +1,9 @@
 package gui.content;
 
 import edu.metrostate.APIclient;
+import edu.metrostate.User;
 import gui.homepage.HomePageController;
+import gui.login.LoginController;
 import gui.userprofile.ProfileController;
 import gui.searchpage.SearchPageController;
 import gui.showoverview.ShowOverviewController;
@@ -59,8 +61,13 @@ public class ContentController implements Initializable {
     @FXML
     private ProfileController profileController;
 
+    @FXML
+    private LoginController loginController;
+
 
     private ContentListener listener;
+
+    private User user;
 
 /*
     /*
@@ -129,10 +136,11 @@ public class ContentController implements Initializable {
         });
 
         profileButton.setOnAction(actionEvent -> {
+
             if (listener != null) {
                 listener.onProfileButton();
             }
-                });
+        });
 
     }
 
@@ -177,6 +185,11 @@ public class ContentController implements Initializable {
         searchPageController.novaLuna(searchBar.getText());
         listener.searchTermEntered();
 
+    }
+
+    public User getUser() {
+        System.out.println("getting user " + user.getUserHandle() + "to send to profile controller");
+        return loginController.getUser();
     }
 
 
