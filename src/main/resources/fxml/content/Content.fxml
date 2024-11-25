@@ -37,6 +37,8 @@
              <fx:include fx:id="homePage" source="../homepage/HomePage.fxml" />
              <fx:include fx:id="searchPage" source="../searchpage/SearchPage.fxml" />
              <fx:include fx:id="showOverview" source="../showoverview/ShowOverview.fxml" />
+             <fx:include fx:id="profilePage" source="../profile/Profile.fxml" />
+
          </children>
       </StackPane>
    </center>

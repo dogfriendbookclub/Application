@@ -68,12 +68,6 @@ public class ShowOverviewController implements Initializable {
     @FXML
     private TextField userShowReview;
 
-    /* @FXML
-    private ComboBox<String> seasonButton;
-
-    @FXML
-    private ComboBox<String> episodeButton; */
-
     @FXML
     private HBox showBox;
 
@@ -199,7 +193,18 @@ public class ShowOverviewController implements Initializable {
         }
 
     }
-    //same function as nicks setVBoxBackdrop, jsut with an image
+
+
+
+
+
+
+
+
+
+    //reviews, use reviewws fxml, create list view
+
+    // same function as nicks setVBoxBackdrop, jsut with an image
     private void imageTest(String backDropPath){
         if (backDropPath != null && !backDropPath.isEmpty()) {
             try {
