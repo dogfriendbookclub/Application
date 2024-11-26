@@ -35,3 +35,21 @@ the search bar is fixed on all pages
 - Chang - Tasked with creating the Search Page UI and helped troubleshoot the search API call
 - Nicholas - Set up the API Client as well as the homepage call and the display of items in this screen
 - Caleb - Set up the login functionality for users
+
+# Milestone 5
+- Paul - Continued handling administrative tasks including the upkeep of the UmL diagram. He also began researching
+a solution to the database needed for reviews.
+- Bryn - Created the Search API call and added this to the views where the search bar appears. This was important as
+the search bar is fixed on all pages
+- Chang - Tasked with creating the Search Page UI and helped troubleshoot the search API call
+- Nicholas - Set up the API Client as well as the homepage call and the display of items in this screen
+- Caleb - Set up the login functionality for users
+
+  # Milestone 6
+- Paul - Provided the framework for the class project report as well as the slideshow as well as managing Zoom call
+ meetings for the group during off hours and maintaining documentation.
+- Bryn - Created the Search API call and added this to the views where the search bar appears. This was important as
+the search bar is fixed on all pages
+- Chang - Tasked with creating the Search Page UI and helped troubleshoot the search API call
+- Nicholas - Set up the API Client as well as the homepage call and the display of items in this screen
+- Caleb - Set up the login functionality for users
