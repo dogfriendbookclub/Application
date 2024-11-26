@@ -44,6 +44,10 @@ public class LoginController implements Initializable {
 
     private User user;
 
+    private ProfilePageListener listener;
+
+
+
     public interface LoginListener {
         void onLoginComplete(); //change name too similair to teachers
     }
@@ -117,9 +121,15 @@ public class LoginController implements Initializable {
         this.loginListener = loginListener;
     }
 
+    public void setProfilePageListener(ProfilePageListener listener) {
+        this.listener = listener;
+    }
+
+    public interface ProfilePageListener {
+        void showClickedOnInHome(int id);
+    }
 
     public User getUser() {
-        System.out.println("getting user " + user.getUserHandle() + "to send to content controller");
         return user;
     }
 

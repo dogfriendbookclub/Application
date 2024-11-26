@@ -64,7 +64,7 @@ public class User extends dbSqlModel {
                     String reviewText = resultSet.getString("reviewText");
                     Integer reviewScore = resultSet.getInt("reviewScore");
                     String mediaType = resultSet.getString("mediaType");
-                    Review review = new Review(reviewText, reviewScore, mediaType, reviewId);
+                    Review review = new Review(reviewText, reviewScore, MediaType.valueOf(mediaType), reviewId);
                     review.setReviewId(review.getReviewId());
                     reviewList.add(review);
                 }

@@ -2,6 +2,7 @@ package gui.userprofile;
 
 import edu.metrostate.User;
 import gui.content.ContentController;
+import gui.profile.ProfilePageController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
@@ -23,16 +24,14 @@ public class ProfileController implements Initializable {
     @FXML
     private Text username;
 
-    @FXML
-    private ProfileListener profileListener;
+    private ProfileListener listener;
+
 
     public interface ProfileListener{
 
         User getUser();
     }
 
-
-    ProfileListener listener;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -41,10 +40,16 @@ public class ProfileController implements Initializable {
         profilePic.setImage(image);
 
         // username.setText(listener.getUser().getUserHandle());
+        // System.out.println("set username on profile page to " + listener.getUser().getUserHandle());
+
 
     }
 
+    public interface ProfilePageListener {
+        void showClickedOnInHome(int id);
+    }
+
     public void setProfileListener(ProfileListener listener){
-        this.listener = profileListener;
+        this.listener = listener;
     }
 }

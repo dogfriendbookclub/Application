@@ -187,6 +187,7 @@ public class ContentController implements Initializable {
 
     }
 
+
     public User getUser() {
         System.out.println("getting user " + user.getUserHandle() + "to send to profile controller");
         return loginController.getUser();

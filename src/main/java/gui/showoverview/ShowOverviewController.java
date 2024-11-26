@@ -1,10 +1,14 @@
 package gui.showoverview;
 
 import edu.metrostate.Creator;
+import edu.metrostate.migrations.Migrations;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -103,6 +107,12 @@ public class ShowOverviewController implements Initializable {
 
     private ShowOverviewListener listener;
 
+    private Connection connection = null;
+
+    private Migrations migrations = new Migrations();
+
+
+
 
     //getters for MainController
     public HBox getShowBox(){
@@ -150,6 +160,8 @@ public class ShowOverviewController implements Initializable {
         likeButton.setOnAction(actionEvent -> {
             listener.likedShow();
         });
+
+
     }
 
     public void loadShowData(int id) throws IOException {
@@ -194,6 +206,19 @@ public class ShowOverviewController implements Initializable {
             seasonButton.getItems().add(seasonItem);
         }
 
+        connectTest();
+
+
+        userShowReview.setOnAction(actionEvent -> {
+            try {
+                writeShowReview(userShowReview.getText(), 5, show.getShowId());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } finally {
+                dbUtil.closeQuietly(connection);
+            }
+
+        });
     }
 
 
@@ -258,7 +283,37 @@ public class ShowOverviewController implements Initializable {
         mainCastList.setItems(observableMainCastList);
     }
 
+    public void writeShowReview(String reviewText, int rate, int showId) throws SQLException {
 
+        Review review = new Review(reviewText, rate, showId, MediaType.SHOW);
+        review.insert(connection);
+
+    }
+
+    public static void populate(Connection connection) {
+        List<Review> reviews = new ArrayList<>();
+        Review test1 = new Review("test text", 8, 4321, 123);
+        Review test2 = new Review("test testing testing", 3, 4568, 565);
+        Review test3 = new Review("mcTest", 5, 987352, 987);
+
+        reviews.add(test1);
+        reviews.add(test2);
+        reviews.add(test3);
+
+        for (Review review : reviews) {
+            review.insert(connection);
+            System.out.println("printing review...");
+            System.out.println("text: " + review.getReviewText());
+            System.out.println("stars: " + review.getStars());
+            System.out.println("showId: " + review.getShowId());
+            System.out.println("reviewId: " + review.getReviewId());
+        }
+    }
+
+    public static List<Review> load(Connection connection) {
+        List<Review> reviews = Review.loadAll(connection);
+        return reviews;
+    }
 
     public void seasonPreviews() {
         //do whatever
@@ -268,6 +323,27 @@ public class ShowOverviewController implements Initializable {
         //do whatever
     }
 
+
+    public void connectTest() {
+        try {
+            Boolean populate = true;
+            connection = DriverManager.getConnection(Database.connectionString);
+
+            migrations.runMigrations(connection);
+
+            if (populate) {
+                populate(connection);
+            }
+
+            List<Review> reviews = load(connection);
+            reviews.forEach(person -> System.out.println(reviews));
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            dbUtil.closeQuietly(connection);
+        }
+    }
 
     public interface ShowOverviewListener{
         void selectedSeason();

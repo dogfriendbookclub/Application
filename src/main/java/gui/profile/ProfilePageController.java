@@ -12,7 +12,6 @@ import java.util.ResourceBundle;
 
 public class ProfilePageController implements Initializable {
 
-    private ProfilePageListener listener;
 
     @FXML
     private ImageView profilePic;
@@ -29,21 +28,9 @@ public class ProfilePageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        Image image = new Image(getClass().getResource("fxml/userprofile/rottenPotatoAvatar.png").toExternalForm());
-        profilePic.setImage(image);
-        /*profileClip.setCenterX(profilePic.getFitWidth() / 2);
-        profileClip.setCenterY(profilePic.getFitHeight() / 2);
-        profilePic.setClip(profileClip); */
-
-        username.setText(contentController.getUser().getUserHandle());
+        //NOT THE FILE WE'RE USING
 
     }
 
-    public void setProfilePageListener(ProfilePageListener listener) {
-        this.listener = listener;
-    }
 
-    public interface ProfilePageListener {
-        void showClickedOnInHome(int id);
-    }
 }
