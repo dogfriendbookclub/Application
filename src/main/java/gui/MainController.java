@@ -1,5 +1,8 @@
 package gui;
 
+import edu.metrostate.Episode;
+import edu.metrostate.Season;
+import edu.metrostate.Show;
 import edu.metrostate.User;
 import gui.content.ContentController;
 import gui.episodeoverview.EpisodeOverviewController;
@@ -368,7 +371,13 @@ public class MainController implements Initializable, LoginController.LoginListe
      *
      */
     @Override
-    public void selectedSeason() {
+    public void selectedSeason(Show show, Season season) {
+        try {
+            this.seasonOverviewController.loadSeasonData(season);
+            this.seasonOverviewController.populatecreators(show);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         changeView("seasonView");
     }
 
@@ -376,8 +385,17 @@ public class MainController implements Initializable, LoginController.LoginListe
      *
      */
     @Override
-    public void selectedEpisode() {
+    public void selectedEpisode(Show show, Season season, Episode episode) {
         System.out.println("episdo eselected");
+        this.episodeOverviewController.setShow(show);
+        this.episodeOverviewController.setSeason(season);
+        this.episodeOverviewController.setEpisode(episode);
+        try {
+            this.episodeOverviewController.populatecreators(show);
+            this.episodeOverviewController.loadEpisodeData(show, season, episode);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         changeView("episodeView");
 
     }
