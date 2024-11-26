@@ -16,57 +16,43 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.showoverview.ShowOverviewController">
+
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.showoverview.ShowOverviewController">
 
     <top>
         <StackPane fx:id="imageStack" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fx:id="showImages" fitHeight="207.0" fitWidth="579.0" pickOnBounds="true" preserveRatio="true">
-                    <viewport>
-                        <Rectangle2D />
-                    </viewport>
-                    <StackPane.margin>
-                        <Insets />
-                    </StackPane.margin>
-                </ImageView>
-                <VBox fx:id="backdropBackground" alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="208.0" prefWidth="600.0" style="-fx-border-color: black;">
+                <VBox fx:id="backdropBackground" alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="208.0" prefWidth="600.0" style="-fx-border-color: black; -fx-background-color: black;">
+                    <ImageView fx:id="showImages" fitHeight="207.0" fitWidth="579.0" pickOnBounds="true" preserveRatio="true">
+                        <viewport>
+                            <Rectangle2D />
+                        </viewport>
+                        <StackPane.margin>
+                            <Insets />
+                        </StackPane.margin>
+                    </ImageView>
                     <children>
                         <HBox alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="271.0">
                             <children>
-                                <Label fx:id="showTitle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="126.0" text="Specific Show Title">
+                                <Label fx:id="showTitle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="126.0" text="Specific Show Title" style="-fx-text-fill: white">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="yearsAired" prefHeight="17.0" prefWidth="70.0" text="(years aired)" />
+                                <Label fx:id="yearsAired" prefHeight="17.0" prefWidth="70.0" text="(years aired)" style="-fx-text-fill: black" />
                             </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="58.0" prefWidth="558.0" spacing="10.0">
                             <children>
-                                <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="43.0" prefWidth="234.0" style="-fx-border-color: black;">
+                                <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="43.0" prefWidth="234.0" >
                                     <children>
-                                        <Label prefHeight="19.0" prefWidth="77.0" text="Average rating">
+                                        <Label prefHeight="19.0" prefWidth="77.0" text="Average rating" style="-fx-text-fill: white;">
                                             <font>
                                                 <Font name="System Bold" size="10.0" />
                                             </font>
                                         </Label>
-                                        <Text fx:id="averageRate" strokeType="OUTSIDE" strokeWidth="0.0" text="rate" />
-                                    </children>
-                                </HBox>
-                                <HBox fillHeight="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="68.0" prefWidth="377.0" style="-fx-border-color: black;">
-                                    <children>
-                                        <Label prefHeight="19.0" prefWidth="112.0" text="Highest Rated Season">
-                                            <font>
-                                                <Font name="System Bold" size="10.0" />
-                                            </font>
-                                        </Label>
-                                        <Text fx:id="highestSeason" strokeType="OUTSIDE" strokeWidth="0.0" text="rate" wrappingWidth="32.619140625" />
-                                        <Label prefHeight="19.0" prefWidth="112.0" text="Highest Rated Episode">
-                                            <font>
-                                                <Font name="System Bold" size="10.0" />
-                                            </font>
-                                        </Label>
-                                        <Text fx:id="highestEpisode" strokeType="OUTSIDE" strokeWidth="0.0" text="rate" />
+                                        <Text fx:id="averageRate" fill="white" text="rate" />
                                     </children>
                                 </HBox>
                             </children>
@@ -100,10 +86,12 @@
                             <children>
                                 <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="340.0" prefWidth="157.0" HBox.hgrow="ALWAYS">
                                     <children>
-                              <Label text="Creators" />
-
-
-                                        <ListView fx:id="creatorsList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: grey;" />
+                                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="59.0" text="Creator(s)">
+                                            <font>
+                                                <Font name="System Bold" size="10.0" />
+                                            </font>
+                                        </Label>
+                                        <ListView fx:id="creatorsList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-background-color: grey;"/>
                                         <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="59.0" text="Main Cast">
                                             <font>
                                                 <Font name="System Bold" size="10.0" />
@@ -121,7 +109,7 @@
                                             </font>
                                         </Label>
                                         <TextArea fx:id="synopsisTextBox" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="117.0" prefWidth="256.0" style="-fx-border-color: black;" wrapText="true" VBox.vgrow="ALWAYS" />
-                                        <HBox alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="73.0" prefWidth="322.0" spacing="10.0">
+                                        <HBox alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="73.0" prefWidth="322.0">
                                             <children>
                                                 <Label alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="93.0" text="Feature Review">
                                                     <font>
@@ -133,7 +121,11 @@
                                                 <Text fx:id="featureDate" strokeType="OUTSIDE" strokeWidth="0.0" text="date" />
                                             </children>
                                         </HBox>
-                              <TextArea fx:id="featureReview" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="117.0" prefWidth="256.0" style="-fx-border-color: black;" wrapText="true" />
+                                        <Label fx:id="featuredReviewTextBox" alignment="TOP_LEFT" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="94.0" prefWidth="242.0" style="-fx-border-color: black;" text="Feature Review...">
+                                            <font>
+                                                <Font size="10.0" />
+                                            </font>
+                                        </Label>
                                     </children>
                                 </VBox>
                                 <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="340.0" prefWidth="141.0" HBox.hgrow="ALWAYS">
@@ -161,8 +153,8 @@
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </padding>
                         </HBox>
-                        <fx:include fx:id="seasonPage" source="../seasonoverview/SeasonOverview.fxml" />
-                        <fx:include fx:id="episodePage" source="../episodeoverview/EpisodeOverview.fxml" />
+                        <fx:include fx:id="seasonOverview" source="../seasonoverview/SeasonOverview.fxml" />
+                        <fx:include fx:id="episodeOverview" source="../episodeoverview/EpisodeOverview.fxml" />
                     </children>
                 </StackPane>
             </children>
@@ -175,3 +167,5 @@
         </VBox>
     </center>
 </BorderPane>
+
+
