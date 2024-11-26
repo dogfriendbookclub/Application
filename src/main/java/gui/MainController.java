@@ -91,7 +91,7 @@ public class MainController implements Initializable, LoginController.LoginListe
 
     //asynchrnous queue system, datamodel.
 
-    private void buildingMaps(){
+    private void viewMapBuilder(){
         //creating controllers
         homePageController = this.contentController.getHomePageController();
         searchPageController = this.contentController.getSearchPageController();
@@ -101,12 +101,7 @@ public class MainController implements Initializable, LoginController.LoginListe
         episodeOverviewController = this.showOverviewController.getEpisodeOverviewController();
 
 
-        /*
-        wrok on user profile
-       // work on reviews, be able to do it for SHOWS.
-            making it look nice
-            and trying to make less coupled
-        */
+
         //has parent level of 0
         this.viewMap.put("loginView",  new ViewNode(login, 0));
         this.viewMap.put("contentView",  new ViewNode(content, 0));
@@ -124,7 +119,7 @@ public class MainController implements Initializable, LoginController.LoginListe
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        buildingMaps();
+        viewMapBuilder();
         this.viewMap.get("loginView").getView().setVisible(true);
         this.viewMap.get("contentView").getView().setVisible(false);
         this.viewMap.get("searchView").getView().setVisible(false);
@@ -158,11 +153,6 @@ public class MainController implements Initializable, LoginController.LoginListe
             throw new IllegalArgumentException(newView + "");
         }
 
-        //checks to see if this is the same pane
-        /*
-        if (newView.compareTo(this.currentView.toString()) == 0) {
-            System.out.println("this is the same pane");
-        }*/
         else {
             //turn off currentView
             //has the same parent
