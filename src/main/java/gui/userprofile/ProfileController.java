@@ -14,6 +14,8 @@ import java.util.ResourceBundle;
 
 public class ProfileController implements Initializable {
 
+
+
     @FXML
     private ImageView profilePic;
 
@@ -29,7 +31,7 @@ public class ProfileController implements Initializable {
 
     public interface ProfileListener{
 
-        User getUser();
+     //   User getUser();
     }
 
 

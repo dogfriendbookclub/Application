@@ -27,6 +27,7 @@
                 </font>
             </TextField>
          <Button fx:id="logoutButton" mnemonicParsing="false" text="Log out" />
+            <Button fx:id="profileButton" mnemonicParsing="false" text="Profile" />
 
         </HBox>
 
@@ -37,7 +38,8 @@
              <fx:include fx:id="homePage" source="/fxml/homepage/HomePage.fxml" />
              <fx:include fx:id="searchPage" source="/fxml/searchpage/SearchPage.fxml" />
              <fx:include fx:id="showOverview" source="/fxml/showoverview/ShowOverview.fxml" />
-           <!--  <fx:include fx:id="profilePage" source="../profile/Profile.fxml" /> -->
+             <fx:include fx:id="profile" source="/fxml/userprofile/Profile.fxml" />
+
 
          </children>
       </StackPane>

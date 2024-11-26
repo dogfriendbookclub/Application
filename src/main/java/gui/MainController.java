@@ -9,6 +9,7 @@ import gui.login.LoginController;
 import gui.searchpage.SearchPageController;
 import gui.seasonoverview.SeasonOverviewController;
 import gui.showoverview.ShowOverviewController;
+import gui.userprofile.ProfileController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -21,7 +22,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable, LoginController.LoginListener, ContentController.ContentListener, HomePageController.HomePageListener, ShowOverviewController.ShowOverviewListener, SearchPageController.SearchPageListener {
+public class MainController implements Initializable, LoginController.LoginListener, ContentController.ContentListener, HomePageController.HomePageListener, ShowOverviewController.ShowOverviewListener, SearchPageController.SearchPageListener, ProfileController.ProfileListener {
 
 
 
@@ -53,6 +54,9 @@ public class MainController implements Initializable, LoginController.LoginListe
 
     @FXML
     private EpisodeOverviewController episodeOverviewController;
+
+    @FXML
+    private ProfileController profileController;
 
     @FXML
     private StringBuilder currentView;
@@ -97,12 +101,14 @@ public class MainController implements Initializable, LoginController.LoginListe
         homePageController = this.contentController.getHomePageController();
         searchPageController = this.contentController.getSearchPageController();
         showOverviewController = this.contentController.getShowOverviewController();
+        profileController = this.contentController.getProfileController();
         seasonOverviewController = this.showOverviewController.getSeasonOverviewController();
         episodeOverviewController = this.showOverviewController.getEpisodeOverviewController();
 
+
         /*
         wrok on user profile
-        work on reviews, be able to do it for SHOWS.
+       // work on reviews, be able to do it for SHOWS.
             making it look nice
             and trying to make less coupled
         */
@@ -111,6 +117,8 @@ public class MainController implements Initializable, LoginController.LoginListe
         this.testMap.put("contentView",  new ViewNode(content, 0));
         this.testMap.put("homeView",   new ViewNode(this.contentController.getHomePage(),1  ));
         this.testMap.put("searchView", new ViewNode(  this.contentController.getSearchPage(),1 ));
+        this.testMap.put("profileView", new ViewNode(this.contentController.getProfile(), 1));
+
         this.testMap.put("showView", new ViewNode(this.contentController.getShowOverview(),1 ));
         this.testMap.put("showBox", new ViewNode(  this.showOverviewController.getShowBox(),1 ));
         this.testMap.put("seasonView", new ViewNode(this.showOverviewController.getSeasonOverview(),2));
@@ -128,13 +136,14 @@ public class MainController implements Initializable, LoginController.LoginListe
         this.testMap.get("showView").getView().setVisible(false);
         this.testMap.get("episodeView").getView().setVisible(false);
         this.testMap.get("seasonView").getView().setVisible(false);
-
+        this.testMap.get("profileView").getView().setVisible(false);
 
         this.loginController.setLoginListener(this);
         this.contentController.setContentListener(this);
         this.showOverviewController.setShowOverviewListener(this);
         this.homePageController.setHomePageListener(this);
         this.searchPageController.setSearchPageListener(this);
+        this.profileController.setProfileListener(this);
 
         this.currentView = new StringBuilder("loginView");
     }
@@ -263,6 +272,15 @@ public class MainController implements Initializable, LoginController.LoginListe
     @Override
     public void searchTermEntered() {
         changeView("searchView");
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void onProfileButton() {
+
+
     }
     //end from content interface
 

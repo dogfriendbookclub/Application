@@ -21,6 +21,7 @@ public class HomePageController implements Initializable {
 
     private APIclient apIclient = new APIclient();
 
+
     @FXML
     private ListView<ShowPreview> testListView;
 

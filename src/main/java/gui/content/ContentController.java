@@ -5,6 +5,7 @@ import edu.metrostate.ShowPreview;
 import gui.homepage.HomePageController;
 import gui.searchpage.SearchPageController;
 import gui.showoverview.ShowOverviewController;
+import gui.userprofile.ProfileController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +26,11 @@ public class ContentController implements Initializable {
 
     //WHAT NEEDS TO BE SENT TO MAIN FIND OUT !!!
     //interface stuff
+
+    @FXML
+    private Button profileButton;
+
+
     @FXML
     private Button logoutButton;
 
@@ -34,7 +40,6 @@ public class ContentController implements Initializable {
     @FXML
     private Button homeButton;
 
-    //end interface stuff
 
     @FXML
     private BorderPane homePage;
@@ -46,6 +51,9 @@ public class ContentController implements Initializable {
     private BorderPane showOverview;
 
     @FXML
+    private BorderPane profile;
+
+    @FXML
     private HomePageController homePageController;
 
     @FXML
@@ -53,6 +61,12 @@ public class ContentController implements Initializable {
 
     @FXML
     private ShowOverviewController showOverviewController;
+
+    @FXML
+    private ProfileController profileController;
+
+
+
 
 
     private ContentListener listener;
@@ -89,6 +103,8 @@ C:\Users\lemon\OneDrive\Documents\git_repositories\ics372_project_1_rep\Applicat
         void onLogout();
 
         void searchTermEntered();
+
+        void onProfileButton();
     }
 
     /**
@@ -132,7 +148,12 @@ C:\Users\lemon\OneDrive\Documents\git_repositories\ics372_project_1_rep\Applicat
         }
 
 
+        profileButton.setOnAction(actionEvent -> {
 
+            if (listener != null) {
+                listener.onProfileButton();
+            }
+        });
 
     }
 
@@ -149,6 +170,10 @@ C:\Users\lemon\OneDrive\Documents\git_repositories\ics372_project_1_rep\Applicat
         return this.showOverview;
     }
 
+    public BorderPane getProfile() {
+        return this.profile;
+    }
+
     public HomePageController getHomePageController() {
         return this.homePageController;
     }
@@ -160,6 +185,11 @@ C:\Users\lemon\OneDrive\Documents\git_repositories\ics372_project_1_rep\Applicat
     public ShowOverviewController getShowOverviewController() {
         return this.showOverviewController;
     }
+
+    public ProfileController getProfileController() {
+        return this.profileController;
+    }
+
 
 
     public void showOverviewControllerStatus(){
@@ -180,29 +210,8 @@ C:\Users\lemon\OneDrive\Documents\git_repositories\ics372_project_1_rep\Applicat
 
     }
 
-
-/*
-    //THERE were a couple of search functions,  I combined them together
-    @FXML
-    void searchTermEntered(ActionEvent event) throws IOException {
-     //   FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/searchpage/SearchPage.fxml"));
-        // returns a list of results (to the console atm) for the search query with the text from the search bar
-        try {
-            List<ShowPreview> testResults = apIclient.fetchSearchResults(searchBar.getText());
-            for ( ShowPreview result : testResults) {
-                System.out.println(result.toString());
-            }
-        } catch (Exception e) {
-            System.out.println("Search API Test Error");
-            e.printStackTrace();
-        }
-
-      //  BorderPane pane = loader.load();
-   //     rootPane.getChildren().setAll(pane);
-        showPage.setVisible(false);
-        homePage.setVisible(false);
-        searchPage.setVisible(true);
-*/
+    
+     
 
     public void setContentListener(ContentListener listener) {
         this.listener = listener;
