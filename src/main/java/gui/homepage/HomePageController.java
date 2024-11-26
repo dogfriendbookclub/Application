@@ -110,7 +110,7 @@ public class HomePageController implements Initializable {
                     setGraphic(cellContent);
 
                     // Add click event to the image
-                    imageView.setOnMouseClicked(event -> {
+                    listView.setOnMouseClicked(event -> {
                         if (event.getClickCount() == 2) { // Respond to double-click
                                 listener.showClickedOnInHome(showPreview.getShowId());
                         }

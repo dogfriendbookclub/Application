@@ -26,7 +26,7 @@ public class Season implements Reviewable, Likable {
     private int seasonId;
 
     @JsonProperty("vote_average")
-    private int stars;
+    private double stars;
 
     @JsonProperty("episodes")
     private List<Episode> episodes = new ArrayList<>(); // Initialize with an empty list
@@ -41,7 +41,7 @@ public class Season implements Reviewable, Likable {
     }
 
     // Parameterized constructor
-    public Season(int seasonNumber, String airdate, int showId, int seasonId, int stars,
+    public Season(int seasonNumber, String airdate, int showId, int seasonId, double stars,
                   List<Episode> episodes, int episodeCount, String name)  {
         this.seasonNumber = seasonNumber;
         this.airdate = airdate;
@@ -63,7 +63,7 @@ public class Season implements Reviewable, Likable {
     }
 
     @Override
-    public int getStars() {
+    public double getStars() {
         return stars;
     }
 
@@ -99,7 +99,7 @@ public class Season implements Reviewable, Likable {
         return episodeCount;
     }
 
-    public void setStars(int stars) {
+    public void setStars(double stars) {
         this.stars = stars;
     }
 

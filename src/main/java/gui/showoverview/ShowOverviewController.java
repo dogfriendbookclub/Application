@@ -35,12 +35,23 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
+
+import static edu.metrostate.MediaType.SHOW;
 
 public class ShowOverviewController implements Initializable {
+
+    @FXML
+    private Text voteCount;
+    @FXML
+    private TextField userRate;
+    @FXML
+    private Button reviewButton;
 
     @FXML
     private Button likeButton;
@@ -72,20 +83,15 @@ public class ShowOverviewController implements Initializable {
     @FXML
     private TextField userShowReview;
 
-    /* @FXML
-    private ComboBox<String> seasonButton;
-
-    @FXML
-    private ComboBox<String> episodeButton; */
 
     @FXML
     private HBox showBox;
 
     @FXML
-    private BorderPane seasonPage;
+    private BorderPane seasonOverview;
 
     @FXML
-    private BorderPane episodePage;
+    private BorderPane episodeOverview;
 
     @FXML
     private VBox backdropBackground;
@@ -95,7 +101,8 @@ public class ShowOverviewController implements Initializable {
 
     @FXML
     private Label yearsAired;
-
+    @FXML
+    private Text averageRate;
 
     @FXML
     private SeasonOverviewController seasonOverviewController;
@@ -123,19 +130,11 @@ public class ShowOverviewController implements Initializable {
         return this.seasonPage;
     }
 
+    private String reviewText;
+
+    private double rating;
 
 
-    public BorderPane getEpisodePage(){
-        return this.episodePage;
-    }
-
-    public EpisodeOverviewController getEpisodeOverviewController(){
-        return this.episodeOverviewController;
-    }
-
-    public SeasonOverviewController getSeasonOverviewController(){
-        return this.seasonOverviewController;
-    }
 
     /**
      * Called to initialize a controller after its root element has been
@@ -148,7 +147,18 @@ public class ShowOverviewController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        UnaryOperator<TextFormatter.Change> rateFilter = Change ->{
+            String input = Change.getControlNewText();
 
+            if(input.length() < 2 && (input.matches("[0-9]") || input.matches("\\d*"))){
+                return Change;
+            }
+            return null;
+        };
+
+        TextFormatter<String> textFormatter = new TextFormatter<>(rateFilter);
+
+        userRate.setTextFormatter(textFormatter);
         seasonButton.setOnAction(actionEvent -> {
             seasonPreviews();
         });
@@ -162,14 +172,35 @@ public class ShowOverviewController implements Initializable {
         });
 
 
+        userShowReview.setOnKeyPressed(keyEvent ->{
+                    if(keyEvent.getCode().toString().equals("ENTER")){
+                        reviewCheck();
+                    }
+                }
+
+        );
+
+        userRate.setOnAction(actionEvent -> {
+            rateCheck();
+        });
+
+
+        reviewButton.setOnAction(actionEvent -> {
+            testReview();
+        });
+
     }
 
     public void loadShowData(int id) throws IOException {
         Show show = apIclient.fetchShowData(id);
+        voteCount.setText("(" + show.getVoteCount() + ")");
+        seasonButton.getItems().clear();
         for (Season season : show.getSeasons()) {
             season.setShowId(id);
             season.addAllEpisodes();
         }
+        averageRate.setText(String.format("%.1f", show.getStars()));
+        seasonButton.getItems().clear();
         yearsAired.setText(show.getYearStart());
         showTitle.setText(show.getTitle());
         synopsisTextBox.clear();
@@ -181,30 +212,40 @@ public class ShowOverviewController implements Initializable {
         imageTest(show.getPosterPath());
 
         for (Season season : show.getSeasons()) {
-            MenuItem seasonItem = new MenuItem(season.getName());
+            if (season.getSeasonNumber() > 0) {
+                MenuItem seasonItem = new MenuItem(season.getName());
 
-            seasonItem.setOnAction(event -> {
-                seasonButton.setText(seasonItem.getText());
-                System.out.println("Selected " + seasonItem.getText());
+                seasonItem.setOnAction(event -> {
+                    seasonButton.setText(seasonItem.getText());
+                    System.out.println("Selected " + seasonItem.getText());
+                    if (listener != null) { // Ensure the listener is set
+                        listener.selectedSeason(show, season); // Call the listener's selectedSeason function
+                    }
+                    episodeButton.getItems().clear();
+                    episodeButton.setText("Select Episode");
 
-                episodeButton.getItems().clear();
-                episodeButton.setText("Select Episode");
 
-                for (Episode episode : season.getEpisodes()) {
-                    MenuItem episodeItem = new MenuItem("Episode " + episode.getEpisodeNum());
-                    System.out.println("Episode " + episode.getEpisodeNum() + " added to selector");
 
-                    episodeItem.setOnAction(event2 -> {
-                        episodeButton.setText(episodeItem.getText());
-                        System.out.println("Selected " + episodeItem.getText());
-                    });
+                    for (Episode episode : season.getEpisodes()) {
+                        MenuItem episodeItem = new MenuItem("Episode " + episode.getEpisodeNum());
+                        System.out.println("Episode " + episode.getEpisodeNum() + " added to selector");
 
-                    episodeButton.getItems().add(episodeItem);
-                }
-            });
+                        episodeItem.setOnAction(event2 -> {
+                            episodeButton.setText(episodeItem.getText());
+                            System.out.println("Selected " + episodeItem.getText());
+                            if(listener != null){
+                                listener.selectedEpisode(show, season, episode);
+                            }
+                        });
 
-            seasonButton.getItems().add(seasonItem);
+                        episodeButton.getItems().add(episodeItem);
+                    }
+                });
+
+                seasonButton.getItems().add(seasonItem);
+            }
         }
+
 
         connectTest();
 
@@ -223,6 +264,22 @@ public class ShowOverviewController implements Initializable {
 
 
     //reviews, use reviewws fxml, create list view
+    private void reviewCheck(){
+        this.reviewText = userShowReview.getText();
+    }
+
+
+    private void rateCheck(){
+        this.rating = Math.ceil(Double.parseDouble(userRate.getText()));
+    }
+
+
+    private void testReview(){
+        Review userReview = new Review( reviewText,rating, SHOW);
+        this.listener.submittedReview(userReview);
+
+    }
+
 
     // same function as nicks setVBoxBackdrop, jsut with an image
     private void imageTest(String backDropPath){
@@ -235,27 +292,6 @@ public class ShowOverviewController implements Initializable {
 
                 showImages.setImage(image);
 
-            } catch (Exception e) {
-                System.err.println("Failed to set backdrop VBox background: " + e.getMessage());
-            }
-        } else {
-            System.out.println("Backdrop path is invalid or empty.");
-        }
-    }
-
-    private void setVBoxBackdrop(String backDropPath) {
-        if (backDropPath != null && !backDropPath.isEmpty()) {
-            try {
-                // Construct the full URL for the image
-                String fullImageUrl = "https://image.tmdb.org/t/p/original" + backDropPath;
-
-                // Set the background image
-                backdropBackground.setStyle(
-                        "-fx-background-image: url('" + fullImageUrl + "'); " +
-                                "-fx-background-size: cover; " +
-                                "-fx-background-position: center; " +
-                                "-fx-background-repeat: no-repeat;"
-                );
             } catch (Exception e) {
                 System.err.println("Failed to set backdrop VBox background: " + e.getMessage());
             }
@@ -351,14 +387,37 @@ public class ShowOverviewController implements Initializable {
     }
 
     public interface ShowOverviewListener{
-        void selectedSeason();
-        void selectedEpisode();
+        void selectedSeason(Show show, Season season);
+        void selectedEpisode(Show show, Season season, Episode episode);
         void likedShow();
+        void submittedReview(Review review);
     }
 
 
     public void setShowOverviewListener(ShowOverviewListener listener) {
         this.listener = listener;
+    }
+    //getters for MainController
+    public HBox getShowBox(){
+        return this.showBox;
+    }
+
+    public BorderPane getSeasonPage(){
+        return this.seasonOverview;
+    }
+
+
+
+    public BorderPane getEpisodePage(){
+        return this.episodeOverview;
+    }
+
+    public EpisodeOverviewController getEpisodeOverviewController(){
+        return this.episodeOverviewController;
+    }
+
+    public SeasonOverviewController getSeasonOverviewController(){
+        return this.seasonOverviewController;
     }
 
 

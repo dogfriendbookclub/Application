@@ -1,6 +1,6 @@
 package gui;
 
-import edu.metrostate.User;
+import edu.metrostate.*;
 import gui.content.ContentController;
 import gui.episodeoverview.EpisodeOverviewController;
 import gui.homepage.HomePageController;
@@ -368,7 +368,13 @@ public class MainController implements Initializable, LoginController.LoginListe
      *
      */
     @Override
-    public void selectedSeason() {
+    public void selectedSeason(Show show, Season season) {
+        try {
+            this.seasonOverviewController.loadSeasonData(season);
+            this.seasonOverviewController.populatecreators(show);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         changeView("seasonView");
     }
 
@@ -376,8 +382,17 @@ public class MainController implements Initializable, LoginController.LoginListe
      *
      */
     @Override
-    public void selectedEpisode() {
+    public void selectedEpisode(Show show, Season season, Episode episode) {
         System.out.println("episdo eselected");
+        this.episodeOverviewController.setShow(show);
+        this.episodeOverviewController.setSeason(season);
+        this.episodeOverviewController.setEpisode(episode);
+        try {
+            this.episodeOverviewController.populatecreators(show);
+            this.episodeOverviewController.loadEpisodeData(show, season, episode);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         changeView("episodeView");
 
     }
@@ -385,6 +400,11 @@ public class MainController implements Initializable, LoginController.LoginListe
     @Override
     public void likedShow() {
 
+    }
+
+    @Override
+    public void submittedReview(Review review) {
+        System.out.println("We really got a review");
     }
 
     /**

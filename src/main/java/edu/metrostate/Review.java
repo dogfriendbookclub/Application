@@ -8,7 +8,7 @@ import java.util.List;
 public class Review extends dbSqlModel implements Likable {
     //variables
     private String reviewText;
-    private int stars;
+    private double stars;
     private int reviewId;
     private int userId;
     private int showId;
@@ -17,9 +17,8 @@ public class Review extends dbSqlModel implements Likable {
     private MediaType mediaType;
 
     //constructor
-    public Review(String text, int stars, MediaType mediaType){
-        super(null);
-        this.reviewText = text;
+    public Review(String text, double stars, MediaType mediaType){
+            this.reviewText = text;
             this.stars = stars;
             this.mediaType = mediaType;
     }
@@ -115,7 +114,7 @@ public class Review extends dbSqlModel implements Likable {
         statement.setObject(4, this.episodeId); // Nullable field, use setObject
         statement.setString(5, MediaType.toDatabaseValue(this.mediaType));
         statement.setString(6, this.reviewText);
-        statement.setInt(7, this.stars);
+        statement.setDouble(7, this.stars);
         return statement;
     }
 
@@ -130,7 +129,7 @@ public class Review extends dbSqlModel implements Likable {
         statement.setObject(4, this.episodeId); // Nullable field, use setObject
         statement.setString(5, MediaType.toDatabaseValue(this.mediaType));
         statement.setString(6, this.reviewText);
-        statement.setInt(7, this.stars);
+        statement.setDouble(7, this.stars);
         statement.setInt(8, this.reviewId);
         return statement;
     }
