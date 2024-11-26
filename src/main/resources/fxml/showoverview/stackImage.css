@@ -1,0 +1,4 @@
+.stack-pane {
+    -fx-background-image: url(fullImageUrl);
+    -fx-background-size: cover;
+  }
