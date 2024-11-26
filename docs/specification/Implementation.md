@@ -20,7 +20,7 @@ Additionally, the user can enter a show's title in the fixed search bar located 
 
 ### User submits review
 - Users can access shows and submit reviews to the show as a whole, a season, or a specific episode. This review is maintained in our database
-and is accessible at will through the user profile.
+  and is accessible at will through the user profile.
 - FOR TESTING: Navigate to the TV show (overall, season, or episode) of your choice and click on the review text box.
 
 ## Phase 3
@@ -31,5 +31,5 @@ and is accessible at will through the user profile.
 
 ### User marks favorite profile
 - Within the specific TV show screen, the user can click the "like" button to denote a favorite. This is then stored in the database and
-at will.
+  at will.
 - FOR TESTING: Within the TV show of your choice, click the like button.

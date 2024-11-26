@@ -29,6 +29,6 @@ module Application {
 
     exports gui.login;
     opens gui.login to javafx.fxml;
-    exports gui.ProfileController;
-    opens gui.ProfileController to javafx.fxml;
+    exports gui.userprofile;
+    opens gui.userprofile to javafx.fxml;
 }
