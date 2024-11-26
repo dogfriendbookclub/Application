@@ -40,10 +40,10 @@ public class Show implements Reviewable, Likable {
     @JsonProperty("backdrop_path")
     private String posterPath;
     @JsonProperty("vote_average")
-    private int stars;
+    private double stars;
 
     public Show(List<Creator> creator, List<Genre> genre, String premise, String yearStart, String stillRunning,
-                int voteCount, String title, int showID, List<Season> seasons, int stars, String posterPath) {
+                int voteCount, String title, int showID, List<Season> seasons, double stars, String posterPath) {
         this.creator = creator;
         this.genre = genre;
         this.premise = premise;
@@ -98,7 +98,7 @@ public class Show implements Reviewable, Likable {
     }
 
     @Override
-    public int getStars() {
+    public double getStars() {
         return stars;
     }
 
@@ -114,7 +114,7 @@ public class Show implements Reviewable, Likable {
         return posterPath;
     }
 
-    public void setStars(int stars) {
+    public void setStars(double stars) {
         this.stars = stars;
     }
 }

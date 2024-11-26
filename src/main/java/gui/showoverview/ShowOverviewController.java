@@ -79,10 +79,10 @@ public class ShowOverviewController implements Initializable {
     private HBox showBox;
 
     @FXML
-    private BorderPane seasonPage;
+    private BorderPane seasonOverview;
 
     @FXML
-    private BorderPane episodePage;
+    private BorderPane episodeOverview;
 
     @FXML
     private VBox backdropBackground;
@@ -93,7 +93,7 @@ public class ShowOverviewController implements Initializable {
     @FXML
     private Label yearsAired;
     @FXML
-    private Text averageRating;
+    private Text averageRate;
 
     @FXML
     private SeasonOverviewController seasonOverviewController;
@@ -112,13 +112,13 @@ public class ShowOverviewController implements Initializable {
     }
 
     public BorderPane getSeasonPage(){
-        return this.seasonPage;
+        return this.seasonOverview;
     }
 
 
 
     public BorderPane getEpisodePage(){
-        return this.episodePage;
+        return this.episodeOverview;
     }
 
     public EpisodeOverviewController getEpisodeOverviewController(){
@@ -161,7 +161,7 @@ public class ShowOverviewController implements Initializable {
             season.setShowId(id);
             season.addAllEpisodes();
         }
-
+        averageRate.setText(String.format("%.1f", show.getStars()));
         seasonButton.getItems().clear();
         yearsAired.setText(show.getYearStart());
         showTitle.setText(show.getTitle());
@@ -181,7 +181,7 @@ public class ShowOverviewController implements Initializable {
                     seasonButton.setText(seasonItem.getText());
                     System.out.println("Selected " + seasonItem.getText());
                     if (listener != null) { // Ensure the listener is set
-                        listener.selectedSeason(season); // Call the listener's selectedSeason function
+                        listener.selectedSeason(show, season); // Call the listener's selectedSeason function
                     }
                     episodeButton.getItems().clear();
                     episodeButton.setText("Select Episode");
@@ -196,7 +196,7 @@ public class ShowOverviewController implements Initializable {
                             episodeButton.setText(episodeItem.getText());
                             System.out.println("Selected " + episodeItem.getText());
                             if(listener != null){
-                                listener.selectedEpisode(episode);
+                                listener.selectedEpisode(show, season, episode);
                             }
                         });
 
@@ -285,8 +285,8 @@ public class ShowOverviewController implements Initializable {
 
 
     public interface ShowOverviewListener{
-        void selectedSeason(Season season);
-        void selectedEpisode(Episode episode);
+        void selectedSeason(Show show, Season season);
+        void selectedEpisode(Show show, Season season, Episode episode);
         void likedShow();
     }
 

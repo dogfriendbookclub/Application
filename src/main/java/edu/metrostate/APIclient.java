@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class APIclient {
@@ -145,6 +146,69 @@ public class APIclient {
             return showPreviews; // Return the list of ShowPreview
         }
     }
+    public List<String> fetchCastForSeason(Season season) throws IOException {
+        String url = BASE_URL + season.getShowId() + "/season/" + season.getSeasonNumber() + "/credits?api_key=" + API_KEY;
+        System.out.println("Fetching cast for URL: " + url);  // Debugging
+
+        HttpGet request = new HttpGet(url);
+        try (CloseableHttpResponse response = httpClient.execute(request)) {
+            if (response.getCode() != 200) {
+                throw new IOException("Unexpected response code: " + response.getCode());
+            }
+
+            String jsonResponse = new String(response.getEntity().getContent().readAllBytes());
+            JsonNode rootNode = objectMapper.readTree(jsonResponse);
+
+            // Extract the "cast" array (this contains the cast members for the season)
+            JsonNode castNode = rootNode.path("cast");
+
+            List<String> castNames = new ArrayList<>();
+
+            // Loop through the cast array and extract the name of each actor/actress
+            for (JsonNode castMember : castNode) {
+                String name = castMember.path("name").asText();  // Get the name of the cast member
+                castNames.add(name);  // Add it to the list
+            }
+
+            return castNames;
+        }
+    }
+    public List<String> fetchCastForEpisode(int showId, int seasonNumber, int episodeNumber) throws IOException {
+        String url = "https://api.themoviedb.org/3/tv/" + showId +
+                "/season/" + seasonNumber +
+                "/episode/" + episodeNumber +
+                "?api_key=" + API_KEY;
+
+        System.out.println("Fetching episode details from URL: " + url); // Log the URL
+
+        HttpGet request = new HttpGet(url);
+        try (CloseableHttpResponse response = httpClient.execute(request)) {
+            if (response.getCode() == 404) {
+                System.out.println("Episode not found (404). Check the URL parameters.");
+                return Collections.emptyList();  // Return empty list or handle this case
+            }
+
+            if (response.getCode() != 200) {
+                throw new IOException("Unexpected response code: " + response.getCode());
+            }
+
+            String jsonResponse = new String(response.getEntity().getContent().readAllBytes());
+            JsonNode rootNode = objectMapper.readTree(jsonResponse);
+
+            // Extract guest stars
+            JsonNode guestStarsNode = rootNode.path("guest_stars");
+            List<String> guestStarNames = new ArrayList<>();
+            for (JsonNode guestStar : guestStarsNode) {
+                String name = guestStar.path("name").asText();
+                guestStarNames.add(name);
+            }
+
+            return guestStarNames;
+        }
+    }
+
+
+
 
 
     public List<ShowPreview> fetchSearchResults(String searchQuery) throws IOException {

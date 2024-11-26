@@ -2,10 +2,14 @@ package gui.seasonoverview;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.List;
 import java.util.Objects;
 
+import edu.metrostate.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import edu.metrostate.APIclient;
 import edu.metrostate.Season;
 import edu.metrostate.Show;
@@ -14,32 +18,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 public class SeasonOverviewController implements Initializable {
     private APIclient apIclient = new APIclient();
 
     @FXML
-    private Button homeButton;
-
+    private ListView creatorList;
+    @FXML ListView castList;
     @FXML
-    private AnchorPane rootPane;
-
-    @FXML
-    private TextField searchBar;
-
-    @FXML
-    private TextField searchBar1;
-
-    @FXML
-    private MenuItem seasonSelector;
-
-    @FXML 
-    private MenuItem episodeSelector;
-
+    private Label seasonNum;
 
 
 
@@ -57,7 +46,25 @@ public class SeasonOverviewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-    public void loadSeasonData(Season season){
+    public void loadSeasonData(Season season) throws IOException {
+        List<String> mainCast = apIclient.fetchCastForSeason(season);
+        ObservableList<String> observableMainCastList = FXCollections.observableArrayList(mainCast);
+        castList.setItems(observableMainCastList);
+        seasonNum.setText(Integer.toString(season.getSeasonNumber()));
+
+    }
+    public void populatecreators(Show show){
+        List<Creator> creators = show.getCreators();  // Get the creators from the Show class
+        // Create a list to store the creator names
+        List<String> creatorNames = new ArrayList<>();
+        for (Creator creator : creators) {
+            creatorNames.add(creator.getName());  // Add creator name to the list
+        }
+
+        // Set the creator names to the ListView
+        ObservableList<String> observableCreatorNames = FXCollections.observableArrayList(creatorNames);
+        creatorList.setItems(observableCreatorNames);
+
 
     }
 
