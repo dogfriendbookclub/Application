@@ -14,12 +14,16 @@ import edu.metrostate.APIclient;
 import edu.metrostate.Season;
 import edu.metrostate.Show;
 import edu.metrostate.ShowPreview;
+import edu.metrostate.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 public class SeasonOverviewController implements Initializable {
     private APIclient apIclient = new APIclient();
@@ -29,6 +33,24 @@ public class SeasonOverviewController implements Initializable {
     @FXML ListView castList;
     @FXML
     private Label seasonNum;
+    @FXML
+    private Text reviewRate;
+
+    @FXML
+    private Text featureUsername;
+
+    @FXML
+    private Text featureDate;
+
+
+    @FXML
+    public TextArea featureReview;
+
+    @FXML
+    public Text seasonRate;
+
+    @FXML
+    public TextField userReview;
 
 
 

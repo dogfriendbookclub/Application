@@ -17,7 +17,7 @@ public class Review implements Likable {
     private MediaType mediaType;
 
     //constructor
-    public Review(String text, int stars, MediaType mediaType){
+    public Review(String text, double stars, MediaType mediaType){
             this.reviewText = text;
             this.stars = stars;
             this.mediaType = mediaType;

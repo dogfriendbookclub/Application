@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 public class EpisodeOverviewController implements Initializable {
 
@@ -52,6 +53,25 @@ public class EpisodeOverviewController implements Initializable {
 
     @FXML
     private TextArea synopsis;
+
+    @FXML
+    private Text featureUsername;
+
+    @FXML
+    private Text reviewRate;
+
+    @FXML
+    private Text featureDate;
+
+    @FXML
+    private TextArea featurReview;
+
+    @FXML
+    private Text episodeRate;
+
+    @FXML
+    private TextField userReview;
+
 
     @FXML
     void loadSeasonPage(ActionEvent event) throws IOException {

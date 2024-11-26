@@ -53,22 +53,7 @@
                                             </font>
                                         </Label>
                                         <Text fx:id="averageRate" fill="white" text="rate" />
-                                    </children>
-                                </HBox>
-                                <HBox fillHeight="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="68.0" prefWidth="377.0" style="-fx-border-color: black;">
-                                    <children>
-                                        <Label prefHeight="19.0" prefWidth="112.0" text="Highest Rated Season">
-                                            <font>
-                                                <Font name="System Bold" size="10.0" />
-                                            </font>
-                                        </Label>
-                                        <Text fx:id="highestSeason" strokeType="OUTSIDE" strokeWidth="0.0" text="rate" wrappingWidth="32.619140625" />
-                                        <Label prefHeight="19.0" prefWidth="112.0" text="Highest Rated Episode">
-                                            <font>
-                                                <Font name="System Bold" size="10.0" />
-                                            </font>
-                                        </Label>
-                                        <Text fx:id="highestEpisode" strokeType="OUTSIDE" strokeWidth="0.0" text="rate" />
+                                        <Text fx:id="voteCount" fill="white" text = "numVotes"/>
                                     </children>
                                 </HBox>
                             </children>
@@ -151,7 +136,13 @@
                                                 <Font name="System Bold" size="10.0" />
                                             </font>
                                         </Label>
-                                        <Text fx:id="yourRate" strokeType="OUTSIDE" strokeWidth="0.0" text="rate" wrappingWidth="32.619140625" />
+                                        <HBox prefHeight="32.0" prefWidth="123.0">
+                                            <children>
+                                                <TextField fx:id="userRate" />
+                                                <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/10" wrappingWidth="32.619140625" />
+                                                <Button fx:id="reviewButton" mnemonicParsing="false" text="submit review" />
+                                            </children>
+                                        </HBox>
                                         <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="71.0" text="Your Review">
                                             <font>
                                                 <Font name="System Bold" size="10.0" />
@@ -169,8 +160,8 @@
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </padding>
                         </HBox>
-                        <fx:include fx:id="seasonPage" source="../seasonoverview/SeasonOverview.fxml" />
-                        <fx:include fx:id="episodePage" source="../episodeoverview/EpisodeOverview.fxml" />
+                        <fx:include fx:id="seasonOverview" source="../seasonoverview/SeasonOverview.fxml" />
+                        <fx:include fx:id="episodeOverview" source="../episodeoverview/EpisodeOverview.fxml" />
                     </children>
                 </StackPane>
             </children>

@@ -1,9 +1,6 @@
 package gui;
 
-import edu.metrostate.Episode;
-import edu.metrostate.Season;
-import edu.metrostate.Show;
-import edu.metrostate.User;
+import edu.metrostate.*;
 import gui.content.ContentController;
 import gui.episodeoverview.EpisodeOverviewController;
 import gui.homepage.HomePageController;
@@ -403,6 +400,11 @@ public class MainController implements Initializable, LoginController.LoginListe
     @Override
     public void likedShow() {
 
+    }
+
+    @Override
+    public void submittedReview(Review review) {
+        System.out.println("We really got a review");
     }
 
     /**
