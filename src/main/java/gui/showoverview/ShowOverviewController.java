@@ -34,6 +34,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
@@ -118,17 +119,6 @@ public class ShowOverviewController implements Initializable {
 
     private Migrations migrations = new Migrations();
 
-
-
-
-    //getters for MainController
-    public HBox getShowBox(){
-        return this.showBox;
-    }
-
-    public BorderPane getSeasonPage(){
-        return this.seasonPage;
-    }
 
     private String reviewText;
 
@@ -247,7 +237,7 @@ public class ShowOverviewController implements Initializable {
         }
 
 
-        connectTest();
+        // connectTest();
 
 
         userShowReview.setOnAction(actionEvent -> {
@@ -275,8 +265,26 @@ public class ShowOverviewController implements Initializable {
 
 
     private void testReview(){
-        Review userReview = new Review( reviewText,rating, SHOW);
+        Review userReview = new Review(userShowReview.getText(), Double.parseDouble(userRate.getText()), SHOW);
         this.listener.submittedReview(userReview);
+        try {
+            Boolean populate = true;
+            try {
+                Class.forName("org.sqlite.JDBC");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            connection = DriverManager.getConnection(Database.connectionString);
+
+            migrations.runMigrations(connection);
+
+            userReview.insert(connection);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            dbUtil.closeQuietly(connection);
+        }
 
     }
 

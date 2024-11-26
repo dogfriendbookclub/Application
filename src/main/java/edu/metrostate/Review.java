@@ -18,6 +18,7 @@ public class Review extends dbSqlModel implements Likable {
 
     //constructor
     public Review(String text, double stars, MediaType mediaType){
+            super(null);
             this.reviewText = text;
             this.stars = stars;
             this.mediaType = mediaType;
