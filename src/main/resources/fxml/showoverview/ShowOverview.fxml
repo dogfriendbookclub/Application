@@ -16,9 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-
-   <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.showoverview.ShowOverviewController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.showoverview.ShowOverviewController">
 
    <top>
       <StackPane fx:id="imageStack" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
@@ -116,7 +114,7 @@
                         </VBox>
                         <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="340.0" prefWidth="275.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label fx:id="synopsisTitle" contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="46.0" text="Synopsis">
+                              <Label contentDisplay="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="46.0" text="Synopsis">
                                  <font>
                                     <Font name="System Bold" size="10.0" />
                                  </font>
@@ -134,11 +132,7 @@
                                     <Text fx:id="featureDate" strokeType="OUTSIDE" strokeWidth="0.0" text="date" />
                                  </children>
                               </HBox>
-                              <Label fx:id="featuredReviewTextBox" alignment="TOP_LEFT" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="94.0" prefWidth="242.0" style="-fx-border-color: black;" text="Feature Review...">
-                                 <font>
-                                    <Font size="10.0" />
-                                 </font>
-                              </Label>
+                              <TextArea fx:id="featuredReviewTextBox" editable="false" layoutX="10.0" layoutY="25.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="117.0" prefWidth="256.0" style="-fx-border-color: black;" wrapText="true" />
                            </children>
                         </VBox>
                         <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="340.0" prefWidth="141.0" HBox.hgrow="ALWAYS">
@@ -148,17 +142,19 @@
                                     <Font name="System Bold" size="10.0" />
                                  </font>
                               </Label>
-                              <Text fx:id="yourRate" strokeType="OUTSIDE" strokeWidth="0.0" text="rate" wrappingWidth="32.619140625" />
+                              <HBox prefHeight="32.0" prefWidth="123.0">
+                                 <children>
+                                    <TextField fx:id="userRate" />
+                                    <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/10" wrappingWidth="32.619140625" />
+                                    <Button fx:id="reviewButton" mnemonicParsing="false" text="submit review" />
+                                 </children>
+                              </HBox>
                               <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="71.0" text="Your Review">
                                  <font>
                                     <Font name="System Bold" size="10.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="userShowReview" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="194.0" prefWidth="152.0" promptText="Maximum 500 characters">
-                                 <font>
-                                    <Font size="10.0" />
-                                 </font>
-                              </TextField>
+                              <TextArea fx:id="userShowReview" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
                            </children>
                         </VBox>
                      </children>
@@ -166,8 +162,8 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                   </HBox>
-                  <fx:include fx:id="seasonPage" source="../seasonoverview/SeasonOverview.fxml" />
-                  <fx:include fx:id="episodePage" source="../episodeoverview/EpisodeOverview.fxml" />
+                  <fx:include fx:id="seasonOverview" source="../seasonoverview/SeasonOverview.fxml" />
+                  <fx:include fx:id="episodeOverview" source="../episodeoverview/EpisodeOverview.fxml" />
                </children>
             </StackPane>
          </children>

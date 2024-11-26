@@ -20,8 +20,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class ContentController implements Initializable {
-    private APIclient apIclient = new APIclient();
 
+    private APIclient apIclient = new APIclient();
 
     //WHAT NEEDS TO BE SENT TO MAIN FIND OUT !!!
     //interface stuff
@@ -54,6 +54,7 @@ public class ContentController implements Initializable {
     @FXML
     private ShowOverviewController showOverviewController;
 
+
     private ContentListener listener;
 
 /*
@@ -76,6 +77,9 @@ public class ContentController implements Initializable {
         showPage.setVisible(true);
 
     }
+C:\Users\lemon\OneDrive\Documents\git_repositories\ics372_project_1_rep\Application\src\main\resources\fxml\showoverview\ShowOverview.fxml
+
+
 
 */
 
@@ -118,6 +122,18 @@ public class ContentController implements Initializable {
             }
         });
 
+
+        if(this.showOverviewController == null){
+            System.out.println("Show controller is not intialized");
+        }
+        else{
+            System.out.println("Show controller is intialized");
+
+        }
+
+
+
+
     }
 
     //getters for MainController to use
@@ -143,6 +159,17 @@ public class ContentController implements Initializable {
 
     public ShowOverviewController getShowOverviewController() {
         return this.showOverviewController;
+    }
+
+
+    public void showOverviewControllerStatus(){
+        if (this.showOverviewController == null ){
+            System.out.println("Show is null bro");
+
+        }
+        else{
+            System.out.println("we are NOT null");
+        }
     }
 
     //this is we at search control would go

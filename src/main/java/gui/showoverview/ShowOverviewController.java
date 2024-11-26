@@ -7,19 +7,16 @@ import javafx.scene.image.Image;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import edu.metrostate.*;
+import java.util.function.UnaryOperator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import edu.metrostate.*;
 import edu.metrostate.APIclient;
 import edu.metrostate.Season;
 import edu.metrostate.Show;
-import edu.metrostate.ShowPreview;
-import gui.content.ContentController;
 import gui.episodeoverview.EpisodeOverviewController;
 import gui.seasonoverview.SeasonOverviewController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
@@ -28,15 +25,30 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static edu.metrostate.MediaType.SHOW;
+
 public class ShowOverviewController implements Initializable {
+    @FXML
+    private TextField userRate;
+
+    @FXML
+    private Button reviewButton;
+
+    @FXML
+    private Text averageRate;
+
+    @FXML
+    private Text highestSeason;
+
+    @FXML
+    private Text highestEpisode;
 
     @FXML
     private Button likeButton;
@@ -57,7 +69,7 @@ public class ShowOverviewController implements Initializable {
     private TextArea synopsisTextBox;
 
     @FXML
-    private Label featuredReviewTextBox;
+    private TextArea featuredReviewTextBox;
 
     @FXML
     private MenuButton seasonButton;
@@ -66,16 +78,10 @@ public class ShowOverviewController implements Initializable {
     private MenuButton episodeButton;
 
     @FXML
-    private TextField userShowReview;
+    private TextArea userShowReview;
 
     @FXML
     private HBox showBox;
-
-    @FXML
-    private BorderPane seasonPage;
-
-    @FXML
-    private BorderPane episodePage;
 
     @FXML
     private VBox backdropBackground;
@@ -86,6 +92,11 @@ public class ShowOverviewController implements Initializable {
     @FXML
     private Label yearsAired;
 
+    @FXML
+    private BorderPane seasonOverview;
+
+    @FXML
+    private BorderPane episodeOverview;
 
     @FXML
     private SeasonOverviewController seasonOverviewController;
@@ -93,33 +104,19 @@ public class ShowOverviewController implements Initializable {
     @FXML
     private EpisodeOverviewController episodeOverviewController;
 
+
     private APIclient apIclient = new APIclient();
 
     private ShowOverviewListener listener;
 
 
-    //getters for MainController
-    public HBox getShowBox(){
-         return this.showBox;
-    }
 
-    public BorderPane getSeasonPage(){
-         return this.seasonPage;
-    }
+    private String reviewText;
+
+    private double rating;
 
 
 
-    public BorderPane getEpisodePage(){
-         return this.episodePage;
-    }
-
-    public EpisodeOverviewController getEpisodeOverviewController(){
-         return this.episodeOverviewController;
-    }
-
-    public SeasonOverviewController getSeasonOverviewController(){
-        return this.seasonOverviewController;
-    }
 
     /**
      * Called to initialize a controller after its root element has been
@@ -132,26 +129,66 @@ public class ShowOverviewController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       /* int showId = 1396; // hard coded test value for now
 
-            Show show = apIclient.fetchShowData(showId);
-            seasonButton.getItems().clear(); */
-        //do whatever
 
-       seasonButton.setOnAction(actionEvent -> {
+        UnaryOperator<TextFormatter.Change> rateFilter = Change ->{
+            String input = Change.getControlNewText();
+
+            if(input.length() < 2 && (input.matches("[0-9]") || input.matches("\\d*"))){
+                return Change;
+            }
+            return null;
+        };
+
+        TextFormatter<String> textFormatter = new TextFormatter<>(rateFilter);
+
+        userRate.setTextFormatter(textFormatter);
+
+        seasonButton.setOnAction(actionEvent -> {
             seasonPreviews();
         });
+
 
         episodeButton.setOnAction(actionEvent -> {
             episodePreviews();
        });
 
+
         likeButton.setOnAction(actionEvent -> {
             listener.likedShow();
         });
-       //
+
+
+
+        userShowReview.setOnKeyPressed(keyEvent ->{
+            if(keyEvent.getCode().toString().equals("ENTER")){
+                reviewCheck();
+            }
+        }
+
+        );
+
+
+
+        userRate.setOnAction(actionEvent -> {
+            rateCheck();
+        });
+
+
+        reviewButton.setOnAction(actionEvent -> {
+            testReview();
+        });
+
+
     }
 
+
+    /*
+    for review
+    user types review.
+    review is saved to show
+    review is also sent off to database
+     */
 
 
     public void loadShowData(int id) throws IOException {
@@ -172,6 +209,9 @@ public class ShowOverviewController implements Initializable {
             seasonItem.setOnAction(event -> {
                 seasonButton.setText(seasonItem.getText());
                 System.out.println("Selected " + seasonItem.getText());
+                if (listener != null) { // Ensure the listener is set
+                    this.listener.selectedSeason(season); // Call the listener's selectedSeason function
+                }
 
                 episodeButton.getItems().clear();
                 episodeButton.setText("Select Episode");
@@ -195,11 +235,21 @@ public class ShowOverviewController implements Initializable {
     }
 
 
+    private void reviewCheck(){
+        this.reviewText = userShowReview.getText();
+    }
 
 
+    private void rateCheck(){
+        this.rating = Math.ceil(Double.parseDouble(userRate.getText()));
+    }
 
 
+    private void testReview(){
+        Review userReview = new Review( reviewText,rating, SHOW);
+        this.listener.submittedReview(userReview);
 
+    }
 
 
     //reviews, use reviewws fxml, create list view
@@ -259,13 +309,12 @@ public class ShowOverviewController implements Initializable {
 
 
     }
+
     public void populateCast(int id) throws IOException {
         List<String> mainCast = apIclient.fetchMainCast(id);
         ObservableList<String> observableMainCastList = FXCollections.observableArrayList(mainCast);
         mainCastList.setItems(observableMainCastList);
     }
-
-
 
     public void seasonPreviews() {
         //do whatever
@@ -280,9 +329,10 @@ public class ShowOverviewController implements Initializable {
 
 
     public interface ShowOverviewListener{
-        void selectedSeason();
+        void selectedSeason(Season season);
         void selectedEpisode();
         void likedShow();
+        void submittedReview(Review review);
 
 
     }
@@ -291,6 +341,29 @@ public class ShowOverviewController implements Initializable {
     public void setShowOverviewListener(ShowOverviewListener listener) {
         this.listener = listener;
     }
+
+    //getters for MainController
+    public HBox getShowBox(){
+        return this.showBox;
+    }
+
+    public BorderPane getSeasonOverview(){
+        return this.seasonOverview;
+    }
+
+    public BorderPane getEpisodeOverview(){
+        return this.episodeOverview;
+    }
+
+    public EpisodeOverviewController getEpisodeOverviewController(){
+        return this.episodeOverviewController;
+    }
+
+    public SeasonOverviewController getSeasonOverviewController(){
+        return this.seasonOverviewController;
+    }
+
+
 
 
 }

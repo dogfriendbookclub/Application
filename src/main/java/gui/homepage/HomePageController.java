@@ -152,6 +152,8 @@ public class HomePageController implements Initializable {
         ShowOverviewController controller = loader.getController();
         controller.setShowDetails(showPreview);  Assuming you have a method to set show details
 
+    C:\Users\lemon\OneDrive\Documents\git_repositories\ics372_project_1_rep\Application\src\main\resources\fxml\showoverview\ShowOverview.fxml
+
         // Replace the current root pane with the new one
         rootPane.getChildren().setAll(pane);
     }

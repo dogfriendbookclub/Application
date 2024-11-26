@@ -17,9 +17,9 @@ import java.util.List;
 public class Main extends Application {
     private MainController controller;
 
-
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Main.fxml"));
         Parent root = loader.load();
         this.controller = loader.getController();
@@ -34,3 +34,13 @@ public class Main extends Application {
         launch(args);
     }
 }
+  /*
+        work on user profile
+        work on reviews, be able to do it for SHOWS.
+        clean up PROGrAMS
+
+
+
+            making it look nice
+            and trying to make less coupled
+        */

@@ -32,12 +32,12 @@
 
     </top>
    <center>
-      <StackPane fx:id="contentStack" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <StackPane  maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-             <fx:include fx:id="homePage" source="../homepage/HomePage.fxml" />
-             <fx:include fx:id="searchPage" source="../searchpage/SearchPage.fxml" />
-             <fx:include fx:id="showOverview" source="../showoverview/ShowOverview.fxml" />
-             <fx:include fx:id="profilePage" source="../profile/Profile.fxml" />
+             <fx:include fx:id="homePage" source="/fxml/homepage/HomePage.fxml" />
+             <fx:include fx:id="searchPage" source="/fxml/searchpage/SearchPage.fxml" />
+             <fx:include fx:id="showOverview" source="/fxml/showoverview/ShowOverview.fxml" />
+           <!--  <fx:include fx:id="profilePage" source="../profile/Profile.fxml" /> -->
 
          </children>
       </StackPane>
