@@ -20,6 +20,8 @@ dependencies {
     implementation 'org.openjfx:javafx-controls:23'
     implementation 'org.openjfx:javafx-fxml:23'
     implementation 'org.openjfx:javafx-graphics:23'
+    implementation 'org.xerial:sqlite-jdbc:3.47.0.0'
+
 
 
 }

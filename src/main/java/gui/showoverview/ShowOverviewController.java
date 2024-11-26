@@ -327,6 +327,11 @@ public class ShowOverviewController implements Initializable {
     public void connectTest() {
         try {
             Boolean populate = true;
+            try {
+                Class.forName("org.sqlite.JDBC");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
             connection = DriverManager.getConnection(Database.connectionString);
 
             migrations.runMigrations(connection);
