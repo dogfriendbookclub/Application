@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class Review implements Likable {
     //variables
     private String reviewText;
-    private int stars;
+    private double stars;
     private int reviewId;
     private int userId;
     private int showId;
@@ -91,7 +91,7 @@ public class Review implements Likable {
         statement.setObject(4, this.episodeId); // Nullable field, use setObject
         statement.setString(5, MediaType.toDatabaseValue(this.mediaType));
         statement.setString(6, this.reviewText);
-        statement.setInt(7, this.stars);
+        statement.setDouble(7, this.stars);
         return statement;
     }
 
@@ -106,7 +106,7 @@ public class Review implements Likable {
         statement.setObject(4, this.episodeId); // Nullable field, use setObject
         statement.setString(5, MediaType.toDatabaseValue(this.mediaType));
         statement.setString(6, this.reviewText);
-        statement.setInt(7, this.stars);
+        statement.setDouble(7, this.stars);
         statement.setInt(8, this.reviewId);
         return statement;
     }
