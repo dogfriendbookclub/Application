@@ -43,7 +43,8 @@ a solution to the database needed for reviews.
  to submit reviews. Bryn also worked to develop the API for the search function.
 - Chang - Worked to develop the formatting in the search function, including displaying the GUI.
 - Nicholas - Helped research functionality to switch between pages as users are navigating.
-- Caleb - Set up the login functionality for users
+- Caleb - Wrote functions in ShowOverview that get user input and creates a review object. Additionally, Caleb created the
+content page that holds the home button and the search bar fixed at the top.
 
   # Milestone 6
 - Paul - Provided the framework for the class project report as well as the slideshow as well as managing Zoom call
@@ -51,4 +52,5 @@ a solution to the database needed for reviews.
 - Bryn - Built the functionality to pull episodes into the screens as well as completed database functionality.
 - Chang - Worked on the show overview, as well as ensuring the season overview worked as intended (no longer duplicating)
 - Nicholas - Implemented the code that provides the information into both the season and episode pages
-- Caleb - Set up the login functionality for users
+- Caleb - Embedded the episode and season inside of the show overview fxml. Caleb also create the ChangeView function that
+is used to switch between screens
