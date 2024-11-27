@@ -42,7 +42,7 @@ a solution to the database needed for reviews.
 - Bryn - Worked on the back end development for the search page functionality as well as the development of the database
  to submit reviews. Bryn also worked to develop the API for the search function.
 - Chang - Worked to develop the formatting in the search function, including displaying the GUI.
-- Nicholas - Set up the API Client as well as the homepage call and the display of items in this screen
+- Nicholas - Helped research functionality to switch between pages as users are navigating.
 - Caleb - Set up the login functionality for users
 
   # Milestone 6
@@ -50,5 +50,5 @@ a solution to the database needed for reviews.
  meetings for the group during off hours and maintaining documentation.
 - Bryn - Built the functionality to pull episodes into the screens as well as completed database functionality.
 - Chang - Worked on the show overview, as well as ensuring the season overview worked as intended (no longer duplicating)
-- Nicholas - Set up the API Client as well as the homepage call and the display of items in this screen
+- Nicholas - Implemented the code that provides the information into both the season and episode pages
 - Caleb - Set up the login functionality for users
