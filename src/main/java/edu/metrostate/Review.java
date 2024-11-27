@@ -24,11 +24,11 @@ public class Review extends dbSqlModel implements Likable {
             this.mediaType = mediaType;
     }
 
-    public Review(String text, int stars, int reviewId){
+    public Review(String text, int stars, int showId){
         super(null);
         this.reviewText = text;
         this.stars = stars;
-        this.reviewId = reviewId;
+        this.showId = showId;
     }
 
     public Review(String text, int stars, int showId, int reviewId){
@@ -46,7 +46,7 @@ public class Review extends dbSqlModel implements Likable {
         this.mediaType = mediaType;
         this.reviewId = reviewId;
     }
-    public Review(String text, int stars, int showId, MediaType mediaType){
+    public Review(String text, double stars, int showId, MediaType mediaType){
         super(null);
         this.reviewText = text;
         this.stars = stars;

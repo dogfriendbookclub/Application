@@ -19,6 +19,10 @@ public class User extends dbSqlModel {
     List<Reviewable> saved;
     List<Review> reactions;
 
+
+    public User() {
+        super(null);
+    }
     public User(String handle) {
         super(null);
         this.userHandle = handle;

@@ -124,6 +124,8 @@ public class ShowOverviewController implements Initializable {
 
     private double rating;
 
+    private int showId;
+
 
 
     /**
@@ -183,12 +185,15 @@ public class ShowOverviewController implements Initializable {
 
     public void loadShowData(int id) throws IOException {
         Show show = apIclient.fetchShowData(id);
+        showId = id;
         voteCount.setText("(" + show.getVoteCount() + ")");
         seasonButton.getItems().clear();
         for (Season season : show.getSeasons()) {
             season.setShowId(id);
             season.addAllEpisodes();
         }
+        userShowReview.clear();
+        userRate.clear();
         averageRate.setText(String.format("%.1f", show.getStars()));
         seasonButton.getItems().clear();
         yearsAired.setText(show.getYearStart());
@@ -200,6 +205,8 @@ public class ShowOverviewController implements Initializable {
         mainCastList.getItems().clear();
         populateCast(id);
         imageTest(show.getPosterPath());
+        seasonButton.setText("Select Season");
+        episodeButton.setText("Select Episode");
 
         for (Season season : show.getSeasons()) {
             if (season.getSeasonNumber() > 0) {
@@ -242,7 +249,7 @@ public class ShowOverviewController implements Initializable {
 
         userShowReview.setOnAction(actionEvent -> {
             try {
-                writeShowReview(userShowReview.getText(), 5, show.getShowId());
+                writeShowReview(userShowReview.getText(), 5, id);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             } finally {
@@ -265,7 +272,7 @@ public class ShowOverviewController implements Initializable {
 
 
     private void testReview(){
-        Review userReview = new Review(userShowReview.getText(), Double.parseDouble(userRate.getText()), SHOW);
+        Review userReview = new Review(userShowReview.getText(), Double.parseDouble(userRate.getText()), showId, SHOW);
         this.listener.submittedReview(userReview);
         try {
             Boolean populate = true;
@@ -279,6 +286,7 @@ public class ShowOverviewController implements Initializable {
             migrations.runMigrations(connection);
 
             userReview.insert(connection);
+            System.out.println(userReview.toString());
 
         } catch (SQLException ex) {
             ex.printStackTrace();
