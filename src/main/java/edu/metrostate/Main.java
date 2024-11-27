@@ -1,5 +1,6 @@
 package edu.metrostate;
 
+import edu.metrostate.migrations.Migrations;
 import gui.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,11 +13,19 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
+
+import static gui.showoverview.ShowOverviewController.load;
+import static gui.showoverview.ShowOverviewController.populate;
+
 
 public class Main extends Application {
     private MainController controller;
-
+    private Connection connection;
+    private Migrations migrations;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -31,9 +40,8 @@ public class Main extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
-
-
 
     public static void main(String[] args) throws IOException {
         launch(args);

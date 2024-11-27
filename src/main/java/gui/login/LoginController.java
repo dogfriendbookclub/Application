@@ -1,17 +1,16 @@
 package gui.login;
 
 import edu.metrostate.User;
+import gui.userprofile.ProfileController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController implements Initializable {
+public class LoginController implements Initializable, ProfileController.ProfileListener {
     @FXML
     private TextField errorBox;
 
@@ -44,8 +43,19 @@ public class LoginController implements Initializable {
 
     private User user;
 
+    private ProfileController profileController;
+
+    @Override
+    public User passUser() {
+        return user;
+    }
+    //private ProfilePageListener listener;
+
+
     public interface LoginListener {
         void onLoginComplete(); //change name too similair to teachers
+
+        void getUser();
     }
 
 
@@ -97,6 +107,7 @@ public class LoginController implements Initializable {
         }
 
         user = new User(acceptedUser);
+        profileController.setUser(user);
         System.out.println("user " + user.getUserHandle() + " created with id " + user.getUserId());
     }
 
@@ -117,11 +128,18 @@ public class LoginController implements Initializable {
         this.loginListener = loginListener;
     }
 
+    /*public void setProfilePageListener(ProfilePageListener listener) {
+        this.listener = listener;
+    }*/
 
-    public User getUser() {
-        System.out.println("getting user " + user.getUserHandle() + "to send to content controller");
-        return user;
+    public interface ProfilePageListener {
+        void showClickedOnInHome(int id);
     }
+
+    /*
+    public User getUser() {
+        return this.user;
+    } */
 
 }
 

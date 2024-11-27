@@ -31,7 +31,7 @@
                        <Font size="12.0" />
                    </font>
                </TextField>
-            <Button fx:id="profileButton" mnemonicParsing="false" text="Profile" />
+            <Button fx:id="profileButton" mnemonicParsing="false" text="Profile (Beta)" />
             <Button fx:id="logoutButton" mnemonicParsing="false" text="Log out" />
    </children>
 

@@ -1,10 +1,14 @@
 package gui.showoverview;
 
 import edu.metrostate.Creator;
+import edu.metrostate.migrations.Migrations;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -30,6 +34,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
@@ -110,9 +115,16 @@ public class ShowOverviewController implements Initializable {
 
     private ShowOverviewListener listener;
 
+    private Connection connection = null;
+
+    private Migrations migrations = new Migrations();
+
+
     private String reviewText;
 
     private double rating;
+
+    private int showId;
 
 
 
@@ -150,6 +162,8 @@ public class ShowOverviewController implements Initializable {
         likeButton.setOnAction(actionEvent -> {
             listener.likedShow();
         });
+
+
         userShowReview.setOnKeyPressed(keyEvent ->{
                     if(keyEvent.getCode().toString().equals("ENTER")){
                         reviewCheck();
@@ -171,12 +185,15 @@ public class ShowOverviewController implements Initializable {
 
     public void loadShowData(int id) throws IOException {
         Show show = apIclient.fetchShowData(id);
+        showId = id;
         voteCount.setText("(" + show.getVoteCount() + ")");
         seasonButton.getItems().clear();
         for (Season season : show.getSeasons()) {
             season.setShowId(id);
             season.addAllEpisodes();
         }
+        userShowReview.clear();
+        userRate.clear();
         averageRate.setText(String.format("%.1f", show.getStars()));
         seasonButton.getItems().clear();
         yearsAired.setText(show.getYearStart());
@@ -188,6 +205,8 @@ public class ShowOverviewController implements Initializable {
         mainCastList.getItems().clear();
         populateCast(id);
         imageTest(show.getPosterPath());
+        seasonButton.setText("Select Season");
+        episodeButton.setText("Select Episode");
 
         for (Season season : show.getSeasons()) {
             if (season.getSeasonNumber() > 0) {
@@ -225,6 +244,19 @@ public class ShowOverviewController implements Initializable {
         }
 
 
+        // connectTest();
+
+
+        userShowReview.setOnAction(actionEvent -> {
+            try {
+                writeShowReview(userShowReview.getText(), 5, id);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } finally {
+                dbUtil.closeQuietly(connection);
+            }
+
+        });
     }
 
 
@@ -240,8 +272,27 @@ public class ShowOverviewController implements Initializable {
 
 
     private void testReview(){
-        Review userReview = new Review( reviewText,rating, SHOW);
+        Review userReview = new Review(userShowReview.getText(), Double.parseDouble(userRate.getText()), showId, SHOW);
         this.listener.submittedReview(userReview);
+        try {
+            Boolean populate = true;
+            try {
+                Class.forName("org.sqlite.JDBC");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            connection = DriverManager.getConnection(Database.connectionString);
+
+            migrations.runMigrations(connection);
+
+            userReview.insert(connection);
+            System.out.println(userReview.toString());
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            dbUtil.closeQuietly(connection);
+        }
 
     }
 
@@ -284,7 +335,37 @@ public class ShowOverviewController implements Initializable {
         mainCastList.setItems(observableMainCastList);
     }
 
+    public void writeShowReview(String reviewText, int rate, int showId) throws SQLException {
 
+        Review review = new Review(reviewText, rate, showId, MediaType.SHOW);
+        review.insert(connection);
+
+    }
+
+    public static void populate(Connection connection) {
+        List<Review> reviews = new ArrayList<>();
+        Review test1 = new Review("test text", 8, 4321, 123);
+        Review test2 = new Review("test testing testing", 3, 4568, 565);
+        Review test3 = new Review("mcTest", 5, 987352, 987);
+
+        reviews.add(test1);
+        reviews.add(test2);
+        reviews.add(test3);
+
+        for (Review review : reviews) {
+            review.insert(connection);
+            System.out.println("printing review...");
+            System.out.println("text: " + review.getReviewText());
+            System.out.println("stars: " + review.getStars());
+            System.out.println("showId: " + review.getShowId());
+            System.out.println("reviewId: " + review.getReviewId());
+        }
+    }
+
+    public static List<Review> load(Connection connection) {
+        List<Review> reviews = Review.loadAll(connection);
+        return reviews;
+    }
 
     public void seasonPreviews() {
         //do whatever
@@ -294,6 +375,32 @@ public class ShowOverviewController implements Initializable {
         //do whatever
     }
 
+
+    public void connectTest() {
+        try {
+            Boolean populate = true;
+            try {
+                Class.forName("org.sqlite.JDBC");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            connection = DriverManager.getConnection(Database.connectionString);
+
+            migrations.runMigrations(connection);
+
+            if (populate) {
+                populate(connection);
+            }
+
+            List<Review> reviews = load(connection);
+            reviews.forEach(person -> System.out.println(reviews));
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            dbUtil.closeQuietly(connection);
+        }
+    }
 
     public interface ShowOverviewListener{
         void selectedSeason(Show show, Season season);

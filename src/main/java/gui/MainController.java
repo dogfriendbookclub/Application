@@ -422,8 +422,14 @@ public class MainController implements Initializable, LoginController.LoginListe
     }
 
     @Override
-    public User getUser() {
-        return this.loginController.getUser();
+    public void getUser() {
+
+    }
+
+
+    @Override
+    public User passUser() {
+        return null;
     }
 
     //end show itnerface

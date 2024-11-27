@@ -1,11 +1,11 @@
 package edu.metrostate;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Review implements Likable {
+public class Review extends dbSqlModel implements Likable {
     //variables
     private String reviewText;
     private double stars;
@@ -18,31 +18,51 @@ public class Review implements Likable {
 
     //constructor
     public Review(String text, double stars, MediaType mediaType){
+            super(null);
             this.reviewText = text;
             this.stars = stars;
             this.mediaType = mediaType;
     }
 
-    public Review(String text, int stars, String type, int reviewId){
+    public Review(String text, int stars, int showId){
+        super(null);
+        this.reviewText = text;
+        this.stars = stars;
+        this.showId = showId;
+    }
+
+    public Review(String text, int stars, int showId, int reviewId){
+        super(null);
+        this.reviewText = text;
+        this.stars = stars;
+        this.showId = showId;
+        this.reviewId = reviewId;
+    }
+
+    public Review(String text, int stars, MediaType mediaType, int reviewId){
+        super(null);
         this.reviewText = text;
         this.stars = stars;
         this.mediaType = mediaType;
         this.reviewId = reviewId;
     }
-    public Review(String text, int stars, int showId, String type){
+    public Review(String text, double stars, int showId, MediaType mediaType){
+        super(null);
         this.reviewText = text;
         this.stars = stars;
         this.mediaType = mediaType;
         this.showId = showId;
     }
-    public Review(String text, int stars, int showId, int seasonId, String type){
+    public Review(String text, int stars, int showId, int seasonId, MediaType mediaType){
+        super(null);
         this.reviewText = text;
         this.stars = stars;
         this.mediaType = mediaType;
         this.showId = showId;
         this.seasonId = seasonId;
     }
-    public Review(String text, int stars, int showId, int seasonId, int episodeId, String type){
+    public Review(String text, int stars, int showId, int seasonId, int episodeId, MediaType mediaType){
+        super(null);
         this.reviewText = text;
         this.stars = stars;
         this.mediaType = mediaType;
@@ -74,6 +94,10 @@ public class Review implements Likable {
 
     public double getStars() {
         return stars;
+    }
+
+    public int getShowId() {
+        return showId;
     }
 
     public void setReviewId(int reviewId) {
@@ -109,6 +133,40 @@ public class Review implements Likable {
         statement.setDouble(7, this.stars);
         statement.setInt(8, this.reviewId);
         return statement;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append("toString called...");
+        str.append("\ntext: " + this.getReviewText());
+        str.append("\nstars: " + this.getStars());
+        str.append("\nshowId: " + this.getShowId());
+        str.append("\nreviewId: " + this.getReviewId());
+        return str.toString();
+    }
+
+    public static List<Review> loadAll(Connection connection) {
+        List<Review> reviewList = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM review");
+            while (resultSet.next()) {
+                String text = resultSet.getString("reviewText");
+                Integer score = resultSet.getInt("reviewScore");
+                Integer showId = resultSet.getInt("showId");
+                Integer reviewId = resultSet.getInt("reviewId");
+
+
+                Review review = new Review(text, score, showId, reviewId);
+                reviewList.add(review);
+            }
+            dbUtil.closeQuietly(resultSet);
+            dbUtil.closeQuietly(statement);
+        } catch (SQLException ex) {
+
+        }
+        return reviewList;
     }
 
 }//end Class
