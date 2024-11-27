@@ -20,7 +20,7 @@ Users can like reviews created by other users.
 - Chang Vang <changvang32@gmail.com> Username: Project-Escape
 
 
-## How To Run Program - Testing this
+## How To Run Program
 1. Visit https://gluonhq.com/products/javafx/
 2. Select JavaFX Version "21.0.4 [LTS]"
 3. Select Operating system of choice
