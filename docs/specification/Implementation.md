@@ -1,6 +1,6 @@
 # Implementation of Use Cases
 
-## Phase 1
+## Phase 1 (November 26, 2024)
 ### Enable login function
 - The app must  allow users to securely log in to the application and authenticate their identity to access personalized features and content. Our solution to this is simple. When a user opens the app, they are prompted to enter their user name and password, which will then prompt them to the app’s home page 
 - FOR TESTING: Enter any values to log in. However, please be sure to keep the initial username and password in order to log back in.
@@ -11,7 +11,7 @@ They are able to click on any of the images and be routed to that show's informa
 At the time of this deliverable, the show screen is not yet populated, but the console will provide the user with the show ID sent through the API.
 Additionally, the user can enter a show's title in the fixed search bar located at the top of the page to obtain the same result.
 
-## Phase 2
+## Phase 2 (November 26, 2024)
 
 ### User submits review
 - Users can access shows and submit reviews to the show as a whole, a season, or a specific episode. This review is maintained in our database
@@ -22,7 +22,7 @@ Additionally, the user can enter a show's title in the fixed search bar located 
 - Once in navigation, the users must be able to click the home button to restart at the home page
 - FOR TESTING: Navigate through the various pages and utilize the home button
 
-## Phase 3
+## Phase 3 (November 26, 2024)
 
 ### Users have access to individual season information
 - Once in the show overview, the user can utilize the season selector to access a specific season for that show. This also makes use of our TMDB API to pull up content.
