@@ -38,7 +38,7 @@ Users can like reviews created by other users.
 12. Make sure Java 21 SDK is selected
 
 --------
-New way to run
+Alternative way to run using Gradle
 
 1. Create Gradle Run Configuration
 2. Put in ":run for the command
